@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RedoxReady — G12 Advanced Chemistry EoT1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#0f172a;--ink2:#334155;--mut:#64748b;--line:#e2e8f0;--pri:#6d28d9;--pri2:#db2777;--ok:#16a34a;--okb:#dcfce7;--no:#dc2626;--nob:#fee2e2;--warnb:#fff7ed;--tint:#f1f5f9;--sh:0 1px 2px rgba(15,23,42,.06),0 8px 24px rgba(15,23,42,.06)}
+[data-theme=dark]{--bg:#0b1020;--card:#131a2e;--ink:#e8ecf6;--ink2:#cbd5e1;--mut:#94a3b8;--line:#243049;--tint:#1a2340;--okb:#0f2e1c;--nob:#3a1414;--warnb:#33210c;--sh:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+a{color:var(--pri)}
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topin{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 18px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none;color:var(--ink);white-space:nowrap}
+.logo i{font-style:normal;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;font-size:18px}
+.logo small{display:block;font-weight:600;color:var(--mut);font-size:11px;line-height:1.1}
+.nav{display:flex;gap:4px;margin-left:auto;overflow-x:auto}
+.nav a{padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--ink2);font-weight:600;font-size:14px;white-space:nowrap}
+.nav a:hover{background:var(--tint)}.nav a.on{background:var(--pri);color:#fff}
+#themeBtn{border:1px solid var(--line);background:var(--card);border-radius:10px;width:38px;height:38px;cursor:pointer;font-size:16px}
+main{max-width:1120px;margin:0 auto;padding:24px 18px 80px}
+h1{font-size:clamp(26px,4vw,40px);line-height:1.15;margin:.2em 0 .4em;letter-spacing:-.02em}
+h2{font-size:22px;margin:.2em 0 .6em;letter-spacing:-.01em}h3{margin:.3em 0}
+.sec{margin:34px 0 14px}.muted{color:var(--mut)}.small{font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--sh);margin:16px 0}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:11px 18px;border-radius:12px;border:0;background:linear-gradient(135deg,var(--pri),#7c3aed);color:#fff;font:inherit;font-weight:700;text-decoration:none;cursor:pointer;box-shadow:0 4px 14px rgba(109,40,217,.25);transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}.btn:disabled{opacity:.4;cursor:default;transform:none}
+.btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn.sm{padding:7px 12px;font-size:14px}.btn.big{padding:14px 26px;font-size:17px;margin-top:10px}.btn.danger{background:linear-gradient(135deg,#ef4444,#db2777)}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.pill{display:inline-block;padding:5px 12px;border-radius:999px;background:var(--tint);font-size:13px;font-weight:700;color:var(--ink2)}
+.start .pill{color:#fff}
+/* hero */
+.hero{display:grid;grid-template-columns:1.6fr 1fr;gap:26px;align-items:center;background:radial-gradient(1200px 400px at 0% 0%,rgba(219,39,119,.12),transparent),radial-gradient(900px 400px at 100% 100%,rgba(109,40,217,.16),transparent),var(--card);border:1px solid var(--line);border-radius:26px;padding:34px;box-shadow:var(--sh)}
+.grad{background:linear-gradient(90deg,var(--pri),var(--pri2),#f59e0b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:17px;color:var(--ink2);max-width:60ch}
+.hero-r{display:flex;flex-direction:column;align-items:center;gap:16px}
+.ring{--p:0;width:170px;height:170px;border-radius:50%;background:conic-gradient(var(--pri) calc(var(--p)*1%),var(--tint) 0);display:grid;place-items:center}
+.ring>div{width:136px;height:136px;border-radius:50%;background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring b{font-size:34px;line-height:1}.ring small{color:var(--mut);font-size:12px}.ring.big{width:190px;height:190px}.ring.big>div{width:154px;height:154px}
+.mini{display:flex;gap:12px}.mini div{background:var(--tint);border-radius:14px;padding:10px 16px;text-align:center}.mini b{display:block;font-size:22px}.mini small{color:var(--mut);font-size:12px}
+.bp{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.bp div{background:var(--tint);border-radius:14px;padding:14px;text-align:center}.bp b{display:block;font-size:26px}.bp small{color:var(--mut);font-size:13px}
+.units{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.unit{display:flex;gap:12px;padding:16px;border-radius:16px;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--ink);box-shadow:var(--sh);border-top:4px solid var(--c)}
+.unit .ui{font-size:28px}.unit small{display:block;color:var(--mut);font-size:12.5px}
+.bar{height:6px;background:var(--tint);border-radius:9px;margin-top:8px;overflow:hidden}.bar i{display:block;height:100%;background:var(--c,var(--pri))}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.how div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}.how span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--pri);color:#fff;font-weight:800;margin-right:6px}
+/* learn */
+.phead{margin-bottom:8px}.ublock{margin:22px 0}.uhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.ublock h2{border-left:6px solid var(--c);padding-left:10px}
+.goals{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:10px}
+.goalc{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:14px;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--ink);transition:.15s}
+.goalc:hover{border-color:var(--c);transform:translateY(-1px)}
+.goalc .qn{min-width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 18%,transparent);color:var(--ink);font-weight:800}
+.goalc small{display:block;color:var(--mut);font-size:12.5px}.goalc .st{margin-left:auto;font-weight:800;color:var(--mut);font-size:14px}
+.goalc.done .st{color:var(--ok);font-size:20px}.goalc.done .qn{background:var(--ok);color:#fff}
+.crumbs{font-size:14px;color:var(--mut);margin-bottom:10px}.crumbs a{text-decoration:none}
+/* lesson */
+.lesson{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--sh)}
+.lhead{display:flex;gap:18px;align-items:flex-start}.qbig{min-width:74px;height:74px;border-radius:20px;background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 60%,#000));color:#fff;font-weight:800;font-size:24px;display:grid;place-items:center}
+.lesson h1{font-size:clamp(22px,3.2vw,32px);margin-top:0}
+.outcome{background:var(--tint);border-left:4px solid var(--c);border-radius:10px;padding:10px 14px;font-weight:600}.outcome span{display:block;font-size:12px;color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.meta span{font-size:13px;background:var(--tint);padding:4px 10px;border-radius:999px;color:var(--ink2)}
+.content{font-size:16.5px}.content h4{margin:22px 0 8px;font-size:18px}
+.key{background:linear-gradient(135deg,color-mix(in srgb,var(--c) 10%,var(--card)),var(--card));border:1px solid color-mix(in srgb,var(--c) 35%,var(--line));border-radius:16px;padding:16px 18px;margin:16px 0}.key h4{margin-top:0}
+.ex{background:var(--tint);border-radius:14px;padding:14px 18px;margin:14px 0}.ex h5{margin:0 0 6px;font-size:15px;color:var(--pri)}
+.trap{background:var(--nob);border:1px solid color-mix(in srgb,var(--no) 30%,transparent);border-radius:12px;padding:12px 16px;margin:14px 0}
+.tip{background:var(--okb);border-radius:12px;padding:12px 16px;margin:14px 0}
+.mnemo{background:linear-gradient(90deg,#fef3c7,#fde68a);color:#422006;border-radius:12px;padding:12px 16px;margin:14px 0;font-weight:600}
+.eq{font-weight:700;background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;overflow-x:auto;white-space:nowrap;font-size:17px}
+.eq.good{border:2px solid var(--ok);background:var(--okb)}.eq.big{font-size:19px;text-align:center}
+.eq-in{font-weight:700;background:var(--card);padding:1px 7px;border-radius:6px;border:1px solid var(--line);white-space:nowrap}
+.tbl{width:100%;border-collapse:collapse;margin:8px 0;font-size:15px}.tbl th,.tbl td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}.tbl th{background:var(--tint);font-size:13.5px}
+.tbl.calc td:first-child{font-weight:700;white-space:nowrap}.tbl tr.she td{background:#fef9c3;color:#422006;font-weight:700}
+.rules{padding-left:22px}.rules li{margin:4px 0}.steps li{margin:6px 0}.bul li{margin:5px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.two .card,.two>.card{margin:0}
+.content .card{background:var(--tint);border-radius:14px;padding:14px 16px;border:0;box-shadow:none}.card.c1{border-top:4px solid #dc2626}.card.c2{border-top:4px solid #2563eb}
+.figwrap{background:var(--tint);border-radius:18px;padding:12px;margin:18px 0}
+.fig{width:100%;height:auto;display:block;max-height:420px}.cap{font-size:13.5px;color:var(--mut);text-align:center;margin:6px 0 0}
+.svl{font-size:15px;font-weight:700;fill:var(--ink2)}.svs{font-size:13px;font-weight:600;fill:var(--ink2)}.svh{font-size:15px;font-weight:800}.svb{font-size:18px;font-weight:800;fill:var(--ink)}
+.oilrig{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center}
+.or{border-radius:16px;padding:16px;color:#fff}.or.ox{background:linear-gradient(135deg,#ef4444,#f97316)}.or.rd{background:linear-gradient(135deg,#2563eb,#7c3aed)}
+.or .big{font-size:40px;font-weight:800;line-height:1}.or .big.sm{font-size:22px}.or ul{margin:6px 0 0;padding-left:18px}
+.arrowx{font-size:26px;font-weight:800;text-align:center;color:var(--ink2)}.arrowx small{display:block;font-size:12px;font-weight:600;color:var(--mut)}
+.flow{display:flex;flex-wrap:wrap;gap:8px}.flow div{flex:1 1 140px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;font-weight:600;font-size:14px;position:relative}
+.flow span{display:inline-grid;place-items:center;min-width:26px;height:26px;border-radius:8px;background:var(--pri);color:#fff;font-size:12px;margin-right:6px}.flow .hl{border-color:#2563eb}.flow .hl span{background:#2563eb}
+.ladder{border-radius:14px;overflow:hidden;border:1px solid var(--line)}.lad-side{padding:8px 14px;font-weight:700;font-size:13.5px}.lad-side.top{background:#fee2e2;color:#7f1d1d}.lad-side.bot{background:#dbeafe;color:#1e3a8a}
+.lad-row{display:flex;justify-content:space-between;padding:7px 14px;background:var(--card);border-top:1px solid var(--line);font-weight:600}.lad-row.she{background:#fef9c3;color:#422006}
+.notn{display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;gap:4px}.notn .nb{padding:12px 14px;border-radius:12px;font-weight:800;font-size:18px;text-align:center}.nb.an{background:#fee2e2;color:#7f1d1d}.nb.ca{background:#dbeafe;color:#1e3a8a}
+.notn small{display:block;font-size:11px;font-weight:600}.nl{font-size:26px;font-weight:800;text-align:center;padding:4px 6px}.nl small{font-size:10px;color:var(--mut)}
+.video{display:flex;gap:14px;align-items:center;padding:14px 16px;border-radius:16px;background:linear-gradient(135deg,#111827,#1f2937);color:#fff;text-decoration:none;margin:20px 0}
+.video .play{width:54px;height:54px;border-radius:14px;background:#ef4444;display:grid;place-items:center;font-size:22px;flex:none}.video small{display:block;color:#cbd5e1;font-size:12.5px}
+/* questions */
+.checks{margin-top:28px;border-top:2px dashed var(--line);padding-top:16px}
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin:14px 0;box-shadow:var(--sh)}
+.qtop{display:flex;align-items:center;gap:10px;margin-bottom:8px}.qnum{display:inline-grid;place-items:center;min-width:32px;height:32px;border-radius:10px;background:var(--pri);color:#fff;font-weight:800}
+.qtag{font-size:12.5px;font-weight:700;color:var(--mut);background:var(--tint);padding:3px 10px;border-radius:999px}
+.flagbtn{margin-left:auto;border:1px solid var(--line);background:transparent;border-radius:9px;padding:4px 10px;cursor:pointer;color:var(--mut);font:inherit;font-size:13px}
+.flagbtn:hover{color:var(--no);border-color:var(--no)}
+.qtext{font-size:18px;font-weight:700;margin:6px 0 12px}
+.opts{display:grid;gap:8px}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;padding:12px 14px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:16px;cursor:pointer;transition:.12s}
+.opt:hover:not(:disabled){border-color:var(--pri);background:color-mix(in srgb,var(--pri) 6%,var(--card))}
+.opt .L{min-width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--tint);font-weight:800}
+.opt.sel{border-color:var(--pri);background:color-mix(in srgb,var(--pri) 10%,var(--card))}.opt.sel .L{background:var(--pri);color:#fff}
+.opt.right{border-color:var(--ok);background:var(--okb)}.opt.right .L{background:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--no);background:var(--nob)}.opt.wrong .L{background:var(--no);color:#fff}
+.opt:disabled{cursor:default}
+.warn{background:var(--warnb);border:1px solid #fdba74;border-radius:12px;padding:10px 14px;margin:10px 0 6px;animation:pop .25s}
+.expl{background:var(--tint);border-radius:12px;padding:10px 14px;margin:6px 0;animation:pop .25s}.expl.good{background:var(--okb)}
+@keyframes pop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.tiny{font-size:13px;font-weight:700;text-decoration:none;background:none;border:0;color:var(--pri);cursor:pointer;font-family:inherit;padding:0}
+.pn{display:flex;justify-content:space-between;margin-top:24px}
+/* exams */
+.exgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.excard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--sh);border-top:6px solid var(--c);display:flex;flex-direction:column}
+.excard p{color:var(--ink2);flex:1}.exlvl{display:flex;justify-content:space-between;font-weight:700;color:var(--mut);font-size:13px}
+.dots i{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--line);margin-left:3px}.dots i.on{background:var(--c)}
+.excard h3{font-size:22px}.excard h3 small{font-size:14px;color:var(--mut)}
+.exmeta{display:flex;gap:6px;flex-wrap:wrap}.exmeta span{font-size:12.5px;background:var(--tint);padding:3px 9px;border-radius:999px;font-weight:600}
+.exbot{display:flex;justify-content:space-between;align-items:center;margin-top:14px}.best{color:var(--mut);font-size:14px}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mode{display:flex;gap:10px;padding:14px;border:2px solid var(--line);border-radius:14px;cursor:pointer}.mode:has(input:checked){border-color:var(--pri);background:color-mix(in srgb,var(--pri) 7%,var(--card))}
+.mode small{display:block;color:var(--mut)}.opts2{display:flex;flex-wrap:wrap;gap:18px;margin:16px 0 4px;font-weight:600}
+.runbar{position:sticky;top:58px;z-index:10;display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px 14px;box-shadow:var(--sh)}
+.runbar small{display:block;color:var(--mut);font-size:12.5px}.runbar>div:first-child{flex:1}
+.tmr{font-weight:800;font-size:20px;font-variant-numeric:tabular-nums;background:var(--tint);padding:4px 12px;border-radius:10px}.tmr.low{background:var(--nob);color:var(--no)}
+.navq{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}.nq{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:700;cursor:pointer;position:relative}
+.nq.ans{background:color-mix(in srgb,var(--pri) 18%,var(--card))}.nq.ok{background:var(--ok);color:#fff;border-color:var(--ok)}.nq.no{background:var(--no);color:#fff;border-color:var(--no)}
+.nq.cur{outline:3px solid var(--pri);outline-offset:1px}.nq.fl::after{content:'';position:absolute;top:-3px;right:-3px;width:10px;height:10px;border-radius:50%;background:#f59e0b}
+.runnav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.result .rs{display:flex;gap:26px;align-items:center;flex-wrap:wrap}.result .rs>div:last-child{flex:1;min-width:260px}.result h1{font-size:clamp(22px,3vw,30px)}.em{font-size:44px}
+.gmap{display:flex;flex-wrap:wrap;gap:6px}.gm{min-width:46px;padding:8px 6px;text-align:center;border-radius:10px;font-weight:800;text-decoration:none;font-size:13px}
+.gm.ok{background:var(--okb);color:var(--ok)}.gm.no{background:var(--nob);color:var(--no)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{padding:6px 12px;border-radius:999px;background:var(--tint);text-decoration:none;font-weight:600;font-size:14px;color:var(--ink)}.chip.no{background:var(--nob)}
+.rev{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--ok);border-radius:14px;padding:14px;margin:10px 0}.rev.no{border-left-color:var(--no)}
+.rq{display:flex;gap:10px;align-items:flex-start}.rq b{flex:1}.rowr{display:flex;gap:14px;margin-top:6px}
+/* tools */
+.calc2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.calc2 label{font-weight:700;font-size:14px}
+select{width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;margin-top:4px}
+.cres{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.cres div{background:var(--tint);border-radius:12px;padding:12px}.cres div.big{grid-column:1/-1;background:var(--okb)}
+.cres span{display:block;font-size:12.5px;color:var(--mut);font-weight:700}.cres b{font-size:16px}.cres .big b{font-size:20px}
+.etab td:last-child{font-weight:800;text-align:right}
+.rall{width:100%;min-height:180px;border-radius:12px;border:1px solid var(--line);background:var(--tint);color:var(--ink);padding:12px;font:inherit;font-size:14px}
+/* modal & toast */
+#modal{position:fixed;inset:0;background:rgba(2,6,23,.55);display:none;align-items:center;justify-content:center;z-index:50;padding:16px}#modal.show{display:flex}
+.mbox{background:var(--card);border-radius:20px;padding:22px;max-width:480px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.reasons{display:grid;gap:6px;margin:10px 0}.reasons label{display:flex;gap:8px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:10px;cursor:pointer}
+textarea{width:100%;min-height:80px;border-radius:12px;border:1px solid var(--line);padding:10px;font:inherit;background:var(--card);color:var(--ink)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,40px);opacity:0;background:#111827;color:#fff;padding:12px 18px;border-radius:12px;font-weight:600;transition:.25s;z-index:60;max-width:90vw;text-align:center}#toast.show{opacity:1;transform:translate(-50%,0)}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:20px}
+@media (max-width:820px){.hero{grid-template-columns:1fr;padding:22px}.bp{grid-template-columns:repeat(2,1fr)}.two,.modes,.calc2,.cres{grid-template-columns:1fr}.oilrig{grid-template-columns:1fr}.arrowx{transform:rotate(90deg)}.lhead{flex-direction:column}.lesson{padding:18px}.logo small{display:none}.nav a{padding:7px 9px;font-size:13px}.runbar{top:56px}}
+@media (max-width:520px){.logo b{display:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="topin">
+<a class="logo" href="#home"><i>⚗️</i><div><b>RedoxReady</b><small>G12 Advanced · Chemistry EoT1</small></div></a>
+<nav class="nav"><a href="#home" data-r="home">Home</a><a href="#learn" data-r="learn">Learn</a><a href="#exams" data-r="exam">Exams</a><a href="#tools" data-r="tools">Tools</a><a href="#mistakes" data-r="mistakes">Mistakes</a></nav>
+<button id="themeBtn" title="Toggle dark mode">🌙</button>
+</div></header>
+<main id="view"></main>
+<footer>Built from your EoT1 exam coverage document (30 learning outcomes) and Mr. Luke’s lesson slides · Inspire Chemistry UAE Grade 11–12 Advanced, Vol. 2</footer>
+<div id="modal"></div><div id="toast"></div>
+<script>
+// ===== UNIT A & B : Redox basics + Oxidation numbers (Goals 1–11) =====
+var L = window.LESSONS = window.LESSONS || [];
+
+L.push({
+id:1, unit:'A', title:'Oxidation vs Reduction: electrons, oxygen & hydrogen',
+outcome:'Distinguish between oxidation and reduction in terms of loss and gain of electrons, oxygen and hydrogen',
+ref:'Figures 1, 2 + textbook', pages:'3, 4',
+video:{id:'W4-LMBx9AFs', t:'Redox reactions overview (from Mr. Luke\'s lesson)'},
+fig:'oilrig',
+html:`
+<p>A <b>redox reaction</b> (reduction–oxidation) is any reaction in which <b>electrons are transferred</b> from one species to another. Burning fuels, rusting, bleach, batteries and getting metals from ores are all redox reactions.</p>
+<div class="key"><h4>The three ways to spot it</h4>
+<table class="tbl"><tr><th></th><th>Oxidation</th><th>Reduction</th></tr>
+<tr><td>Electrons</td><td><b>Loss</b> of e⁻</td><td><b>Gain</b> of e⁻</td></tr>
+<tr><td>Oxygen</td><td><b>Gain</b> of oxygen</td><td><b>Loss</b> of oxygen</td></tr>
+<tr><td>Hydrogen</td><td><b>Loss</b> of hydrogen</td><td><b>Gain</b> of hydrogen</td></tr></table>
+<p class="mnemo">🧠 <b>OIL RIG</b> — <b>O</b>xidation <b>I</b>s <b>L</b>oss, <b>R</b>eduction <b>I</b>s <b>G</b>ain (of electrons)</p></div>
+<h4>Oxidation and reduction ALWAYS happen together</h4>
+<p>Electrons cannot disappear. If one species loses electrons, another must gain the <b>same number</b>. That is why we say <i>redox</i>.</p>
+<div class="ex"><h5>Worked example 1 — electron transfer</h5>
+<div class="eq">2Mg(s) + O₂(g) → 2MgO(s)</div>
+<ol><li>Each Mg loses 2e⁻: <span class="eq-in">Mg → Mg²⁺ + 2e⁻</span> → <b>oxidized</b> (it also <i>gains oxygen</i>).</li>
+<li>Each O₂ gains 4e⁻: <span class="eq-in">O₂ + 4e⁻ → 2O²⁻</span> → <b>reduced</b>.</li>
+<li>2 Mg lose 4e⁻ in total = O₂ gains 4e⁻ in total ✔</li></ol></div>
+<div class="ex"><h5>Worked example 2 — oxygen &amp; hydrogen transfer</h5>
+<div class="eq">CuO + H₂ → Cu + H₂O</div>
+<ul><li>CuO <b>loses oxygen</b> → CuO is <b>reduced</b> (Cu: +2 → 0).</li>
+<li>H₂ <b>gains oxygen</b> → H₂ is <b>oxidized</b> (H: 0 → +1).</li></ul>
+<div class="eq">C₂H₆ → C₂H₄ + H₂ &nbsp;&nbsp;(ethane <b>loses hydrogen</b> → oxidized)</div></div>
+<div class="trap">⚠️ <b>Exam trap:</b> “gain” means opposite things! Gain of <b>electrons</b> = reduction, but gain of <b>oxygen</b> = oxidation. Read which particle the question talks about.</div>`,
+checks:[
+{q:'Which statement correctly describes oxidation?',o:['Loss of electrons','Gain of electrons','Gain of hydrogen','Loss of oxygen'],a:0,e:'OIL RIG: Oxidation Is Loss of electrons. Oxidation is also gain of oxygen or loss of hydrogen.',w:['','Gaining electrons is reduction (RIG).','Gaining hydrogen is reduction.','Losing oxygen is reduction.']},
+{q:'In CuO + H₂ → Cu + H₂O, which reactant is reduced?',o:['CuO','H₂','H₂O','Cu'],a:0,e:'CuO loses its oxygen (and Cu goes from +2 to 0), so CuO is reduced. H₂ gains oxygen and is oxidized.',w:['','H₂ gains oxygen → it is oxidized.','H₂O is a product, not a reactant.','Cu is a product; the question asks for a reactant.']},
+{q:'Methanol, CH₃OH, is converted to methanal, HCHO, by removing two hydrogen atoms. Methanol has been…',o:['oxidized','reduced','neither oxidized nor reduced','both oxidized and reduced'],a:0,e:'Loss of hydrogen = oxidation. (This is how alcohols are oxidized to aldehydes.)',w:['','Gain of hydrogen would be reduction — here H is lost.','A change in the number of H atoms bonded to carbon is a redox change.','Only one change happened: loss of H = oxidation.']}
+]});
+
+L.push({
+id:2, unit:'A', title:'What is an oxidation number?',
+outcome:'Define oxidation number', ref:'Textbook', pages:'5',
+video:{id:'-a2ckxhfDjQ', t:'Oxidation numbers explained (from Mr. Luke\'s lesson)'},
+html:`
+<div class="key"><h4>Definition</h4>
+<p>The <b>oxidation number</b> of an atom in an ionic compound is the <b>number of electrons lost or gained</b> by the atom when it forms an ion.</p>
+<p>More generally, it is the <b>charge an atom would have</b> if all its shared electrons were given to the <b>more electronegative</b> atom. It is a bookkeeping tool scientists use to <b>track electrons</b> in redox reactions.</p></div>
+<ul class="bul"><li>Na in NaCl is <b>+1</b> → sodium lost 1 electron.</li>
+<li>Cl in NaCl is <b>−1</b> → chlorine gained 1 electron.</li>
+<li>C in CO₂ is <b>+4</b>, but CO₂ is covalent — there is no real C⁴⁺ ion. The +4 is an <i>assigned</i> number.</li></ul>
+<div class="tip">✍️ <b>How to write it:</b> sign <b>before</b> the number for oxidation numbers (<b>+2</b>, <b>−1</b>); number before the sign for ion charges (Mg<b>²⁺</b>).</div>
+<h4>Why it matters</h4>
+<p>If an atom’s oxidation number <b>increases</b> → it was <b>oxidized</b>. If it <b>decreases</b> → it was <b>reduced</b>. This works even when no ions form (covalent reactions).</p>`,
+checks:[
+{q:'Which best defines the oxidation number of an atom in an ionic compound?',o:['The number of electrons lost or gained by the atom when it forms an ion','The number of protons in the nucleus','The number of valence electrons the atom has','The number of atoms of that element in the formula'],a:0,e:'Textbook definition: the number of electrons lost or gained by the atom when it forms an ion.',w:['','That is the atomic number.','Valence electrons do not change with bonding — oxidation numbers do.','Subscripts count atoms, not electrons transferred.']},
+{q:'In CO₂ carbon is assigned +4. This means…',o:['carbon would have a +4 charge if the shared electrons were assigned to the more electronegative oxygen','CO₂ contains a C⁴⁺ ion','carbon has 4 protons','carbon gained 4 electrons'],a:0,e:'In covalent molecules the oxidation number is a bookkeeping charge, not a real ion charge.',w:['','CO₂ is a covalent molecule — no real C⁴⁺ ion exists.','Carbon has 6 protons.','A positive oxidation number means electrons are (formally) lost, not gained.']},
+{q:'An atom’s oxidation number changes from −1 to +3 in a reaction. The atom was…',o:['oxidized, losing 4 electrons','reduced, gaining 4 electrons','oxidized, losing 2 electrons','reduced, gaining 2 electrons'],a:0,e:'Increase = oxidation. Change = +3 − (−1) = 4, so 4 electrons are lost per atom.',w:['','The number went UP → oxidation, not reduction.','The change is 4 (from −1 to +3), not 2.','Increase means oxidation, and the change is 4.']}
+]});
+
+L.push({
+id:3, unit:'A', title:'Oxidizing agent & reducing agent (definitions)',
+outcome:'Define oxidizing agent and reducing agent in a redox reaction', ref:'Table 2', pages:'6',
+video:{id:'VXvtkwubQQg', t:'Oxidizing & reducing agents (watch to 3:00)'},
+fig:'agents',
+html:`
+<div class="key"><h4>Table 2 — summary</h4>
+<table class="tbl"><tr><th>Term</th><th>Electrons</th><th>Oxidation number</th><th>What happens to it</th></tr>
+<tr><td><b>Oxidizing agent</b></td><td><b>accepts</b> (gains) e⁻</td><td>decreases ↓</td><td>is <b>reduced</b></td></tr>
+<tr><td><b>Reducing agent</b></td><td><b>donates</b> (loses) e⁻</td><td>increases ↑</td><td>is <b>oxidized</b></td></tr></table></div>
+<p>An <b>oxidizing agent</b> is the substance that <b>oxidizes another substance</b> by accepting its electrons. A <b>reducing agent</b> is the substance that <b>reduces another substance</b> by losing electrons to it.</p>
+<div class="mnemo">🧠 The agent does the OPPOSITE to itself: the <b>oxidizing</b> agent gets <b>reduced</b>; the <b>reducing</b> agent gets <b>oxidized</b>.</div>
+<ul class="bul"><li>Strong oxidizing agents: F₂, Cl₂, O₂, MnO₄⁻, Cr₂O₇²⁻ (very electronegative / high oxidation numbers).</li>
+<li>Strong reducing agents: active metals (Li, Na, K, Mg, Al), H₂, C, CO.</li></ul>
+<div class="trap">⚠️ The agents are always <b>reactants</b>. Products only tell you what the agents turned into.</div>`,
+checks:[
+{q:'An oxidizing agent…',o:['accepts electrons and is reduced','loses electrons and is oxidized','accepts electrons and is oxidized','loses electrons and is reduced'],a:0,e:'The oxidizing agent takes electrons from another substance, so it is itself reduced.',w:['','That describes the reducing agent.','Accepting electrons is reduction, not oxidation.','Losing electrons is oxidation, not reduction.']},
+{q:'What happens to the oxidation number of a reducing agent?',o:['It increases','It decreases','It stays the same','It becomes zero'],a:0,e:'A reducing agent is oxidized, so its oxidation number goes up.',w:['','Decrease belongs to the oxidizing agent (it is reduced).','If nothing changes it is not taking part in redox.','There is no rule that it becomes zero.']},
+{q:'Which is the best reducing agent?',o:['Na(s)','F₂(g)','Cl₂(g)','MnO₄⁻(aq)'],a:0,e:'Active metals such as sodium lose electrons easily, so they are strong reducing agents.',w:['','F₂ is the strongest oxidizing agent.','Cl₂ is an oxidizing agent.','Permanganate is a strong oxidizing agent.']}
+]});
+
+L.push({
+id:4, unit:'A', title:'Identifying agents from electron transfer',
+outcome:'Identify oxidizing agent and reducing agent in a redox reaction', ref:'Textbook + Example Problem 1 + practice problems', pages:'5, 6, 8',
+video:{id:'VXvtkwubQQg', t:'Oxidizing & reducing agents'},
+html:`
+<h4>4-step method</h4>
+<ol class="steps"><li>Assign oxidation numbers to every atom on both sides.</li>
+<li>Find the atom whose number <b>goes up</b> → that reactant is <b>oxidized</b> = <b>reducing agent</b>.</li>
+<li>Find the atom whose number <b>goes down</b> → that reactant is <b>reduced</b> = <b>oxidizing agent</b>.</li>
+<li>Check: electrons lost = electrons gained.</li></ol>
+<div class="ex"><h5>Example — Zn in copper(II) sulfate</h5>
+<div class="eq">Zn(s) + CuSO₄(aq) → ZnSO₄(aq) + Cu(s)</div>
+<div class="eq">Zn: 0 → +2 &nbsp;&nbsp;|&nbsp;&nbsp; Cu: +2 → 0 &nbsp;&nbsp;|&nbsp;&nbsp; SO₄²⁻ unchanged (spectator)</div>
+<ul><li>Zn is oxidized → <b>Zn is the reducing agent</b>: Zn → Zn²⁺ + 2e⁻</li>
+<li>Cu²⁺ is reduced → <b>Cu²⁺ (CuSO₄) is the oxidizing agent</b>: Cu²⁺ + 2e⁻ → Cu</li></ul></div>
+<div class="ex"><h5>Example — Cu wire in silver nitrate</h5>
+<div class="eq">Cu(s) + 2AgNO₃(aq) → Cu(NO₃)₂(aq) + 2Ag(s)</div>
+<p>Cu: 0 → +2 (reducing agent). Ag⁺: +1 → 0 (oxidizing agent). Solution turns blue (Cu²⁺), silver crystals grow.</p></div>
+<div class="trap">⚠️ Spectator ions (SO₄²⁻, NO₃⁻, Na⁺, K⁺…) keep the same oxidation number — they are <b>never</b> the agent.</div>`,
+checks:[
+{q:'In Zn(s) + 2Ag⁺(aq) → Zn²⁺(aq) + 2Ag(s), the oxidizing agent is…',o:['Ag⁺','Zn','Zn²⁺','Ag'],a:0,e:'Ag⁺ (+1 → 0) gains electrons, is reduced, so it is the oxidizing agent.',w:['','Zn loses electrons → it is the reducing agent.','Zn²⁺ is a product, not an agent.','Ag is a product, not an agent.']},
+{q:'In Mg(s) + Cu²⁺(aq) → Mg²⁺(aq) + Cu(s), which pair is (reducing agent, oxidizing agent)?',o:['Mg, Cu²⁺','Cu²⁺, Mg','Mg²⁺, Cu','Cu, Mg²⁺'],a:0,e:'Mg is oxidized (reducing agent); Cu²⁺ is reduced (oxidizing agent).',w:['','The order is reversed.','These are products — agents are reactants.','These are products — agents are reactants.']},
+{q:'In 3Mg + N₂ → Mg₃N₂, how many electrons are transferred in total?',o:['6','2','3','8'],a:0,e:'Each Mg loses 2e⁻ (0→+2) × 3 Mg = 6e⁻. Each N gains 3e⁻ (0→−3) × 2 N = 6e⁻.',w:['','2 is for one Mg atom only.','3 is the change for one N atom only.','No combination gives 8.']}
+]});
+
+L.push({
+id:5, unit:'A', title:'Identifying agents in molecular equations',
+outcome:'Identify oxidizing agent and reducing agent in a redox reaction', ref:'Textbook + Example Problem 1 + practice problems', pages:'5, 6, 8',
+html:`
+<p>In molecular (covalent) reactions there may be no obvious ions, so <b>oxidation numbers are the only reliable tool</b>. The agent is the <b>whole reactant</b> that contains the atom that changes.</p>
+<div class="ex"><h5>Example 1</h5>
+<div class="eq">2Al + 3Cl₂ → 2AlCl₃</div>
+<p>Al: 0 → +3 (oxidized, <b>reducing agent</b>). Cl: 0 → −1 (reduced, <b>Cl₂ = oxidizing agent</b>). 2 Al lose 6e⁻; 3 Cl₂ gain 6e⁻.</p></div>
+<div class="ex"><h5>Example 2 — the agent is a compound</h5>
+<div class="eq">H₂S + Cl₂ → S + 2HCl</div>
+<p>S: −2 → 0 → <b>H₂S is the reducing agent</b> (not “S”). Cl: 0 → −1 → <b>Cl₂ is the oxidizing agent</b>. H stays +1.</p></div>
+<div class="ex"><h5>Example 3 — blast furnace</h5>
+<div class="eq">Fe₂O₃ + 3CO → 2Fe + 3CO₂</div>
+<p>Fe: +3 → 0 → <b>Fe₂O₃ is the oxidizing agent</b>. C: +2 → +4 → <b>CO is the reducing agent</b>.</p></div>
+<div class="ex"><h5>Example 4 — one reactant plays two roles?</h5>
+<div class="eq">MnO₂ + 4HCl → MnCl₂ + Cl₂ + 2H₂O</div>
+<p>Mn: +4 → +2 → <b>MnO₂ oxidizing agent</b>. Some Cl: −1 → 0 → <b>HCl reducing agent</b> (the other 2 Cl stay −1 in MnCl₂).</p></div>
+<div class="trap">⚠️ Name the <b>reactant species</b> as the agent (H₂S, CO, Fe₂O₃), not the single atom or the product.</div>`,
+checks:[
+{q:'In H₂S + Cl₂ → S + 2HCl, the reducing agent is…',o:['H₂S','Cl₂','S','HCl'],a:0,e:'S goes −2 → 0, so H₂S is oxidized: it is the reducing agent.',w:['','Cl₂ is reduced (0 → −1): it is the oxidizing agent.','S is a product.','HCl is a product.']},
+{q:'In Fe₂O₃ + 3CO → 2Fe + 3CO₂, the oxidizing agent is…',o:['Fe₂O₃','CO','Fe','CO₂'],a:0,e:'Fe: +3 → 0, so Fe₂O₃ is reduced: it is the oxidizing agent.',w:['','CO is oxidized (C: +2 → +4): it is the reducing agent.','Fe is a product.','CO₂ is a product.']},
+{q:'In 2H₂ + O₂ → 2H₂O, which statement is correct?',o:['H₂ is the reducing agent; O₂ is the oxidizing agent','O₂ is the reducing agent; H₂ is the oxidizing agent','H₂O is the oxidizing agent','No redox occurs because no ions form'],a:0,e:'H: 0 → +1 (oxidized, reducing agent); O: 0 → −2 (reduced, oxidizing agent).',w:['','Reversed — O₂ gains electrons, so it is the oxidizing agent.','H₂O is a product, not an agent.','Redox can occur in covalent reactions — oxidation numbers change here.']}
+]});
+
+L.push({
+id:6, unit:'A', title:'Oxidation & reduction as change in oxidation number',
+outcome:'Distinguish between oxidation and reduction in terms of change in oxidation number', ref:'Textbook + Example Problem 1 + practice problems', pages:'5, 6, 8',
+fig:'numline',
+html:`
+<div class="key"><h4>The rule</h4>
+<p><b>Oxidation</b> = increase in oxidation number (more positive) ↑<br><b>Reduction</b> = decrease in oxidation number (more negative) ↓</p>
+<p>Why? Electrons are negative. Lose something negative → you become more positive.</p></div>
+<div class="ex"><h5>Example</h5><div class="eq">2Na + Cl₂ → 2NaCl</div>
+<p>Na: 0 → +1 (↑ oxidized). Cl: 0 → −1 (↓ reduced).</p></div>
+<div class="ex"><h5>Count electrons from the change</h5>
+<p>Electrons transferred per atom = size of the change. S from −2 → +6 = <b>8e⁻ lost</b>. Mn from +7 → +2 = <b>5e⁻ gained</b>.</p></div>
+<div class="tip">📌 Practice from the slides: 2Sr + O₂ → 2SrO (Sr 0→+2 oxidized; O 0→−2 reduced); Mg + 2HCl → MgCl₂ + H₂ (Mg 0→+2 oxidized; H +1→0 reduced).</div>`,
+checks:[
+{q:'In 2K + Cl₂ → 2KCl, what happens to the oxidation numbers?',o:['K: 0 → +1, Cl: 0 → −1','K: 0 → −1, Cl: 0 → +1','K: +1 → 0, Cl: −1 → 0','Both stay unchanged'],a:0,e:'K loses one electron (0 → +1, oxidized); Cl gains one (0 → −1, reduced).',w:['','Metals form positive ions, not negative.','Elements start at 0, not ±1.','The elements combine into ions, so numbers change.']},
+{q:'An atom changes from +7 to +2. This is…',o:['reduction, 5 electrons gained','oxidation, 5 electrons lost','reduction, 2 electrons gained','oxidation, 9 electrons lost'],a:0,e:'Decrease = reduction. 7 − 2 = 5 electrons gained.',w:['','The number went DOWN → reduction.','The change is 5, not 2.','Decrease is reduction, and the change is 5.']},
+{q:'In Mg + 2HCl → MgCl₂ + H₂, which element is reduced?',o:['H','Mg','Cl','None'],a:0,e:'H goes +1 → 0 (reduced). Mg goes 0 → +2 (oxidized). Cl stays −1.',w:['','Mg is oxidized (0 → +2).','Cl stays −1 — spectator.','H changes, so a reduction happens.']}
+]});
+
+L.push({
+id:7, unit:'B', title:'Rules for assigning oxidation numbers',
+outcome:'Assign oxidation number to atoms, ions and compounds according to a set of rules', ref:'Textbook + Example Problem 2 + practice + Table 3', pages:'9, 10',
+video:{id:'-a2ckxhfDjQ', t:'Oxidation number rules'},
+html:`
+<div class="key"><h4>Table 3 — Rules (learn these in order)</h4>
+<ol class="rules">
+<li>An <b>uncombined element</b> = <b>0</b> (Na, O₂, Cl₂, S₈, Fe…)</li>
+<li>A <b>monatomic ion</b> = its <b>charge</b> (Na⁺ = +1, S²⁻ = −2, Fe³⁺ = +3)</li>
+<li>The <b>more electronegative</b> atom in a bond gets the <b>negative</b> number.</li>
+<li><b>Fluorine</b> is always <b>−1</b> in compounds.</li>
+<li><b>Oxygen</b> is usually <b>−2</b>. Exceptions: <b>peroxides</b> (H₂O₂, Na₂O₂) = <b>−1</b>; in <b>OF₂</b> = <b>+2</b>.</li>
+<li><b>Hydrogen</b> is usually <b>+1</b>; in <b>metal hydrides</b> (NaH, CaH₂, LiAlH₄) = <b>−1</b>.</li>
+<li><b>Group 1</b> metals = <b>+1</b>, <b>Group 2</b> = <b>+2</b>, <b>Al</b> = <b>+3</b> in compounds.</li>
+<li>Sum in a <b>neutral compound</b> = <b>0</b>.</li>
+<li>Sum in a <b>polyatomic ion</b> = <b>the ion’s charge</b>.</li></ol></div>
+<div class="ex"><h5>Example Problem — Cl in NaCl, Cl₂, KClO, KClO₃</h5>
+<p>NaCl: −1 &nbsp;|&nbsp; Cl₂: 0 &nbsp;|&nbsp; KClO: +1 + x + (−2) = 0 → <b>x = +1</b> &nbsp;|&nbsp; KClO₃: +1 + x + 3(−2) = 0 → <b>x = +5</b></p></div>
+<div class="trap">⚠️ Most common errors: forgetting H is −1 in metal hydrides, and O is −1 in peroxides.</div>`,
+checks:[
+{q:'What is the oxidation number of oxygen in O₂?',o:['0','−2','−1','+2'],a:0,e:'Rule 1: an uncombined element has oxidation number 0.',w:['','−2 is for O in most compounds, not in the element.','−1 is for peroxides.','+2 is only in OF₂.']},
+{q:'What is the oxidation number of H in NaH?',o:['−1','+1','0','+2'],a:0,e:'NaH is a metal hydride. Na is +1, so H must be −1.',w:['','+1 is normal for H, but not in metal hydrides.','H is combined, so not 0.','Sum must be 0: +1 + (+2) ≠ 0.']},
+{q:'What is the oxidation number of Cl in KClO₃?',o:['+5','+3','+7','−1'],a:0,e:'+1 + x + 3(−2) = 0 → x = +5.',w:['','+3 would be in KClO₂.','+7 would be in KClO₄.','−1 is chloride (KCl).']}
+]});
+
+L.push({
+id:8, unit:'B', title:'Oxidation numbers in ions & special compounds',
+outcome:'Assign oxidation number to atoms, ions and compounds according to a set of rules', ref:'Textbook + Example Problem 2 + practice + Table 3', pages:'9, 10',
+html:`
+<h4>Polyatomic ions — the sum equals the charge</h4>
+<div class="ex"><table class="tbl calc">
+<tr><td>SO₄²⁻</td><td>x + 4(−2) = −2</td><td>S = <b>+6</b></td></tr>
+<tr><td>NO₃⁻</td><td>x + 3(−2) = −1</td><td>N = <b>+5</b></td></tr>
+<tr><td>NH₄⁺</td><td>x + 4(+1) = +1</td><td>N = <b>−3</b></td></tr>
+<tr><td>MnO₄⁻</td><td>x + 4(−2) = −1</td><td>Mn = <b>+7</b></td></tr>
+<tr><td>Cr₂O₇²⁻</td><td>2x + 7(−2) = −2</td><td>Cr = <b>+6</b></td></tr>
+<tr><td>PO₄³⁻</td><td>x + 4(−2) = −3</td><td>P = <b>+5</b></td></tr>
+<tr><td>ClO⁻</td><td>x + (−2) = −1</td><td>Cl = <b>+1</b></td></tr></table></div>
+<h4>Special cases</h4>
+<table class="tbl calc">
+<tr><td>H₂O₂ (peroxide)</td><td>2(+1) + 2x = 0</td><td>O = <b>−1</b></td></tr>
+<tr><td>OF₂</td><td>x + 2(−1) = 0</td><td>O = <b>+2</b></td></tr>
+<tr><td>CaH₂ (hydride)</td><td>+2 + 2x = 0</td><td>H = <b>−1</b></td></tr></table>
+<div class="tip">📌 Write the equation “sum = charge” every time. It takes 5 seconds and prevents silly mistakes.</div>`,
+checks:[
+{q:'What is the oxidation number of N in NH₄⁺?',o:['−3','+3','+5','−4'],a:0,e:'x + 4(+1) = +1 → x = −3.',w:['','Sign error — H is +1, so N must be negative.','+5 is N in NO₃⁻.','The sum must equal +1, not 0.']},
+{q:'In which species is oxygen’s oxidation number positive?',o:['OF₂','H₂O₂','Na₂O','H₂O'],a:0,e:'F is always −1, so O in OF₂ is +2.',w:['','O is −1 in peroxides (negative).','O is −2 in Na₂O.','O is −2 in water.']},
+{q:'What is the oxidation number of P in PO₄³⁻?',o:['+5','+3','−3','+8'],a:0,e:'x + 4(−2) = −3 → x = +5.',w:['','Sum must be −3: +3 − 8 = −5 ≠ −3.','P is bonded to O, which is more electronegative, so P is positive.','The sum equals the ion charge (−3), not 0.']}
+]});
+
+L.push({
+id:9, unit:'B', title:'Oxidation numbers in complex formulas',
+outcome:'Determines the oxidation number of elements and compounds with more complex formulas.', ref:'Textbook + Example Problem 2 + practice + Table 3', pages:'9, 10',
+html:`
+<h4>Strategy for big formulas</h4>
+<ol class="steps"><li>Write the known numbers first (Group 1, Group 2, O, H, F).</li>
+<li>Multiply by the subscripts (and by brackets!).</li>
+<li>Let the unknown be x (× its number of atoms).</li>
+<li>Sum = 0 for compounds, = charge for ions. Solve.</li></ol>
+<div class="ex"><table class="tbl calc">
+<tr><td>K₂Cr₂O₇</td><td>2(+1) + 2x + 7(−2) = 0</td><td>Cr = <b>+6</b></td></tr>
+<tr><td>Al₂(SO₄)₃</td><td>use SO₄²⁻: x + 4(−2) = −2</td><td>S = <b>+6</b></td></tr>
+<tr><td>Ca(ClO₄)₂</td><td>use ClO₄⁻: x − 8 = −1</td><td>Cl = <b>+7</b></td></tr>
+<tr><td>Na₂S₂O₃</td><td>2(+1) + 2x + 3(−2) = 0</td><td>S = <b>+2</b></td></tr>
+<tr><td>(NH₄)₂Cr₂O₇</td><td>N in NH₄⁺ = −3; Cr in Cr₂O₇²⁻</td><td>N = <b>−3</b>, Cr = <b>+6</b></td></tr>
+<tr><td>Fe₃O₄</td><td>3x + 4(−2) = 0</td><td>Fe = <b>+8/3</b> (average)</td></tr>
+<tr><td>KMnO₄ / K₂MnO₄ / MnO₂</td><td>—</td><td>Mn = <b>+7 / +6 / +4</b></td></tr>
+<tr><td>C₂H₆O (ethanol)</td><td>2x + 6(+1) + (−2) = 0</td><td>C = <b>−2</b> (average)</td></tr>
+<tr><td>LiAlH₄</td><td>+1 + 3 + 4x = 0</td><td>H = <b>−1</b></td></tr></table></div>
+<div class="trap">⚠️ A subscript outside brackets (like the 3 in Al₂(SO₄)₃) counts groups — it does <b>not</b> change S inside each sulfate.</div>`,
+checks:[
+{q:'What is the oxidation number of Cr in K₂Cr₂O₇?',o:['+6','+7','+12','+3'],a:0,e:'2(+1) + 2x + 7(−2) = 0 → 2x = 12 → x = +6.',w:['','Check: 2 + 14 − 14 = 2 ≠ 0.','+12 is the total for both Cr atoms — divide by 2.','+3 is Cr in Cr³⁺, after reduction.']},
+{q:'In which compound does Mn have the highest oxidation number?',o:['KMnO₄','K₂MnO₄','MnO₂','MnCl₂'],a:0,e:'KMnO₄ = +7, K₂MnO₄ = +6, MnO₂ = +4, MnCl₂ = +2.',w:['','K₂MnO₄ is +6.','MnO₂ is +4.','MnCl₂ is +2.']},
+{q:'What is the oxidation number of S in Na₂S₂O₃?',o:['+2','+4','+6','−2'],a:0,e:'2(+1) + 2x + 3(−2) = 0 → 2x = 4 → x = +2.',w:['','+4 forgets there are 2 S atoms.','+6 is S in sulfate.','−2 is S in sulfide.']}
+]});
+
+L.push({
+id:10, unit:'B', title:'Recognizing oxidation from oxidation-number change',
+outcome:'Distinguish between oxidation and reduction in terms of change in oxidation number', ref:'Check your progress + textbook', pages:'11',
+html:`
+<p>Exam questions often give a full equation and ask “which element is <b>oxidized</b>?” Assign numbers to <b>every</b> element and look for the one that <b>increases</b>.</p>
+<div class="ex"><h5>Example</h5><div class="eq">CuO + H₂ → Cu + H₂O</div>
+<p>Cu: +2 → 0 (reduced) · H: 0 → +1 (<b>oxidized</b>) · O: −2 → −2 (unchanged)</p></div>
+<div class="ex"><h5>Observation question</h5><p>Copper wire in silver nitrate solution: the solution turns <b>blue</b> and silver crystals form. The blue colour = Cu²⁺(aq), so <b>Cu is oxidized</b> (0 → +2).</p></div>
+<div class="ex"><h5>Is it even redox?</h5>
+<div class="eq">AgNO₃ + NaCl → AgCl + NaNO₃</div><p>Ag +1 → +1, Cl −1 → −1, Na +1 → +1 … <b>no change → NOT a redox reaction</b> (double displacement / precipitation). Acid–base neutralizations are also not redox.</p></div>
+<div class="tip">📌 A reaction that contains an <b>element</b> (on either side) is almost always redox.</div>`,
+checks:[
+{q:'Which element is oxidized in 2KI + Cl₂ → 2KCl + I₂?',o:['I','Cl','K','None'],a:0,e:'I: −1 → 0 (increase = oxidation). Cl: 0 → −1 (reduced). K stays +1.',w:['','Cl decreases → reduced.','K stays +1 (spectator).','I changes, so oxidation happens.']},
+{q:'Which reaction is NOT a redox reaction?',o:['NaOH + HCl → NaCl + H₂O','Zn + 2HCl → ZnCl₂ + H₂','2Na + Cl₂ → 2NaCl','CH₄ + 2O₂ → CO₂ + 2H₂O'],a:0,e:'In neutralization, all oxidation numbers stay the same (Na +1, O −2, H +1, Cl −1).',w:['','Zn 0 → +2; H +1 → 0: redox.','Na 0 → +1; Cl 0 → −1: redox.','C −4 → +4; O 0 → −2: redox (combustion).']},
+{q:'When sulfur changes from −2 to +6, how many electrons are lost per S atom?',o:['8','4','6','2'],a:0,e:'+6 − (−2) = 8.',w:['','Subtract correctly: 6 − (−2) = 8.','6 ignores the starting −2.','2 ignores most of the change.']}
+]});
+
+L.push({
+id:11, unit:'B', title:'Recognizing reduction & spectator ions',
+outcome:'Distinguish between oxidation and reduction in terms of change in oxidation number', ref:'Check your progress + textbook', pages:'11',
+html:`
+<p>Look for the element whose oxidation number <b>decreases</b> → that element is <b>reduced</b>. Elements that do not change are <b>spectators</b>.</p>
+<div class="ex"><h5>Example</h5><div class="eq">2KI + Cl₂ → 2KCl + I₂</div>
+<p>Cl: 0 → −1 (<b>reduced</b>) · I: −1 → 0 (oxidized) · K: +1 → +1 (spectator)</p>
+<p>Net ionic equation (spectators removed): <span class="eq-in">2I⁻ + Cl₂ → I₂ + 2Cl⁻</span></p></div>
+<div class="ex"><h5>Same element oxidized AND reduced (disproportionation)</h5>
+<div class="eq">Cl₂ + 2NaOH → NaCl + NaClO + H₂O</div>
+<p>One Cl: 0 → −1 (reduced); the other Cl: 0 → +1 (oxidized). Cl₂ is both the oxidizing and the reducing agent.</p></div>
+<div class="ex"><h5>Hydrogen from acids</h5><div class="eq">Fe + 2HBr → FeBr₂ + H₂</div><p>H: +1 → 0 (<b>reduced</b>). Fe: 0 → +2 (oxidized). Br stays −1.</p></div>`,
+checks:[
+{q:'In Cl₂ + 2Br⁻ → 2Cl⁻ + Br₂, which element is reduced?',o:['Cl','Br','Both','Neither'],a:0,e:'Cl: 0 → −1 (decrease = reduction). Br: −1 → 0 (oxidized).',w:['','Br increases (−1 → 0) → oxidized.','Only Cl decreases.','Both change, so redox happens.']},
+{q:'In Fe + 2HBr → FeBr₂ + H₂, which change shows reduction?',o:['H: +1 → 0','Fe: 0 → +2','Br: −1 → 0','H: 0 → +1'],a:0,e:'Hydrogen falls from +1 (in HBr) to 0 (in H₂).',w:['','This is oxidation (increase).','Br stays −1 in FeBr₂.','Direction reversed: H starts at +1 in HBr.']},
+{q:'In Cl₂ + 2OH⁻ → Cl⁻ + ClO⁻ + H₂O, chlorine is…',o:['both oxidized and reduced','only oxidized','only reduced','neither oxidized nor reduced'],a:0,e:'0 → −1 in Cl⁻ (reduced) and 0 → +1 in ClO⁻ (oxidized): disproportionation.',w:['','It is also reduced (to Cl⁻).','It is also oxidized (to ClO⁻).','Oxidation numbers change from 0.']}
+]});
+
+// ===== UNIT C : Balancing redox equations (Goals 12–17) =====
+var L = window.LESSONS = window.LESSONS || [];
+
+L.push({
+id:12, unit:'C', title:'Steps of the half-reaction method (acidic solution)',
+outcome:'Describe the steps for balancing redox reactions, in acidic medium, by the half-reaction method', ref:'Table 6', pages:'17',
+video:{id:'N6ivvu6xlog', t:'Balancing redox in acidic & basic solution (from Mr. Luke\'s lesson)'},
+fig:'acidsteps',
+html:`
+<div class="key"><h4>Table 6 — Balancing by the half-reaction method</h4>
+<ol class="rules">
+<li>Write the <b>net ionic equation</b> (omit spectator ions).</li>
+<li>Split it into an <b>oxidation half</b> and a <b>reduction half</b>.</li>
+<li>Balance <b>each</b> half-reaction:
+ <ol type="a"><li>atoms other than O and H</li><li><b>O</b> by adding <b>H₂O</b></li><li><b>H</b> by adding <b>H⁺</b></li><li><b>charge</b> by adding <b>e⁻</b></li></ol></li>
+<li>Multiply so <b>electrons lost = electrons gained</b>.</li>
+<li><b>Add</b> the halves, cancel e⁻ (and anything on both sides), return spectator ions, <b>check atoms and charge</b>.</li></ol>
+<p class="mnemo">🧠 Order to remember: <b>“Other atoms → O → H → charge”</b> &nbsp;=&nbsp; <b>X → H₂O → H⁺ → e⁻</b></p></div>
+<div class="ex"><h5>Half-reaction: MnO₄⁻ → Mn²⁺ (acid)</h5>
+<ol><li>Mn already balanced.</li><li>4 O on left → add <b>4H₂O</b> on right: MnO₄⁻ → Mn²⁺ + 4H₂O</li>
+<li>8 H on right → add <b>8H⁺</b> on left: MnO₄⁻ + 8H⁺ → Mn²⁺ + 4H₂O</li>
+<li>Charge: left = −1 + 8 = +7; right = +2 → add <b>5e⁻</b> to the left.</li></ol>
+<div class="eq good">MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O</div></div>
+<div class="ex"><h5>From the slides: NO₃⁻ → NH₄⁺</h5>
+<div class="eq good">NO₃⁻ + 10H⁺ + 8e⁻ → NH₄⁺ + 3H₂O</div>
+<h5>AsH₃ → H₃AsO₃</h5><div class="eq good">AsH₃ + 3H₂O → H₃AsO₃ + 6H⁺ + 6e⁻</div></div>
+<div class="trap">⚠️ The electrons go on the side that is <b>more positive</b>. Reduction → e⁻ on the <b>left</b>; oxidation → e⁻ on the <b>right</b>.</div>`,
+checks:[
+{q:'In acidic solution, oxygen atoms in a half-reaction are balanced by adding…',o:['H₂O','H⁺','OH⁻','O₂'],a:0,e:'O is balanced with water; then H is balanced with H⁺.',w:['','H⁺ balances hydrogen, not oxygen.','OH⁻ is only used when converting to basic solution.','You never add O₂ to balance — it would change the chemistry.']},
+{q:'Find x: Cr₂O₇²⁻ + 14H⁺ + x e⁻ → 2Cr³⁺ + 7H₂O',o:['6','3','12','7'],a:0,e:'Left charge before e⁻: −2 + 14 = +12. Right: 2(+3) = +6. Need 6e⁻ on the left.',w:['','3 is for one Cr atom only — there are two.','12 is the charge, not the electron count.','7 is the number of water molecules.']},
+{q:'What is the correct ORDER inside step 3 of the method?',o:['Other atoms → O (H₂O) → H (H⁺) → charge (e⁻)','Charge → O → H → other atoms','H → O → charge → other atoms','O → other atoms → charge → H'],a:0,e:'Balance non-O/H atoms first, then O with H₂O, then H with H⁺, then charge with electrons.',w:['','Charge must be balanced LAST, after all atoms.','H must come after O (adding H₂O adds H).','Other atoms come first, and H before charge.']}
+]});
+
+L.push({
+id:13, unit:'C', title:'Writing oxidation and reduction half-reactions',
+outcome:'Write oxidation-half reaction and reduction-half reaction for a redox reaction', ref:'Figure 8 + textbook + Table 5', pages:'16, 17',
+video:{id:'5rtJdjas-mY', t:'Half equations (from Mr. Luke\'s lesson)'},
+html:`
+<p>A <b>half-reaction</b> is one of the two parts of a redox reaction.</p>
+<ul class="bul"><li><b>Oxidation half-reaction</b> shows the electrons <b>lost</b> → e⁻ on the <b>right</b>: <span class="eq-in">A → A⁺ + e⁻</span></li>
+<li><b>Reduction half-reaction</b> shows the electrons <b>gained</b> → e⁻ on the <b>left</b>: <span class="eq-in">B + e⁻ → B⁻</span></li></ul>
+<div class="ex"><h5>Example — Fe + Cu²⁺</h5><div class="eq">Fe(s) + Cu²⁺(aq) → Fe²⁺(aq) + Cu(s)</div>
+<p>Oxidation: <span class="eq-in">Fe → Fe²⁺ + 2e⁻</span> &nbsp; Reduction: <span class="eq-in">Cu²⁺ + 2e⁻ → Cu</span></p></div>
+<div class="ex"><h5>Example — Cr + Ag⁺ (unequal electrons)</h5>
+<p>Cr → Cr³⁺ + 3e⁻ (×1) &nbsp;&nbsp; Ag⁺ + e⁻ → Ag (×3)</p><div class="eq good">Cr + 3Ag⁺ → Cr³⁺ + 3Ag</div></div>
+<div class="ex"><h5>More from the slides</h5>
+<p>Sn⁴⁺ + Fe²⁺ → Sn²⁺ + Fe³⁺: reduction <span class="eq-in">Sn⁴⁺ + 2e⁻ → Sn²⁺</span>; oxidation <span class="eq-in">Fe²⁺ → Fe³⁺ + e⁻</span></p>
+<p>Ca + Cl₂ → CaCl₂: reduction <span class="eq-in">Cl₂ + 2e⁻ → 2Cl⁻</span>; oxidation <span class="eq-in">Ca → Ca²⁺ + 2e⁻</span></p></div>
+<div class="trap">⚠️ A half-reaction always contains electrons. A complete redox equation never shows electrons (they cancel).</div>`,
+checks:[
+{q:'Which is the oxidation half-reaction for Ni(s) + Cu²⁺(aq) → Ni²⁺(aq) + Cu(s)?',o:['Ni → Ni²⁺ + 2e⁻','Cu²⁺ + 2e⁻ → Cu','Ni²⁺ + 2e⁻ → Ni','Cu → Cu²⁺ + 2e⁻'],a:0,e:'Ni loses 2 electrons; electrons appear on the right in oxidation.',w:['','This is the reduction half (electrons gained).','This is the reverse of what happens to Ni.','Cu is formed, not consumed.']},
+{q:'Which equation is a complete redox reaction, not a half-reaction?',o:['2Fe + 3Cl₂ → 2FeCl₃','Cl₂ + 2e⁻ → 2Cl⁻','Fe → Fe³⁺ + 3e⁻','2H⁺ + 2e⁻ → H₂'],a:0,e:'It contains no free electrons — both oxidation (Fe) and reduction (Cl₂) are combined.',w:['','Shows electrons → half-reaction.','Shows electrons → half-reaction.','Shows electrons → half-reaction.']},
+{q:'Correct reduction half-reaction for Sn⁴⁺ + 2Fe²⁺ → Sn²⁺ + 2Fe³⁺?',o:['Sn⁴⁺ + 2e⁻ → Sn²⁺','Fe²⁺ → Fe³⁺ + e⁻','Sn⁴⁺ → Sn²⁺ + 2e⁻','Fe³⁺ + e⁻ → Fe²⁺'],a:0,e:'Sn goes +4 → +2: gains 2 electrons (left side).',w:['','That is the oxidation half.','Electrons must be on the LEFT in reduction; also charge would not balance.','This is the reverse of what happens.']}
+]});
+
+L.push({
+id:14, unit:'C', title:'Balancing in acid — permanganate reactions',
+outcome:'Balance redox reaction in acidic medium using half-reaction method', ref:'Textbook + Example Problem 5 + practice + check your progress', pages:'16, 17, 18, 19',
+html:`
+<div class="ex"><h5>Worked example: MnO₄⁻ + Fe²⁺ → Mn²⁺ + Fe³⁺ (acid)</h5>
+<ol><li>Reduction: <span class="eq-in">MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O</span></li>
+<li>Oxidation: <span class="eq-in">Fe²⁺ → Fe³⁺ + e⁻</span> → ×5</li>
+<li>Add, cancel 5e⁻:</li></ol>
+<div class="eq good">MnO₄⁻ + 8H⁺ + 5Fe²⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O</div>
+<p>Charge check: left −1 + 8 + 10 = <b>+17</b>; right +2 + 15 = <b>+17</b> ✔</p></div>
+<div class="ex"><h5>Worked example: Cu + NO₃⁻ → Cu²⁺ + NO (acid) — from the slides</h5>
+<ol><li>Oxidation: Cu → Cu²⁺ + 2e⁻ &nbsp;(×3)</li>
+<li>Reduction: NO₃⁻ + 4H⁺ + 3e⁻ → NO + 2H₂O &nbsp;(×2)</li></ol>
+<div class="eq good">3Cu + 2NO₃⁻ + 8H⁺ → 3Cu²⁺ + 2NO + 4H₂O</div></div>
+<div class="ex"><h5>More to recognise</h5>
+<div class="eq">2MnO₄⁻ + 10Cl⁻ + 16H⁺ → 2Mn²⁺ + 5Cl₂ + 8H₂O</div>
+<div class="eq">2MnO₄⁻ + 5H₂C₂O₄ + 6H⁺ → 2Mn²⁺ + 10CO₂ + 8H₂O</div>
+<div class="eq">5SeO₃²⁻ + 2ClO₃⁻ + 2H⁺ → 5SeO₄²⁻ + Cl₂ + H₂O</div></div>
+<div class="tip">📌 Final check = <b>atoms</b> on both sides <b>and</b> total <b>charge</b> on both sides. If the charge doesn’t match, an electron count is wrong.</div>`,
+checks:[
+{q:'In the balanced acidic equation MnO₄⁻ + Fe²⁺ → Mn²⁺ + Fe³⁺, what is the coefficient of Fe²⁺?',o:['5','1','8','4'],a:0,e:'Mn gains 5e⁻; each Fe²⁺ gives 1e⁻, so 5 Fe²⁺ are needed.',w:['','Electrons would not be balanced (5 gained vs 1 lost).','8 is the coefficient of H⁺.','4 is the coefficient of H₂O.']},
+{q:'For 3Cu + 2NO₃⁻ + _H⁺ → 3Cu²⁺ + 2NO + 4H₂O, the H⁺ coefficient is…',o:['8','4','2','6'],a:0,e:'4 H₂O contain 8 H, so 8H⁺ on the left. Charge: −2 + 8 = +6 = 3(+2) ✔',w:['','4 H⁺ would only make 2 H₂O.','2 H⁺ would only make 1 H₂O.','6 does not balance H or charge.']},
+{q:'What is the total charge on EACH side of MnO₄⁻ + 8H⁺ + 5Fe²⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O?',o:['+17','+12','+7','0'],a:0,e:'Left: −1 + 8 + 10 = +17. Right: +2 + 15 = +17.',w:['','Recount the Fe²⁺: 5 × (+2) = +10.','+7 is the left side of the half-reaction before electrons.','Ions are present, so the total charge is not zero.']}
+]});
+
+L.push({
+id:15, unit:'C', title:'Balancing in acid — dichromate & other reactions',
+outcome:'Balance redox reaction in acidic medium using half-reaction method', ref:'Textbook + Example Problem 5 + practice', pages:'16, 17, 18',
+html:`
+<div class="ex"><h5>Worked example: Cr₂O₇²⁻ + I⁻ → Cr³⁺ + I₂ (acid)</h5>
+<ol><li>Reduction: <span class="eq-in">Cr₂O₇²⁻ + 14H⁺ + 6e⁻ → 2Cr³⁺ + 7H₂O</span></li>
+<li>Oxidation: <span class="eq-in">2I⁻ → I₂ + 2e⁻</span> → ×3</li></ol>
+<div class="eq good">Cr₂O₇²⁻ + 14H⁺ + 6I⁻ → 2Cr³⁺ + 3I₂ + 7H₂O</div><p>Charge: −2 + 14 − 6 = <b>+6</b>; right 2(+3) = <b>+6</b> ✔</p></div>
+<div class="ex"><h5>Dichromate + Fe²⁺</h5><div class="eq good">Cr₂O₇²⁻ + 14H⁺ + 6Fe²⁺ → 2Cr³⁺ + 6Fe³⁺ + 7H₂O</div></div>
+<div class="ex"><h5>Water can appear on the LEFT</h5>
+<p>I₂ + S₂O₃²⁻ → S₂O₄²⁻ + I⁻:</p>
+<p>Oxidation: S₂O₃²⁻ + H₂O → S₂O₄²⁻ + 2H⁺ + 2e⁻ &nbsp; Reduction: I₂ + 2e⁻ → 2I⁻</p>
+<div class="eq good">I₂ + S₂O₃²⁻ + H₂O → S₂O₄²⁻ + 2I⁻ + 2H⁺</div></div>
+<div class="ex"><h5>Hydrogen peroxide as oxidizing agent</h5><div class="eq good">H₂O₂ + 2Fe²⁺ + 2H⁺ → 2Fe³⁺ + 2H₂O</div></div>
+<div class="trap">⚠️ For Cr₂O₇²⁻ remember there are <b>two</b> Cr atoms: balance Cr first (2Cr³⁺), so the electrons are <b>6</b>, not 3.</div>`,
+checks:[
+{q:'In Cr₂O₇²⁻ + 14H⁺ + 6I⁻ → 2Cr³⁺ + _I₂ + _H₂O, the coefficients of I₂ and H₂O are…',o:['3 and 7','6 and 7','3 and 14','1 and 7'],a:0,e:'6 I⁻ make 3 I₂; 7 O atoms make 7 H₂O.',w:['','6 I⁻ give 3 I₂ molecules (each has 2 I).','14 is H⁺; water is 7.','1 I₂ only uses 2 I⁻ (2e⁻), not 6.']},
+{q:'How many electrons are gained by one Cr₂O₇²⁻ when it forms 2Cr³⁺?',o:['6','3','2','14'],a:0,e:'Each Cr: +6 → +3 (3e⁻) × 2 Cr = 6e⁻.',w:['','3 is for ONE Cr atom.','No — check the change for Cr.','14 is the H⁺ coefficient.']},
+{q:'Balanced: H₂O₂ + _Fe²⁺ + 2H⁺ → _Fe³⁺ + 2H₂O. The missing coefficient (same for both) is…',o:['2','1','4','3'],a:0,e:'H₂O₂ + 2H⁺ + 2e⁻ → 2H₂O; 2 Fe²⁺ supply 2e⁻.',w:['','1 Fe²⁺ only supplies 1e⁻ — charge would not balance.','4 gives too many electrons.','3 gives too many electrons.']}
+]});
+
+L.push({
+id:16, unit:'C', title:'Steps for balancing in BASIC solution',
+outcome:'Describe the steps for balancing redox reactions, in basic medium, by the half-reaction method', ref:'Textbook + Example Problem 5 + practice + check your progress', pages:'16, 17, 18, 19',
+fig:'basesteps',
+html:`
+<div class="key"><h4>Method: balance as if acidic, then neutralize H⁺</h4>
+<ol class="rules"><li>Do all the acidic steps (X → H₂O → H⁺ → e⁻, match e⁻, add).</li>
+<li>For every <b>H⁺</b>, add the <b>same number of OH⁻ to BOTH sides</b>.</li>
+<li>Combine <b>H⁺ + OH⁻ → H₂O</b> on the side that had H⁺.</li>
+<li><b>Cancel</b> water molecules that appear on both sides.</li>
+<li>Check: <b>no H⁺</b> left, atoms and charge balanced.</li></ol></div>
+<div class="ex"><h5>Half-reaction: MnO₄⁻ → MnO₂ (base)</h5>
+<p>Acid version: MnO₄⁻ + 4H⁺ + 3e⁻ → MnO₂ + 2H₂O</p>
+<p>Add 4OH⁻ both sides: MnO₄⁻ + <b>4H₂O</b> + 3e⁻ → MnO₂ + 2H₂O + 4OH⁻</p>
+<p>Cancel 2H₂O:</p><div class="eq good">MnO₄⁻ + 2H₂O + 3e⁻ → MnO₂ + 4OH⁻</div></div>
+<div class="ex"><h5>From the slides: CrO₄²⁻ → Cr(OH)₃ (base)</h5>
+<div class="eq good">CrO₄²⁻ + 4H₂O + 3e⁻ → Cr(OH)₃ + 5OH⁻</div>
+<h5>Ag₂O₃ → AgO (base)</h5><div class="eq good">Ag₂O₃ + H₂O + 2e⁻ → 2AgO + 2OH⁻</div></div>
+<div class="trap">⚠️ Add OH⁻ to <b>both</b> sides — adding to one side only breaks the balance.</div>`,
+checks:[
+{q:'To convert an acid-balanced equation to basic conditions you add, to BOTH sides, the same number of…',o:['OH⁻ as there are H⁺','H₂O as there are H⁺','e⁻ as there are H⁺','O₂ as there are H⁺'],a:0,e:'OH⁻ neutralizes H⁺ forming water; adding to both sides keeps it balanced.',w:['','Water does not remove H⁺.','Electrons are already balanced.','O₂ is never added for balancing.']},
+{q:'An acid-balanced equation has 3H⁺ and 1H₂O on the product side. After converting to base, the product side has…',o:['4H₂O','3H₂O','1H₂O and 3OH⁻','2H₂O'],a:0,e:'3H⁺ + 3OH⁻ → 3H₂O, plus the existing 1H₂O = 4H₂O (3OH⁻ appear on the reactant side).',w:['','Forgot the H₂O already there.','The H⁺ and OH⁻ combine into water.','Count again: 3 + 1 = 4.']},
+{q:'Which species must NOT appear in a final equation balanced in basic solution?',o:['H⁺','OH⁻','H₂O','e⁻ in a half-reaction'],a:0,e:'Basic solution has almost no H⁺ — all H⁺ must be converted to water using OH⁻.',w:['','OH⁻ is exactly what basic solutions contain.','Water is fine in any solution.','Half-reactions always contain electrons.']}
+]});
+
+L.push({
+id:17, unit:'C', title:'Balancing full equations in BASIC solution',
+outcome:'Balance redox reaction in basic medium using half-reaction method', ref:'Textbook + Example Problem 5 + practice + check your progress', pages:'16, 17, 18, 19',
+html:`
+<div class="ex"><h5>Worked example: MnO₄⁻ + SO₃²⁻ → MnO₂ + SO₄²⁻ (base)</h5>
+<ol><li>Reduction (base): MnO₄⁻ + 2H₂O + 3e⁻ → MnO₂ + 4OH⁻ &nbsp;(×2)</li>
+<li>Oxidation (base): SO₃²⁻ + 2OH⁻ → SO₄²⁻ + H₂O + 2e⁻ &nbsp;(×3)</li>
+<li>Add: 2MnO₄⁻ + 4H₂O + 3SO₃²⁻ + 6OH⁻ → 2MnO₂ + 8OH⁻ + 3SO₄²⁻ + 3H₂O</li>
+<li>Cancel 3H₂O and 6OH⁻:</li></ol>
+<div class="eq good">2MnO₄⁻ + 3SO₃²⁻ + H₂O → 2MnO₂ + 3SO₄²⁻ + 2OH⁻</div><p>Charge: −2 − 6 = <b>−8</b>; right −6 − 2 = <b>−8</b> ✔</p></div>
+<div class="ex"><h5>From the slides: P₄ + H₂O → H₂PO₃⁻ + P₂H₄ (base)</h5>
+<p>Acidic result: 5P₄ + 24H₂O → 8H₂PO₃⁻ + 8H⁺ + 6P₂H₄ → add 8OH⁻ both sides → cancel 8H₂O:</p>
+<div class="eq good">5P₄ + 16H₂O + 8OH⁻ → 8H₂PO₃⁻ + 6P₂H₄</div></div>
+<div class="ex"><h5>Other common ones</h5>
+<div class="eq">MnO₂ + 2Br⁻ + 4H⁺ → Mn²⁺ + Br₂ + 2H₂O (acid) ⟹ MnO₂ + 2Br⁻ + 2H₂O → Mn²⁺ + Br₂ + 4OH⁻ (base)</div>
+<div class="eq">2Cr(OH)₃ + ClO₃⁻ + 4OH⁻ → 2CrO₄²⁻ + Cl⁻ + 5H₂O</div>
+<div class="eq">3CN⁻ + 2MnO₄⁻ + H₂O → 3CNO⁻ + 2MnO₂ + 2OH⁻</div></div>`,
+checks:[
+{q:'In 2MnO₄⁻ + 3SO₃²⁻ + H₂O → 2MnO₂ + 3SO₄²⁻ + _OH⁻, the coefficient of OH⁻ is…',o:['2','4','6','8'],a:0,e:'H balance: 2 H in H₂O → 2 OH⁻. Charge: −8 = −6 + (−2) ✔',w:['','4 would give charge −10 on the right.','6 is before cancelling.','8 is before cancelling.']},
+{q:'Converting MnO₂ + 2Br⁻ + 4H⁺ → Mn²⁺ + Br₂ + 2H₂O to base, where is water after cancelling?',o:['2H₂O on the left','2H₂O on the right','4H₂O on the left','No water remains'],a:0,e:'Add 4OH⁻ to both sides → 4H₂O on the left; cancel 2H₂O → 2H₂O left, 4OH⁻ right.',w:['','The 2H₂O on the right cancel out.','2 of the 4 cancel with the right side.','Only 2 of the 4 water molecules cancel.']},
+{q:'Balance Cl₂ → Cl⁻ + ClO⁻ in basic solution. Which is correct?',o:['Cl₂ + 2OH⁻ → Cl⁻ + ClO⁻ + H₂O','Cl₂ + H₂O → Cl⁻ + ClO⁻ + 2H⁺','Cl₂ + OH⁻ → Cl⁻ + ClO⁻ + H⁺','Cl₂ → Cl⁻ + ClO⁻'],a:0,e:'Atoms: 2Cl, 2O, 2H both sides; charge −2 both sides; no H⁺ ✔',w:['','This is the ACIDIC form — H⁺ cannot remain in base.','H⁺ cannot appear in base; also not balanced.','O and charge are not balanced.']}
+]});
+
+// ===== UNIT D & E : Electrochemical cells, E°, electrolysis (Goals 18–30) =====
+var L = window.LESSONS = window.LESSONS || [];
+
+L.push({
+id:18, unit:'D', title:'Electrochemical cells and their types',
+outcome:'Describe an electrochemical cell while specifying its types', ref:'Figures 1, 2 + textbook', pages:'25, 26',
+video:{id:'teTkvUtW4SA', t:'Introduction to Electrochemistry — Tyler DeWitt'},
+fig:'voltaic',
+html:`
+<div class="key"><h4>Definition</h4><p>An <b>electrochemical cell</b> is an apparatus that uses a <b>redox reaction</b> to <b>produce electrical energy</b>, or uses <b>electrical energy</b> to cause a chemical reaction.</p></div>
+<div class="two"><div class="card c1"><h4>⚡ Voltaic (galvanic) cell</h4><ul><li>Converts <b>chemical → electrical</b> energy</li><li><b>Spontaneous</b> redox reaction</li><li>E°cell <b>positive</b></li><li>Anode <b>−</b>, cathode <b>+</b></li><li>Example: batteries, Zn–Cu (Daniell) cell</li></ul></div>
+<div class="card c2"><h4>🔌 Electrolytic cell</h4><ul><li>Converts <b>electrical → chemical</b> energy</li><li><b>Non-spontaneous</b> reaction driven by a power supply</li><li>Anode <b>+</b>, cathode <b>−</b></li><li>Example: electrolysis, electroplating, recharging</li></ul></div></div>
+<p>Why separate the two half-reactions? If zinc is put straight into CuSO₄ solution, electrons move directly from Zn to Cu²⁺ and only <b>heat</b> is released. Separating them into two <b>half-cells</b> forces the electrons to flow through an <b>external wire</b> → electric current you can use.</p>`,
+checks:[
+{q:'A Zn–Cu cell lights a bulb with no external power source. What type of cell is it?',o:['Voltaic (galvanic) — chemical → electrical energy','Electrolytic — electrical → chemical energy','Electrolytic — chemical → electrical energy','Voltaic — electrical → chemical energy'],a:0,e:'It produces electricity from a spontaneous reaction: voltaic cell.',w:['','Electrolytic cells need an external power supply.','Wrong type AND wrong conversion.','Voltaic cells produce electrical energy, not consume it.']},
+{q:'Which energy conversion is the basis of ALL electrochemical cells?',o:['Between chemical and electrical energy','Between mechanical and electrical energy','Between light and chemical energy','Between nuclear and thermal energy'],a:0,e:'Voltaic: chemical → electrical. Electrolytic: electrical → chemical.',w:['','That is a generator/motor.','That is photosynthesis / solar cells.','That is a nuclear reactor.']},
+{q:'Which describes an electrolytic cell?',o:['Uses electrical energy to drive a non-spontaneous reaction','Produces electricity from a spontaneous reaction','Has a negative cathode and positive anode only because the reaction is spontaneous','Never involves redox'],a:0,e:'Electrolytic cells use an external power source to force non-spontaneous redox reactions.',w:['','That is a voltaic cell.','Its signs come from the power supply, and the reaction is non-spontaneous.','Electrolysis is a redox process.']}
+]});
+
+L.push({
+id:19, unit:'D', title:'Parts of a voltaic cell, electron & current flow',
+outcome:'Identify components of a voltaic or galvanic cell (anode, cathode, salt bridge or porous barrier, wires, electrolyte compartments); while explaining the role of each component, when does the reaction start and determining the direction of electron and current flow', ref:'Figures 1, 2 + textbook', pages:'25, 26',
+video:{id:'7b34XYgADlM', t:'Galvanic (Voltaic) Cells — Tyler DeWitt'},
+fig:'voltaic',
+html:`
+<div class="key"><h4>Components and their roles</h4>
+<table class="tbl"><tr><th>Part</th><th>Role</th></tr>
+<tr><td><b>Anode</b> (Zn)</td><td>Electrode where <b>oxidation</b> occurs; source of electrons; <b>negative</b>; loses mass</td></tr>
+<tr><td><b>Cathode</b> (Cu)</td><td>Electrode where <b>reduction</b> occurs; electrons arrive; <b>positive</b>; gains mass</td></tr>
+<tr><td><b>Electrolyte compartments</b> (half-cells)</td><td>Solutions of ions (ZnSO₄, CuSO₄) — supply the ions that react and conduct by ion movement</td></tr>
+<tr><td><b>Wire</b> (external circuit)</td><td>Carries <b>electrons</b> from anode to cathode</td></tr>
+<tr><td><b>Salt bridge / porous barrier</b></td><td>Lets <b>ions</b> pass to keep each half-cell <b>electrically neutral</b> and completes the circuit, while stopping the solutions mixing</td></tr></table></div>
+<div class="two"><div class="card c1"><h4>Directions</h4><ul><li><b>Electrons:</b> anode → cathode through the <b>wire</b> (Zn → Cu)</li><li><b>Conventional current:</b> cathode → anode in the wire (opposite to electrons)</li><li><b>Anions</b> in salt bridge → toward the <b>anode</b></li><li><b>Cations</b> in salt bridge → toward the <b>cathode</b></li></ul></div>
+<div class="card c2"><h4>When does the reaction start?</h4><p>Only when the circuit is <b>complete</b> — the electrodes are connected by the <b>wire</b> AND the <b>salt bridge</b> (or porous barrier) is in place. Remove either one → the flow of electrons stops.</p></div></div>
+<div class="mnemo">🧠 <b>AN OX</b> and <b>RED CAT</b> · electrons flow <b>A → C</b> (alphabetical!) · “<b>F</b>at <b>C</b>at” — electrons flow <b>F</b>rom <b>A</b>node <b>T</b>o <b>C</b>athode</div>
+<div class="trap">⚠️ Electrons <b>never</b> travel through the solution or salt bridge — only <b>ions</b> move there.</div>`,
+checks:[
+{q:'In a working Zn–Cu voltaic cell, electrons flow…',o:['from Zn to Cu through the wire','from Cu to Zn through the wire','through the salt bridge from Zn to Cu','through the salt bridge from Cu to Zn'],a:0,e:'Electrons leave the anode (Zn, oxidation) and travel through the external wire to the cathode (Cu).',w:['','That is the direction of conventional current.','Electrons never move through the salt bridge — only ions.','Electrons never move through the salt bridge.']},
+{q:'What is the role of the salt bridge?',o:['Allows ions to flow to keep the half-cells electrically neutral','Carries electrons between the electrodes','Supplies the electrons for reduction','Speeds up the reaction as a catalyst'],a:0,e:'Ion migration through the salt bridge balances the charge build-up and completes the circuit.',w:['','The wire carries electrons.','Electrons come from the anode.','It is not a catalyst.']},
+{q:'In the salt bridge of a Zn–Cu cell, anions move toward…',o:['the zinc anode','the copper cathode','the voltmeter','both electrodes equally'],a:0,e:'Zn²⁺ ions are produced at the anode, making that half-cell positive; anions move there to neutralize it.',w:['','Cations move toward the cathode, where Cu²⁺ is removed.','Ions do not move into the external circuit.','They move toward the anode compartment.']}
+]});
+
+L.push({
+id:20, unit:'D', title:'Half-reactions at the anode and cathode',
+outcome:'Write the oxidation and reduction half-reactions occurring at cathode and anode for a voltaic cell', ref:'Textbook + Figure 6', pages:'27, 31',
+html:`
+<div class="key"><h4>Rule</h4><p><b>Anode = oxidation</b> (e⁻ on the right). <b>Cathode = reduction</b> (e⁻ on the left). True for <b>every</b> cell.</p></div>
+<div class="ex"><h5>Zn–Cu cell</h5>
+<p>Anode (oxidation): <span class="eq-in">Zn(s) → Zn²⁺(aq) + 2e⁻</span></p>
+<p>Cathode (reduction): <span class="eq-in">Cu²⁺(aq) + 2e⁻ → Cu(s)</span></p>
+<div class="eq good">Overall: Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s)</div></div>
+<div class="ex"><h5>Unequal electrons: 2Fe³⁺ + 3Mn → 3Mn²⁺ + 2Fe</h5>
+<p>Anode: Mn → Mn²⁺ + 2e⁻ (×3) &nbsp; Cathode: Fe³⁺ + 3e⁻ → Fe (×2) → 6e⁻ each</p></div>
+<div class="ex"><h5>Hydrogen electrode (Figure 6)</h5><p>With Zn: SHE is the cathode: 2H⁺ + 2e⁻ → H₂. With Cu: SHE is the anode: H₂ → 2H⁺ + 2e⁻.</p></div>
+<div class="tip">📌 Observations: anode metal gets <b>thinner</b> (loses mass); cathode metal gets <b>thicker</b> (gains mass); blue Cu²⁺ solution gets <b>paler</b>.</div>`,
+checks:[
+{q:'For Zn + Cu²⁺ → Zn²⁺ + Cu, which half-reaction occurs at the anode?',o:['Zn → Zn²⁺ + 2e⁻','Cu²⁺ + 2e⁻ → Cu','Zn²⁺ + 2e⁻ → Zn','Cu → Cu²⁺ + 2e⁻'],a:0,e:'Oxidation occurs at the anode; zinc loses electrons.',w:['','That is reduction — at the cathode.','That is the reverse of what happens.','Copper is not oxidized in this cell.']},
+{q:'In a voltaic cell built on 2Ag⁺ + Ni → 2Ag + Ni²⁺, the cathode reaction is…',o:['Ag⁺ + e⁻ → Ag','Ni → Ni²⁺ + 2e⁻','Ag → Ag⁺ + e⁻','Ni²⁺ + 2e⁻ → Ni'],a:0,e:'Ag⁺ is reduced at the cathode.',w:['','That is oxidation (anode).','Ag is formed, not oxidized.','Ni is oxidized, not reduced.']},
+{q:'Which electrode gains mass in a working Zn–Cu voltaic cell?',o:['Copper cathode','Zinc anode','Both','Neither'],a:0,e:'Cu²⁺ is reduced and deposits as Cu metal on the cathode.',w:['','Zinc dissolves as Zn²⁺ → loses mass.','The zinc anode loses mass.','The cathode gains copper.']}
+]});
+
+L.push({
+id:21, unit:'D', title:'Reduction potential and standard electrode potential (E°)',
+outcome:'Define the reduction potential and standard electrode potential (E°)', ref:'Table 1 + textbook', pages:'29, 30',
+fig:'eladder',
+html:`
+<div class="key"><h4>Definitions</h4>
+<p><b>Reduction potential</b>: the tendency of a substance to <b>gain electrons</b> (be reduced).</p>
+<p><b>Standard reduction (electrode) potential, E°</b>: the potential of a half-cell measured <b>against the standard hydrogen electrode</b> under <b>standard conditions</b>: <b>25 °C, 1 atm (101.3 kPa), 1 M</b> solutions.</p></div>
+<ul class="bul"><li>The ° symbol means <b>standard conditions</b>.</li>
+<li>Table 1 lists all half-reactions as <b>reductions</b>.</li>
+<li><b>More positive E°</b> → greater tendency to be <b>reduced</b> → stronger <b>oxidizing agent</b> (e.g., F₂ +2.87 V).</li>
+<li><b>More negative E°</b> → more easily <b>oxidized</b> → stronger <b>reducing agent</b> (e.g., Li −3.04 V).</li>
+<li>You cannot measure the potential of one half-cell alone — only a <b>difference</b>, so a reference (SHE = 0.00 V) is needed.</li></ul>
+<div class="ex"><h5>Example</h5><p>E°(Cu²⁺/Cu) = +0.34 V and E°(Zn²⁺/Zn) = −0.76 V → Cu²⁺ is reduced more readily than Zn²⁺; Zn is oxidized more readily than Cu.</p></div>`,
+checks:[
+{q:'What does the ° in E° indicate?',o:['Measured under standard conditions (25 °C, 1 atm, 1 M)','Measured at 0 °C','The voltage is zero','The potential must be positive'],a:0,e:'Standard conditions: 25 °C (298 K), 1 atm, 1 M concentrations.',w:['','Standard temperature for E° is 25 °C, not 0 °C.','Only the SHE is defined as 0.00 V.','E° values can be negative.']},
+{q:'Given E°(Co²⁺/Co) = −0.28 V and E°(Cu²⁺/Cu) = +0.34 V, which ion is more readily reduced?',o:['Cu²⁺','Co²⁺','Both equally','Cannot be determined'],a:0,e:'The more positive E°, the greater the tendency to be reduced.',w:['','Co²⁺ has the more negative (lower) value.','The values are different.','E° values let you compare directly.']},
+{q:'Which species is the strongest oxidizing agent? E°: F₂ +2.87 V, Cl₂ +1.36 V, Ag⁺ +0.80 V, Li⁺ −3.04 V',o:['F₂','Cl₂','Ag⁺','Li⁺'],a:0,e:'Highest E° = strongest tendency to gain electrons = strongest oxidizing agent.',w:['','Cl₂ is weaker than F₂.','Ag⁺ is weaker than both halogens.','Li⁺ has the lowest E° — the weakest oxidizing agent (Li metal is the strongest reducing agent).']}
+]});
+
+L.push({
+id:22, unit:'D', title:'The standard hydrogen electrode (SHE)',
+outcome:'Describe standard hydrogen electrode (SHE), while identifying the importance of its E° value and writing the half-cell reactions of the two possible reactions that could occur at the hydrogen electrode', ref:'Figures 5, 6 + textbook', pages:'29, 31',
+video:{id:'CQ7gYg64Msc', t:'Zinc – standard hydrogen electrode cell animation'},
+fig:'she',
+html:`
+<div class="key"><h4>Construction</h4>
+<ul><li>A <b>platinum electrode</b> (inert, covered with fine Pt) in</li><li>a <b>1 M H⁺</b> solution (acid), with</li><li><b>H₂ gas at 1 atm</b> bubbled over the electrode, at <b>25 °C</b>.</li></ul>
+<p><b>E° = 0.00 V</b> (assigned by convention).</p></div>
+<h4>Why is it important?</h4><p>The potential of a single half-cell cannot be measured — only the <b>difference</b> between two. Giving the SHE the value <b>zero</b> makes it the <b>reference</b>, so every other half-cell’s E° is just the voltage measured against it.</p>
+<div class="two"><div class="card c2"><h4>SHE as cathode (reduction)</h4><div class="eq">2H⁺(aq) + 2e⁻ → H₂(g)</div><p>When paired with a half-cell with <b>negative</b> E° (e.g., Zn, −0.76 V).</p></div>
+<div class="card c1"><h4>SHE as anode (oxidation)</h4><div class="eq">H₂(g) → 2H⁺(aq) + 2e⁻</div><p>When paired with a half-cell with <b>positive</b> E° (e.g., Cu, +0.34 V).</p></div></div>
+<div class="ex"><h5>Measuring E°(Zn²⁺/Zn)</h5><p>Zn | Zn²⁺ ‖ H⁺ | H₂ | Pt reads 0.76 V with Zn as the anode → E°(Zn²⁺/Zn) = <b>−0.76 V</b>.</p></div>`,
+checks:[
+{q:'What is the standard electrode potential of the SHE?',o:['0.00 V','+1.00 V','−0.76 V','+0.34 V'],a:0,e:'It is defined (assigned) as exactly 0.00 V at standard conditions.',w:['','There is no such definition.','That is Zn²⁺/Zn.','That is Cu²⁺/Cu.']},
+{q:'A Cu²⁺/Cu half-cell (+0.34 V) is connected to the SHE. What happens at the SHE?',o:['H₂ → 2H⁺ + 2e⁻ (it is the anode)','2H⁺ + 2e⁻ → H₂ (it is the cathode)','Nothing happens','Cu is deposited on it'],a:0,e:'Cu²⁺ has the higher E°, so it is reduced; the SHE must be oxidized → anode.',w:['','The SHE is the cathode only against half-cells with negative E°.','Electrons flow, so a reaction occurs.','Cu deposits on the copper electrode, not the platinum.']},
+{q:'Why is the SHE needed?',o:['Because the potential of a single half-cell cannot be measured alone, so a reference is needed','Because hydrogen is the strongest oxidizing agent','Because platinum reacts with every metal','Because it produces the highest voltage'],a:0,e:'Only potential differences are measurable; the SHE is the agreed zero reference.',w:['','Hydrogen is neither the strongest oxidizer nor reducer (it is at 0.00 V).','Platinum is chosen because it is inert.','It is a reference, not a high-voltage cell.']}
+]});
+
+L.push({
+id:23, unit:'D', title:'Calculating E°cell and spontaneity',
+outcome:'Use the half-cell standard reduction potentials to calculate the electrochemical cell standard potential, while determining whether the redox reactions are spontaneous or non-spontaneous', ref:'Textbook + Example Problem 1 + practice + Table 3', pages:'32, 33, 34',
+video:{id:'IV4IUsholjg', t:'Electrochemistry — Crash Course Chemistry #36'},
+html:`
+<div class="key"><h4>The formula</h4><div class="eq big">E°cell = E°reduction − E°oxidation = E°cathode − E°anode</div>
+<p>Both values are taken <b>straight from the reduction table</b> — do not change any sign before subtracting.</p>
+<p><b>E°cell &gt; 0</b> → <b>spontaneous</b> (voltaic). <b>E°cell &lt; 0</b> → <b>non-spontaneous</b> (needs electrolysis).</p></div>
+<div class="ex"><h5>Worked example: Mg–Ag cell</h5>
+<p>E°(Ag⁺/Ag) = +0.80 V, E°(Mg²⁺/Mg) = −2.37 V</p>
+<ol><li>Higher E° → reduced → <b>cathode = Ag</b>. Lower → oxidized → <b>anode = Mg</b>.</li>
+<li>E°cell = +0.80 − (−2.37) = <b>+3.17 V</b> → spontaneous.</li></ol>
+<div class="eq good">Mg + 2Ag⁺ → Mg²⁺ + 2Ag &nbsp;&nbsp; E°cell = +3.17 V</div></div>
+<div class="trap">⚠️ <b>Never multiply E° by the coefficients!</b> Doubling Ag⁺ + e⁻ → Ag to balance electrons does NOT double +0.80 V. E° is an intensive property.</div>
+<div class="tip">📌 Shortcut for the spontaneous direction: <b>higher E° = cathode</b>, so E°cell = (bigger) − (smaller) and is always positive.</div>`,
+checks:[
+{q:'E°(Ag⁺/Ag) = +0.80 V, E°(Mg²⁺/Mg) = −2.37 V. What is E°cell for the spontaneous cell?',o:['+3.17 V','+1.57 V','−3.17 V','+3.97 V'],a:0,e:'E°cell = 0.80 − (−2.37) = +3.17 V.',w:['','You subtracted the wrong way round or mishandled the negative sign: 0.80 − (−2.37) = 0.80 + 2.37.','Reversed: cathode minus anode must be positive for the spontaneous cell.','You doubled the silver value — never multiply E° by coefficients.']},
+{q:'E°(Pt²⁺/Pt) = +1.18 V and E°(Co²⁺/Co) = −0.28 V. Which electrode is the cathode?',o:['Pt','Co','Either','Neither'],a:0,e:'The half-cell with the higher reduction potential (Pt) is reduced → cathode. E°cell = +1.46 V.',w:['','Co has the lower E° → it is oxidized (anode).','The higher E° always decides.','Every cell has a cathode.']},
+{q:'When balancing 2Ag⁺ + Cu → 2Ag + Cu²⁺, what happens to E°(Ag⁺/Ag) = +0.80 V?',o:['It stays +0.80 V','It becomes +1.60 V','It becomes −0.80 V','It becomes +0.40 V'],a:0,e:'E° does not depend on how many moles react — it is never multiplied.',w:['','Never multiply E° by coefficients.','The sign only changes in tables if written as oxidation, and the formula already handles that.','It is not divided either.']}
+]});
+
+L.push({
+id:24, unit:'D', title:'Cell notation and overall equations',
+outcome:'Write the cell notation and the overall chemical equation for a redox reaction occurring in a voltaic cell', ref:'Textbook + Example Problem 1 + practice + Table 3', pages:'31, 32, 33, 34',
+fig:'notation',
+html:`
+<div class="key"><h4>Cell notation (line notation)</h4><div class="eq big">Anode | Anode ion ‖ Cathode ion | Cathode</div>
+<ul><li><b>Anode on the LEFT</b> (oxidation), <b>cathode on the RIGHT</b> (reduction).</li>
+<li><b>|</b> single line = phase boundary (solid | solution).</li><li><b>‖</b> double line = salt bridge.</li>
+<li>Read left to right in the direction electrons flow.</li></ul>
+<div class="eq">Zn(s) | Zn²⁺(aq) ‖ Cu²⁺(aq) | Cu(s)</div></div>
+<div class="ex"><h5>Worked example: Al and Cu (E° Al³⁺/Al = −1.66 V, Cu²⁺/Cu = +0.34 V)</h5>
+<ol><li>Cu higher → cathode; Al → anode.</li><li>Al → Al³⁺ + 3e⁻ (×2) &nbsp; Cu²⁺ + 2e⁻ → Cu (×3) → 6e⁻</li></ol>
+<div class="eq good">2Al(s) + 3Cu²⁺(aq) → 2Al³⁺(aq) + 3Cu(s) &nbsp; E°cell = +2.00 V</div>
+<div class="eq good">Al(s) | Al³⁺(aq) ‖ Cu²⁺(aq) | Cu(s)</div></div>
+<div class="ex"><h5>With the SHE (inert Pt electrode)</h5><div class="eq">Zn(s) | Zn²⁺(aq) ‖ H⁺(aq) | H₂(g) | Pt(s)</div></div>`,
+checks:[
+{q:'Which notation represents the spontaneous Al–Cu cell?',o:['Al | Al³⁺ ‖ Cu²⁺ | Cu','Cu | Cu²⁺ ‖ Al³⁺ | Al','Al³⁺ | Al ‖ Cu | Cu²⁺','Cu²⁺ | Cu ‖ Al | Al³⁺'],a:0,e:'Anode (Al, oxidized) on the left; cathode (Cu²⁺ reduced) on the right.',w:['','This puts copper as the anode — non-spontaneous.','Order inside each half-cell is wrong: anode is written electrode | ion.','Completely reversed.']},
+{q:'In cell notation, the double line ‖ represents…',o:['the salt bridge','the wire','a phase boundary','the voltmeter'],a:0,e:'‖ = salt bridge; | = phase boundary.',w:['','The wire is not shown in notation.','A single line | is a phase boundary.','The voltmeter is not shown.']},
+{q:'Overall equation for Fe(s) | Fe²⁺(aq) ‖ Ag⁺(aq) | Ag(s)?',o:['Fe + 2Ag⁺ → Fe²⁺ + 2Ag','Fe²⁺ + 2Ag → Fe + 2Ag⁺','Fe + Ag⁺ → Fe²⁺ + Ag','2Fe + Ag⁺ → 2Fe²⁺ + Ag'],a:0,e:'Fe loses 2e⁻; each Ag⁺ gains 1e⁻ → 2Ag⁺.',w:['','Reversed — the anode (left) is oxidized.','Charge not balanced (0+1 ≠ 2+0).','Electrons not balanced.']}
+]});
+
+L.push({
+id:25, unit:'D', title:'Testing spontaneity of a reaction as written',
+outcome:'Use the half-cell standard reduction potentials to calculate the electrochemical cell standard potential, while determining whether the redox reactions are spontaneous or non-spontaneous', ref:'Textbook + practice + check your progress', pages:'34, 35',
+html:`
+<div class="key"><h4>Method for “Is this reaction spontaneous as written?”</h4>
+<ol class="rules"><li>Identify what is <b>reduced</b> in the equation <b>as written</b> → that is the cathode (even if it has the lower E°!).</li>
+<li>Identify what is <b>oxidized</b> → anode.</li>
+<li>E°cell = E°cathode − E°anode.</li>
+<li>Positive → <b>spontaneous</b>; negative → <b>non-spontaneous</b> (the reverse reaction is spontaneous).</li></ol></div>
+<div class="ex"><h5>Worked example</h5><div class="eq">Cu(s) + Zn²⁺(aq) → Cu²⁺(aq) + Zn(s)</div>
+<p>Zn²⁺ is reduced (cathode, −0.76 V); Cu is oxidized (anode, +0.34 V).</p>
+<p>E°cell = −0.76 − 0.34 = <b>−1.10 V</b> → <b>non-spontaneous</b>. The reverse (Zn + Cu²⁺) is spontaneous with +1.10 V.</p></div>
+<div class="tip">📌 Reversing a reaction reverses the sign of E°cell. That is why copper metal does NOT react with zinc sulfate solution, but zinc does react with copper sulfate.</div>`,
+checks:[
+{q:'Is Cu(s) + Zn²⁺(aq) → Cu²⁺(aq) + Zn(s) spontaneous? (Zn²⁺/Zn −0.76 V; Cu²⁺/Cu +0.34 V)',o:['No, E°cell = −1.10 V','Yes, E°cell = +1.10 V','Yes, E°cell = +0.42 V','No, E°cell = −0.42 V'],a:0,e:'As written Zn²⁺ is reduced: E°cell = −0.76 − 0.34 = −1.10 V → non-spontaneous.',w:['','+1.10 V is the reverse reaction.','You added the values incorrectly.','Wrong arithmetic: −0.76 − 0.34 = −1.10.']},
+{q:'A reaction has E°cell = +1.217 V. If it is reversed, E°cell becomes…',o:['−1.217 V','+1.217 V','+2.434 V','0 V'],a:0,e:'Reversing the reaction reverses the sign.',w:['','The sign must change.','E° is not doubled.','It does not become zero.']},
+{q:'Which reaction is NON-spontaneous under standard conditions?',o:['Fe²⁺ + Ni → Fe + Ni²⁺ (E° = −0.19 V)','Au³⁺ + Cu, E° = +1.16 V','Fe³⁺ + Mn, E° = +1.15 V','Cu²⁺ + Zn, E° = +1.10 V'],a:0,e:'A negative E°cell means non-spontaneous as written.',w:['','Positive E°cell → spontaneous.','Positive E°cell → spontaneous.','Positive E°cell → spontaneous.']}
+]});
+
+L.push({
+id:26, unit:'E', title:'Voltaic vs electrolytic cells',
+outcome:'Compare between electrolytic cell and voltaic cell in terms of identifying where will reduction and oxidation processes take place, anode, cathode, direction of electron flow and current flow and spontaneity of the reaction occurring', ref:'Figure 18 + textbook', pages:'47',
+video:{id:'dRtSjJCKkIo', t:'Electrolysis — Tyler DeWitt'},
+fig:'compare',
+html:`
+<table class="tbl cmp"><tr><th>Feature</th><th>⚡ Voltaic</th><th>🔌 Electrolytic</th></tr>
+<tr><td>Energy</td><td>chemical → electrical</td><td>electrical → chemical</td></tr>
+<tr><td>Spontaneity</td><td><b>spontaneous</b> (E°cell &gt; 0)</td><td><b>non-spontaneous</b> (needs power supply)</td></tr>
+<tr><td>Oxidation at</td><td><b>anode</b></td><td><b>anode</b></td></tr>
+<tr><td>Reduction at</td><td><b>cathode</b></td><td><b>cathode</b></td></tr>
+<tr><td>Anode sign</td><td><b>negative (−)</b></td><td><b>positive (+)</b> — connected to + terminal</td></tr>
+<tr><td>Cathode sign</td><td><b>positive (+)</b></td><td><b>negative (−)</b> — connected to − terminal</td></tr>
+<tr><td>Electron flow (external)</td><td>anode → cathode</td><td>anode → (+) of battery … (−) of battery → cathode</td></tr>
+<tr><td>Conventional current (external)</td><td>cathode → anode</td><td>opposite to electron flow</td></tr>
+<tr><td>Salt bridge</td><td>needed (2 compartments)</td><td>usually one container</td></tr></table>
+<div class="mnemo">🧠 What NEVER changes: <b>AN OX, RED CAT</b> (oxidation at anode, reduction at cathode) and electrons always flow <b>from the anode to the cathode</b> through the external circuit. What changes: the <b>signs</b> (+/−) and spontaneity.</div>`,
+checks:[
+{q:'Which statement is true in BOTH voltaic and electrolytic cells?',o:['Oxidation occurs at the anode','The anode is negative','The cathode is positive','The reaction is spontaneous'],a:0,e:'Oxidation is always at the anode, reduction always at the cathode; signs depend on the cell type.',w:['','The anode is positive in an electrolytic cell.','The cathode is negative in an electrolytic cell.','Electrolytic reactions are non-spontaneous.']},
+{q:'In an electrolytic cell, the cathode is…',o:['negative, and reduction occurs there','positive, and reduction occurs there','negative, and oxidation occurs there','positive, and oxidation occurs there'],a:0,e:'The cathode is connected to the negative terminal; reduction (RED CAT) always occurs at the cathode.',w:['','Positive cathode is in a voltaic cell.','Oxidation is always at the anode.','Both parts wrong for an electrolytic cell.']},
+{q:'Which process occurs in both voltaic and electrolytic cells?',o:['A redox reaction','A spontaneous reaction','A neutralization reaction','A non-spontaneous reaction'],a:0,e:'Both involve oxidation and reduction; they differ in spontaneity.',w:['','Only the voltaic cell is spontaneous.','No acid–base reaction is required.','Only the electrolytic cell is non-spontaneous.']}
+]});
+
+L.push({
+id:27, unit:'E', title:'Reversing a spontaneous redox reaction',
+outcome:'Describe how a spontaneous redox reaction of an electrochemical cell can be reversed', ref:'Figure 18 + textbook', pages:'47, 48',
+fig:'reverse',
+html:`
+<p>A voltaic cell can be turned into an electrolytic cell by connecting an <b>external power source</b> whose voltage is <b>greater than E°cell</b> and that pushes electrons in the <b>opposite direction</b>.</p>
+<div class="ex"><h5>Zn–Cu cell (E°cell = +1.10 V)</h5>
+<p><b>Spontaneous:</b> Zn + Cu²⁺ → Zn²⁺ + Cu (Zn anode, Cu cathode)</p>
+<p><b>Reversed with &gt; 1.10 V supply:</b> + terminal to Cu, − terminal to Zn</p>
+<p>Cu is now the <b>anode</b>: Cu → Cu²⁺ + 2e⁻ (copper loses mass)<br>Zn is now the <b>cathode</b>: Zn²⁺ + 2e⁻ → Zn (zinc gains mass)</p>
+<div class="eq good">Cu + Zn²⁺ → Cu²⁺ + Zn &nbsp;(non-spontaneous, driven by electricity)</div></div>
+<div class="tip">📌 This is exactly what happens when you <b>recharge</b> a battery (e.g., lead–acid car battery, Li-ion phone battery).</div>
+<div class="trap">⚠️ The anode/cathode labels <b>swap</b> when reversed, because the labels follow the reaction (oxidation/reduction), not the metal.</div>`,
+checks:[
+{q:'Which change drives a standard Zn–Cu voltaic cell (1.10 V) in reverse?',o:['An external supply greater than 1.10 V opposing the cell','A 0.50 V supply in the same direction','Removing the salt bridge','Replacing Cu with Zn'],a:0,e:'The applied voltage must exceed the cell voltage and push electrons the opposite way.',w:['','Too small, and in the wrong direction.','That just stops the cell.','That changes the cell, it does not reverse the reaction.']},
+{q:'When the Zn–Cu cell is reversed, which electrode gains mass?',o:['Zn','Cu','Both','Neither'],a:0,e:'Zn²⁺ is now reduced onto the zinc electrode (now the cathode).',w:['','Cu is now oxidized → loses mass.','Cu loses mass.','Zn gains mass.']},
+{q:'Which everyday process is an example of reversing a spontaneous cell reaction?',o:['Recharging a car or phone battery','Using a battery in a torch','Rusting of iron','Burning methane'],a:0,e:'Recharging uses electrical energy to drive the battery reaction backward.',w:['','That is the spontaneous (discharge) direction.','Rusting is spontaneous corrosion.','Combustion is spontaneous.']}
+]});
+
+L.push({
+id:28, unit:'E', title:'Electrolysis of molten ionic compounds',
+outcome:'Write half-cell reactions while identifying the products of electrolysis of molten ionic compounds', ref:'Figure 19 + textbook', pages:'48',
+fig:'downs',
+html:`
+<p><b>Electrolysis</b> = using electrical energy to bring about a chemical reaction. In a <b>molten</b> salt there is <b>no water</b>, so the only ions are the metal cation and the anion.</p>
+<div class="key"><h4>Rule for molten salts</h4><p>Cathode (−): <b>metal</b> is produced. Anode (+): <b>non-metal</b> is produced.</p></div>
+<div class="ex"><h5>Down’s cell — molten NaCl (Figure 19)</h5>
+<p>Cathode (reduction): <span class="eq-in">Na⁺(l) + e⁻ → Na(l)</span></p>
+<p>Anode (oxidation): <span class="eq-in">2Cl⁻(l) → Cl₂(g) + 2e⁻</span></p>
+<div class="eq good">2NaCl(l) → 2Na(l) + Cl₂(g)</div>
+<p>Used industrially to produce sodium metal and chlorine gas. An iron screen keeps Na and Cl₂ apart (they would react back).</p></div>
+<div class="ex"><h5>Other molten salts</h5>
+<p>MgCl₂(l): cathode Mg²⁺ + 2e⁻ → Mg; anode 2Cl⁻ → Cl₂ + 2e⁻</p>
+<p>PbBr₂(l): cathode Pb²⁺ + 2e⁻ → Pb; anode 2Br⁻ → Br₂ + 2e⁻</p></div>`,
+checks:[
+{q:'What forms at the cathode when molten NaCl is electrolyzed?',o:['Sodium metal','Chlorine gas','Hydrogen gas','Oxygen gas'],a:0,e:'Na⁺ + e⁻ → Na. No water is present to compete.',w:['','Cl₂ forms at the anode.','No water in the melt, so no H₂.','No water or oxide, so no O₂.']},
+{q:'What is the anode half-reaction in a Down’s cell?',o:['2Cl⁻ → Cl₂ + 2e⁻','Cl₂ + 2e⁻ → 2Cl⁻','Na⁺ + e⁻ → Na','Na → Na⁺ + e⁻'],a:0,e:'Oxidation occurs at the anode: chloride loses electrons.',w:['','That is a reduction (electrons on left).','That is the cathode reaction.','Sodium metal is not present at the start; Na⁺ is reduced.']},
+{q:'Products of electrolysis of molten MgCl₂?',o:['Mg and Cl₂','H₂ and Cl₂','Mg and O₂','H₂ and O₂'],a:0,e:'Molten salt: metal at the cathode, non-metal at the anode.',w:['','No water → no H₂.','No oxygen source in MgCl₂.','No water present.']}
+]});
+
+L.push({
+id:29, unit:'E', title:'Electrolysis of aqueous ionic compounds',
+outcome:'Write half-cell reactions while identifying the products of electrolysis of aqueous ionic compounds', ref:'Figure 20 + textbook', pages:'49',
+fig:'brine',
+html:`
+<p>In <b>aqueous</b> solution, <b>water</b> can also be reduced or oxidized, so it competes with the ions.</p>
+<div class="key"><h4>Water’s half-reactions</h4>
+<p>At the cathode (reduction): <span class="eq-in">2H₂O(l) + 2e⁻ → H₂(g) + 2OH⁻(aq)</span></p>
+<p>At the anode (oxidation): <span class="eq-in">2H₂O(l) → O₂(g) + 4H⁺(aq) + 4e⁻</span></p></div>
+<div class="two"><div class="card c2"><h4>Cathode (−) — what is reduced?</h4><ul><li>Active metal ions (Group 1, Group 2, Al³⁺): <b>water is reduced → H₂</b></li><li>Less active metal ions (Cu²⁺, Ag⁺): <b>metal deposits</b></li></ul></div>
+<div class="card c1"><h4>Anode (+) — what is oxidized?</h4><ul><li>Concentrated Cl⁻, Br⁻, I⁻: <b>halogen</b> forms</li><li>SO₄²⁻, NO₃⁻: <b>water is oxidized → O₂</b></li></ul></div></div>
+<div class="ex"><h5>Brine — concentrated NaCl(aq) (Figure 20)</h5>
+<p>Cathode: 2H₂O + 2e⁻ → H₂ + 2OH⁻ &nbsp; Anode: 2Cl⁻ → Cl₂ + 2e⁻</p>
+<div class="eq good">2NaCl(aq) + 2H₂O(l) → H₂(g) + Cl₂(g) + 2NaOH(aq)</div>
+<p>Three useful products: <b>hydrogen, chlorine and sodium hydroxide</b> (Na⁺ stays in solution with OH⁻).</p></div>
+<div class="ex"><h5>Compare</h5><table class="tbl"><tr><th>Electrolyte</th><th>Cathode</th><th>Anode</th></tr>
+<tr><td>NaCl (molten)</td><td>Na</td><td>Cl₂</td></tr><tr><td>NaCl (conc. aq)</td><td>H₂</td><td>Cl₂</td></tr>
+<tr><td>KI (aq)</td><td>H₂</td><td>I₂</td></tr><tr><td>CuSO₄ (aq), inert electrodes</td><td>Cu</td><td>O₂</td></tr>
+<tr><td>Na₂SO₄ (aq) / water</td><td>H₂</td><td>O₂</td></tr></table></div>`,
+checks:[
+{q:'Products when concentrated aqueous NaCl is electrolyzed with inert electrodes?',o:['H₂, Cl₂ and NaOH(aq)','Na, Cl₂ and H₂O','H₂, O₂ and NaCl(s)','Na and O₂'],a:0,e:'Water is reduced to H₂ + OH⁻; Cl⁻ oxidized to Cl₂; Na⁺ stays with OH⁻ → NaOH.',w:['','Na⁺ is not reduced in water — water is reduced instead.','Concentrated Cl⁻ gives Cl₂, not O₂.','Sodium metal cannot form in aqueous solution.']},
+{q:'Cathode half-reaction in electrolysis of aqueous NaCl?',o:['2H₂O + 2e⁻ → H₂ + 2OH⁻','Na⁺ + e⁻ → Na','2Cl⁻ → Cl₂ + 2e⁻','2H₂O → O₂ + 4H⁺ + 4e⁻'],a:0,e:'Water is more easily reduced than Na⁺.',w:['','Na⁺ is much harder to reduce than water.','That is oxidation at the anode.','That is water oxidation (anode).']},
+{q:'Electrolysis of aqueous CuSO₄ with inert electrodes produces…',o:['Cu at the cathode and O₂ at the anode','H₂ at the cathode and O₂ at the anode','Cu at the cathode and SO₂ at the anode','H₂ at the cathode and S at the anode'],a:0,e:'Cu²⁺ is easily reduced; sulfate is not oxidized, so water gives O₂.',w:['','Cu²⁺ is reduced in preference to water.','Sulfate is not oxidized in electrolysis.','Neither of these happens.']}
+]});
+
+L.push({
+id:30, unit:'E', title:'Electroplating',
+outcome:'Define electroplating while describing how it works, identifying anode, cathode and electrolyte needed for an electrolytic cell in which a selected metal is to be plated on an object (car or spoon,… etc)', ref:'Figure 22 + textbook', pages:'51, 52',
+video:{id:'NClagKbLUMM', t:'Electroplating — Tyler DeWitt'},
+fig:'plating',
+html:`
+<div class="key"><h4>Definition</h4><p><b>Electroplating</b> is the use of <b>electrolysis</b> to deposit a <b>thin layer of a metal</b> onto the surface of another object (for protection against corrosion or for appearance).</p></div>
+<div class="key"><h4>The 3-part recipe</h4>
+<table class="tbl"><tr><th>Part</th><th>What to use</th><th>Connected to</th></tr>
+<tr><td><b>Cathode</b></td><td>the <b>object to be plated</b> (spoon, fork, car bumper)</td><td><b>negative</b> terminal</td></tr>
+<tr><td><b>Anode</b></td><td>a bar of the <b>plating metal</b> (silver, chromium, copper…)</td><td><b>positive</b> terminal</td></tr>
+<tr><td><b>Electrolyte</b></td><td>a solution containing <b>ions of the plating metal</b> (e.g., Ag⁺ / AgNO₃)</td><td>—</td></tr></table></div>
+<div class="ex"><h5>Silver-plating a spoon (Figure 22)</h5>
+<p>Anode: <span class="eq-in">Ag(s) → Ag⁺(aq) + e⁻</span> (silver bar dissolves)</p>
+<p>Cathode: <span class="eq-in">Ag⁺(aq) + e⁻ → Ag(s)</span> (silver coats the spoon)</p>
+<p>The Ag⁺ concentration stays constant: every Ag⁺ deposited is replaced by one from the anode.</p></div>
+<div class="ex"><h5>Chrome-plating a car part</h5><p>Car bumper = cathode; chromium = anode (or inert anode); electrolyte containing Cr³⁺ ions (chromium compound). Cathode: Cr³⁺ + 3e⁻ → Cr.</p></div>
+<div class="mnemo">🧠 <b>“Coat the Cathode”</b> — the object you want coated is always the <b>cathode</b> (−), because positive metal ions are attracted to it and reduced there.</div>`,
+checks:[
+{q:'When an iron fork is silver-plated, which part is the cathode?',o:['The iron fork','The silver bar','The electrolyte','The power supply'],a:0,e:'The object being plated is always the cathode, where Ag⁺ is reduced to Ag.',w:['','The silver bar is the anode (it dissolves).','The electrolyte is the solution of Ag⁺.','The power supply is the energy source, not an electrode.']},
+{q:'In silver electroplating with a silver anode, which reaction occurs at the anode?',o:['Ag(s) → Ag⁺(aq) + e⁻','Ag⁺(aq) + e⁻ → Ag(s)','2H₂O → O₂ + 4H⁺ + 4e⁻','Fe → Fe²⁺ + 2e⁻'],a:0,e:'The silver anode is oxidized, replacing the Ag⁺ that is plated out.',w:['','That is the cathode (reduction) reaction.','The active silver anode is oxidized instead of water.','The fork is the cathode, so it is not oxidized.']},
+{q:'Which electrolyte is needed to plate copper onto a key?',o:['A solution containing Cu²⁺ ions (e.g., CuSO₄)','A solution of NaCl','Pure distilled water','A solution containing Zn²⁺ ions'],a:0,e:'The electrolyte must contain ions of the plating metal.',w:['','NaCl gives no copper ions.','Pure water barely conducts and has no Cu²⁺.','Zn²⁺ would plate zinc, not copper.']}
+]});
+
+// Exam questions: X(goal, question, [correct, wrong1, wrong2, wrong3], explanation, [ '', whyWrong1, whyWrong2, whyWrong3 ])
+// The first option is always the correct one in this file; the app shuffles options at runtime.
+var EX = window.EXAMS = window.EXAMS || [];
+function X(g,q,o,e,w){return {g:g,q:q,o:o,a:0,e:e,w:w||[]};}
+
+EX.push({id:1, name:'Exam 1', level:'Easy', tag:'Foundation', color:'#16a34a',
+desc:'Direct definitions and one-step questions. Build confidence and check you know every rule.',
+qs:[
+X(1,'Reduction is defined as…',['gain of electrons','loss of electrons','gain of oxygen','loss of hydrogen'],'RIG: Reduction Is Gain of electrons (also loss of oxygen / gain of hydrogen).',['','Loss of electrons is oxidation.','Gain of oxygen is oxidation.','Loss of hydrogen is oxidation.']),
+X(2,'The oxidation number of an atom in an ionic compound equals…',['the number of electrons lost or gained by the atom when it forms an ion','the mass number of the atom','the number of neutrons','the number of energy levels'],'Textbook definition (p. 5).',['','Mass number has nothing to do with electron transfer.','Neutrons are not involved in bonding.','Energy levels are not counted.']),
+X(3,'A reducing agent is a substance that…',['loses electrons and is oxidized','gains electrons and is reduced','gains electrons and is oxidized','loses electrons and is reduced'],'The reducing agent donates electrons, so it is itself oxidized.',['','That is the oxidizing agent.','Gaining electrons is reduction.','Losing electrons is oxidation.']),
+X(4,'In 2Na + Cl₂ → 2NaCl, the oxidizing agent is…',['Cl₂','Na','NaCl','Na⁺'],'Cl: 0 → −1, so Cl₂ gains electrons and is reduced → oxidizing agent.',['','Na is oxidized → reducing agent.','NaCl is the product.','Na⁺ is formed in the product.']),
+X(5,'In C + O₂ → CO₂, the reducing agent is…',['C','O₂','CO₂','There is none'],'C: 0 → +4 (oxidized) → reducing agent.',['','O₂ is reduced → oxidizing agent.','CO₂ is a product.','Oxidation numbers change, so it is redox.']),
+X(6,'An INCREASE in the oxidation number of an atom means the atom has been…',['oxidized','reduced','neutralized','unchanged'],'Losing negative electrons makes the number more positive → oxidation.',['','Reduction is a decrease.','Neutralization is an acid–base reaction.','A change happened.']),
+X(7,'What is the oxidation number of Fe in solid iron metal, Fe(s)?',['0','+2','+3','−2'],'Any uncombined element has oxidation number 0.',['','+2 is Fe in Fe²⁺ / FeO.','+3 is Fe in Fe³⁺ / Fe₂O₃.','Metals are never negative.']),
+X(8,'What is the oxidation number of S in SO₄²⁻?',['+6','+4','−2','+8'],'x + 4(−2) = −2 → x = +6.',['','+4 is S in SO₃²⁻ or SO₂.','−2 is S in sulfide.','You forgot the −2 charge of the ion: sum = −2, not 0.']),
+X(9,'What is the oxidation number of N in HNO₃?',['+5','+3','−3','+6'],'+1 + x + 3(−2) = 0 → x = +5.',['','+3 is N in HNO₂.','−3 is N in NH₃.','Recheck: 1 + 6 − 6 = 1 ≠ 0.']),
+X(10,'In 2Mg + O₂ → 2MgO, which element is oxidized?',['Mg','O','Both','Neither'],'Mg: 0 → +2 (increase).',['','O: 0 → −2 is reduction.','Only Mg increases.','Oxidation numbers change.']),
+X(11,'In Zn + Cu²⁺ → Zn²⁺ + Cu, which species is reduced?',['Cu²⁺','Zn','Zn²⁺','Cu'],'Cu: +2 → 0 (decrease).',['','Zn is oxidized.','Zn²⁺ is a product.','Cu is the product of reduction.']),
+X(12,'When balancing a half-reaction in ACIDIC solution, hydrogen atoms are balanced by adding…',['H⁺','H₂O','OH⁻','H₂'],'Order: other atoms → O with H₂O → H with H⁺ → charge with e⁻.',['','H₂O balances oxygen.','OH⁻ is used only for basic solution.','H₂ is never added to balance.']),
+X(13,'Which is the correctly balanced reduction half-reaction for chlorine?',['Cl₂ + 2e⁻ → 2Cl⁻','Cl₂ → 2Cl⁻ + 2e⁻','Cl₂ + e⁻ → Cl⁻','Cl₂ + 2e⁻ → Cl⁻'],'2 Cl atoms each gain 1 e⁻; charge: −2 = −2 ✔.',['','Electrons on the right = oxidation, and charge does not balance.','Cl atoms not balanced.','Cl atoms and charge not balanced.']),
+X(14,'Balance: _Fe³⁺ + Zn → _Fe²⁺ + Zn²⁺. The coefficient of Fe³⁺ is…',['2','1','3','4'],'Zn gives 2e⁻; each Fe³⁺ accepts 1e⁻ → 2Fe³⁺ + Zn → 2Fe²⁺ + Zn²⁺. Charge: +6 = +6.',['','Charge: 3 ≠ 4 → not balanced.','Electrons: 3 gained vs 2 lost.','Too many electrons.']),
+X(15,'How many electrons appear in NO₃⁻ + 4H⁺ + _e⁻ → NO + 2H₂O ?',['3','4','5','1'],'Left charge before e⁻: −1 + 4 = +3; right = 0 → 3e⁻. (N: +5 → +2.)',['','4 is the H⁺ count.','5 would be the N oxidation number.','Charge would not balance.']),
+X(16,'An equation balanced in BASIC solution must not contain…',['H⁺','OH⁻','H₂O','spectator ions written separately'],'All H⁺ are neutralized with OH⁻ to form water.',['','Basic solutions contain OH⁻.','Water is allowed.','Not a rule of the method.']),
+X(17,'Which half-reaction is correctly balanced for BASIC solution?',['O₂ + 2H₂O + 4e⁻ → 4OH⁻','O₂ + 4H⁺ + 4e⁻ → 2H₂O','O₂ + 2e⁻ → 2OH⁻','O₂ + H₂O → 2OH⁻'],'4 O, 4 H and charge −4 on both sides; no H⁺.',['','That is the acidic form (H⁺ present).','H and charge not balanced.','No electrons; H and charge not balanced.']),
+X(18,'A voltaic (galvanic) cell converts…',['chemical energy into electrical energy','electrical energy into chemical energy','heat into electrical energy','light into chemical energy'],'Spontaneous redox → electric current.',['','That is an electrolytic cell.','That is a thermocouple.','That is photosynthesis.']),
+X(19,'In a voltaic cell, electrons travel through the…',['external wire','salt bridge','electrolyte solution','porous barrier'],'Only electrons in the wire; only ions in solutions and salt bridge.',['','The salt bridge carries ions.','Solutions conduct by ions.','The barrier lets ions through.']),
+X(20,'In a Zn–Cu voltaic cell, the cathode half-reaction is…',['Cu²⁺ + 2e⁻ → Cu','Zn → Zn²⁺ + 2e⁻','Cu → Cu²⁺ + 2e⁻','Zn²⁺ + 2e⁻ → Zn'],'Reduction at the cathode (RED CAT).',['','That is the anode (oxidation).','Copper is not oxidized here.','Zinc ions are not reduced here.']),
+X(21,'A half-cell with a large POSITIVE standard reduction potential has…',['a strong tendency to be reduced','a strong tendency to be oxidized','no tendency to react','the same tendency as the SHE'],'High E° = gains electrons easily = strong oxidizing agent.',['','Large negative E° means easily oxidized.','It reacts readily.','The SHE is 0.00 V.']),
+X(22,'The standard hydrogen electrode consists of…',['a platinum electrode in 1 M H⁺ with H₂ gas at 1 atm, 25 °C','a copper electrode in 1 M CuSO₄','a zinc electrode in 1 M H⁺','a platinum electrode in pure water with O₂ gas'],'Inert Pt, 1 M H⁺, H₂ at 1 atm, 25 °C, E° = 0.00 V.',['','That is a copper half-cell.','Zinc would react with acid.','Needs H⁺ and H₂, not water and O₂.']),
+X(23,'E°(Cu²⁺/Cu) = +0.34 V, E°(Zn²⁺/Zn) = −0.76 V. E°cell for the Zn–Cu cell is…',['+1.10 V','+0.42 V','−1.10 V','−0.42 V'],'E°cell = E°cathode − E°anode = 0.34 − (−0.76) = +1.10 V.',['','You did 0.34 + (−0.76) in absolute terms — subtract the anode.','Reversed; the spontaneous cell is positive.','Wrong arithmetic and sign.']),
+X(24,'In standard cell notation, the anode is written…',['on the left','on the right','in the middle','above the salt bridge'],'Anode | anode ion ‖ cathode ion | cathode.',['','The cathode is on the right.','‖ (the salt bridge) is in the middle.','Notation is a single line.']),
+X(25,'A redox reaction has E°cell = −0.50 V. It is…',['non-spontaneous as written','spontaneous as written','at equilibrium','impossible in either direction'],'Negative E°cell → non-spontaneous; the reverse is spontaneous.',['','Spontaneous needs E°cell > 0.','Only at E = 0.','The reverse direction is spontaneous.']),
+X(26,'In an ELECTROLYTIC cell, the anode is…',['positive','negative','neutral','the electrode where reduction occurs'],'In electrolysis the anode is connected to the + terminal.',['','Negative anode is in a voltaic cell.','Electrodes are charged.','Reduction is always at the cathode.']),
+X(27,'To reverse the spontaneous reaction of a voltaic cell you need…',['an external power supply','a longer salt bridge','a catalyst','to cool the cell'],'Electrical energy drives the non-spontaneous reverse reaction.',['','The salt bridge only balances charge.','A catalyst cannot reverse a reaction.','Temperature alone will not reverse it.']),
+X(28,'Molten KCl is electrolyzed. Which product forms at the anode?',['Cl₂','K','H₂','O₂'],'Anode (oxidation): 2Cl⁻ → Cl₂ + 2e⁻.',['','Potassium forms at the cathode.','No water present.','No oxygen present.']),
+X(29,'Water containing a little sulfuric acid is electrolyzed. The products are…',['H₂ at the cathode and O₂ at the anode','O₂ at the cathode and H₂ at the anode','H₂ and SO₂','only H₂'],'Cathode: water/H⁺ reduced to H₂; anode: water oxidized to O₂ (2:1 volume).',['','Reversed electrodes.','Sulfate is not reduced to SO₂ here.','Oxygen also forms.']),
+X(30,'Electroplating is…',['using electrolysis to deposit a thin layer of metal on an object','dipping an object in molten metal','painting a metal with a protective layer','using a voltaic cell to dissolve a metal'],'Electroplating is an application of electrolysis (electrolytic cell).',['','That is hot-dip galvanizing.','Painting is not electrochemical.','It uses an electrolytic, not voltaic, cell.'])
+]});
+
+EX.push({id:2, name:'Exam 2', level:'Hard', tag:'Standard', color:'#2563eb',
+desc:'Typical exam difficulty: apply the rules to new reactions and calculate.',
+qs:[
+X(1,'In 2Fe₂O₃ + 3C → 4Fe + 3CO₂, which substance is oxidized because it GAINS oxygen?',['C','Fe₂O₃','Fe','CO₂'],'Carbon gains oxygen (C → CO₂) → oxidized. Fe₂O₃ loses oxygen → reduced.',['','Fe₂O₃ LOSES oxygen → reduced.','Fe is a product.','CO₂ is a product.']),
+X(2,'Which statement about oxidation numbers is TRUE?',['They can be assigned to atoms in covalent molecules, not only to ions','They are always whole numbers','They equal the number of valence electrons','They are always positive for every element in a compound'],'Oxidation numbers are bookkeeping charges for any atom, e.g., C in CO₂ = +4.',['','Averages can be fractional (Fe in Fe₃O₄ = +8/3).','They depend on bonding, not valence electrons.','The more electronegative atom gets a negative number.']),
+X(3,'Which statement is correct?',['The oxidizing agent is reduced and its oxidation number decreases','The oxidizing agent loses electrons','The reducing agent’s oxidation number decreases','A substance can be oxidized without another being reduced'],'Oxidizing agent: accepts e⁻, is reduced, number decreases.',['','It gains electrons.','The reducing agent’s number increases.','Oxidation and reduction always occur together.']),
+X(4,'In 2Al + 3Cu²⁺ → 2Al³⁺ + 3Cu, how many electrons are transferred in total?',['6','3','2','5'],'2 Al × 3e⁻ = 6e⁻ lost; 3 Cu²⁺ × 2e⁻ = 6e⁻ gained.',['','That is for one Al atom.','That is for one Cu²⁺.','No combination gives 5.']),
+X(5,'In SnCl₂ + 2FeCl₃ → SnCl₄ + 2FeCl₂, the reducing agent is…',['SnCl₂','FeCl₃','SnCl₄','FeCl₂'],'Sn: +2 → +4 (oxidized) → SnCl₂ is the reducing agent. Fe: +3 → +2.',['','FeCl₃ is reduced → oxidizing agent.','Product.','Product.']),
+X(6,'Which change is an OXIDATION?',['Cr³⁺ → CrO₄²⁻','MnO₄⁻ → Mn²⁺','Cl₂ → Cl⁻','Fe³⁺ → Fe²⁺'],'Cr: +3 → +6 (increase).',['','Mn: +7 → +2 (reduction).','Cl: 0 → −1 (reduction).','Fe: +3 → +2 (reduction).']),
+X(7,'Which list is in order of INCREASING oxidation number of chlorine?',['HCl, Cl₂, HClO, HClO₄','HClO₄, HClO, Cl₂, HCl','Cl₂, HCl, HClO, HClO₄','HCl, HClO, Cl₂, HClO₄'],'HCl −1, Cl₂ 0, HClO +1, HClO₄ +7.',['','This is decreasing order.','HCl (−1) is lower than Cl₂ (0).','HClO (+1) is higher than Cl₂ (0).']),
+X(8,'What is the oxidation number of O in sodium peroxide, Na₂O₂?',['−1','−2','+1','0'],'2(+1) + 2x = 0 → x = −1 (peroxide).',['','−2 is normal oxide, not peroxide.','O is more electronegative than Na → negative.','O is combined.']),
+X(9,'What is the oxidation number of C in Na₂C₂O₄?',['+3','+4','+2','+6'],'2(+1) + 2x + 4(−2) = 0 → 2x = 6 → x = +3.',['','+4 is C in CO₂.','+2 is C in CO.','+6 is the total for both C atoms.']),
+X(10,'In 3NO₂ + H₂O → 2HNO₃ + NO, nitrogen is…',['both oxidized (to +5) and reduced (to +2)','only oxidized','only reduced','neither oxidized nor reduced'],'N is +4 in NO₂, +5 in HNO₃ and +2 in NO: disproportionation.',['','It is also reduced to NO.','It is also oxidized to HNO₃.','N changes from +4.']),
+X(11,'In Cl₂ + 2KBr → 2KCl + Br₂, which statement is correct?',['Cl₂ is reduced; K⁺ is a spectator','Br⁻ is reduced; K⁺ is oxidized','Cl₂ is oxidized; Br⁻ is reduced','K⁺ is reduced to K'],'Cl: 0 → −1 (reduced); Br: −1 → 0 (oxidized); K stays +1.',['','Br⁻ is oxidized; K⁺ unchanged.','Reversed.','K⁺ stays +1.']),
+X(12,'Balancing MnO₄⁻ → Mn²⁺ in acidic solution, how many H₂O molecules are added, and on which side?',['4, on the product side','4, on the reactant side','8, on the product side','2, on the product side'],'4 O atoms in MnO₄⁻ → add 4H₂O to the right; then 8H⁺ on the left.',['','Water goes where oxygen is missing (the right).','8 is the number of H⁺.','There are 4 oxygen atoms to balance.']),
+X(13,'Which is the oxidation half-reaction for 2Al + 3Cl₂ → 2AlCl₃?',['Al → Al³⁺ + 3e⁻','Cl₂ + 2e⁻ → 2Cl⁻','Al³⁺ + 3e⁻ → Al','2Cl⁻ → Cl₂ + 2e⁻'],'Al loses 3e⁻ (0 → +3).',['','That is the reduction half.','Reverse of what happens.','Chloride is formed, not oxidized.']),
+X(14,'Balance in acid: 2MnO₄⁻ + 5H₂C₂O₄ + _H⁺ → 2Mn²⁺ + 10CO₂ + 8H₂O',['6','16','10','8'],'H: 10 (from H₂C₂O₄) + x = 16 (in 8H₂O) → x = 6. Charge: −2 + 6 = +4 = 2(+2) ✔',['','16 forgets the H already in oxalic acid.','10 does not balance H or charge.','8 does not balance H.']),
+X(15,'For Cr₂O₇²⁻ + Fe²⁺ → Cr³⁺ + Fe³⁺ in acid, the coefficients of H⁺ and Fe²⁺ are…',['14 and 6','7 and 1','14 and 3','6 and 14'],'Cr₂O₇²⁻ + 14H⁺ + 6e⁻ → 2Cr³⁺ + 7H₂O; 6 Fe²⁺ supply 6e⁻.',['','7 is the water coefficient.','3 would only supply 3e⁻.','Reversed.']),
+X(16,'Which is the correctly balanced half-reaction for Ag₂O₃ → AgO in BASIC solution?',['Ag₂O₃ + H₂O + 2e⁻ → 2AgO + 2OH⁻','Ag₂O₃ + 2H⁺ + 2e⁻ → 2AgO + H₂O','Ag₂O₃ → 2AgO + O²⁻','Ag₂O₃ + 2OH⁻ → 2AgO + H₂O + 2e⁻'],'Acid form: Ag₂O₃ + 2H⁺ + 2e⁻ → 2AgO + H₂O; add 2OH⁻ both sides and cancel one H₂O.',['','That is the ACIDIC form.','O²⁻ does not exist free in water.','Ag is reduced (+3 → +2), so electrons must be on the left.']),
+X(17,'Balanced in base: 2MnO₄⁻ + I⁻ + H₂O → 2MnO₂ + IO₃⁻ + _OH⁻',['2','1','4','6'],'H: 2 = 2; charge: −3 = −1 + (−2) ✔.',['','Charge −3 ≠ −2.','Charge −3 ≠ −5.','Charge −3 ≠ −7.']),
+X(18,'Which of the following is NOT a voltaic cell?',['A cell used to electrolyze molten NaCl','A car battery while it starts the engine','A dry cell in a flashlight','A Zn–Cu Daniell cell'],'Electrolysis uses electrical energy → electrolytic cell.',['','Discharging battery = voltaic.','Dry cell = voltaic.','Daniell cell = voltaic.']),
+X(19,'What happens if the salt bridge is removed from a working Zn–Cu cell?',['The current stops because the circuit is broken and charge builds up','Electrons flow faster','Electrons flow through the solution instead','The voltage doubles'],'Without ion flow, half-cells become charged and the circuit is incomplete.',['','Flow stops, not speeds up.','Electrons cannot travel through solution.','The voltage drops to zero.']),
+X(20,'A voltaic cell is made of Ni²⁺/Ni (−0.26 V) and Ag⁺/Ag (+0.80 V). The anode half-reaction is…',['Ni → Ni²⁺ + 2e⁻','Ag → Ag⁺ + e⁻','Ag⁺ + e⁻ → Ag','Ni²⁺ + 2e⁻ → Ni'],'Lower E° (Ni) is oxidized at the anode.',['','Ag has the higher E° → reduced.','That is the cathode reaction.','That is reduction.']),
+X(21,'Which metal is the strongest reducing agent? Mg²⁺/Mg −2.37 V; Zn²⁺/Zn −0.76 V; Fe²⁺/Fe −0.45 V; Cu²⁺/Cu +0.34 V',['Mg','Zn','Fe','Cu'],'Most negative E° → most easily oxidized → strongest reducing agent.',['','Less negative than Mg.','Less negative than Mg.','Cu is the weakest reducing agent here.']),
+X(22,'The SHE is connected to a Zn²⁺/Zn half-cell (−0.76 V). What happens at the SHE?',['2H⁺ + 2e⁻ → H₂ (cathode)','H₂ → 2H⁺ + 2e⁻ (anode)','Zn²⁺ is reduced on platinum','Nothing — it is a reference'],'Zn has the lower E° → anode; the SHE is the cathode where H⁺ is reduced.',['','The SHE is the anode only against positive E° half-cells.','Zn²⁺ is not reduced; Zn is oxidized.','The reference still reacts.']),
+X(23,'E°(Ni²⁺/Ni) = −0.26 V, E°(Ag⁺/Ag) = +0.80 V. What is E°cell?',['+1.06 V','+0.54 V','−1.06 V','+1.86 V'],'0.80 − (−0.26) = +1.06 V.',['','You did 0.80 − 0.26.','Reversed sign.','You doubled silver’s E° (never multiply E°).']),
+X(24,'Which is the correct cell notation for the Ni–Ag cell?',['Ni(s) | Ni²⁺(aq) ‖ Ag⁺(aq) | Ag(s)','Ag(s) | Ag⁺(aq) ‖ Ni²⁺(aq) | Ni(s)','Ni²⁺(aq) | Ni(s) ‖ Ag(s) | Ag⁺(aq)','Ni(s) ‖ Ni²⁺(aq) | Ag⁺(aq) ‖ Ag(s)'],'Anode (Ni) on the left, cathode (Ag) on the right.',['','Silver would be the anode → non-spontaneous.','Electrode/ion order wrong.','Single and double lines used wrongly.']),
+X(25,'Will copper metal react with silver ions? Cu + 2Ag⁺ → Cu²⁺ + 2Ag (Cu²⁺/Cu +0.34 V; Ag⁺/Ag +0.80 V)',['Yes, E°cell = +0.46 V','No, E°cell = −0.46 V','Yes, E°cell = +1.14 V','No, E°cell = −1.14 V'],'Ag⁺ reduced (cathode): 0.80 − 0.34 = +0.46 V → spontaneous.',['','Sign reversed.','You added the potentials.','Wrong in sign and value.']),
+X(26,'In an electrolytic cell, electrons enter the cell at the…',['cathode, from the negative terminal of the power supply','anode, from the positive terminal','cathode, from the positive terminal','salt bridge'],'The − terminal pushes electrons into the cathode, where reduction occurs.',['','Electrons LEAVE the anode toward the + terminal.','The cathode is connected to the − terminal.','Electrons never move through ions/bridges.']),
+X(27,'What is the minimum external voltage needed to reverse a standard Ni–Ag cell (E°cell = 1.06 V)?',['Greater than 1.06 V','0.53 V','Exactly 0 V','Any voltage in the same direction'],'The supply must overcome the cell’s own voltage.',['','Too small.','No reversal at zero.','It must OPPOSE the cell.']),
+X(28,'Aluminium is produced by electrolysis of molten Al₂O₃. The cathode half-reaction is…',['Al³⁺ + 3e⁻ → Al','Al → Al³⁺ + 3e⁻','2O²⁻ → O₂ + 4e⁻','O₂ + 4e⁻ → 2O²⁻'],'Molten salt: metal ion reduced at the cathode.',['','That is oxidation.','That is the anode reaction.','O₂ is formed, not consumed.']),
+X(29,'Aqueous KI is electrolyzed with inert electrodes. Products at cathode and anode are…',['H₂ and I₂','K and I₂','H₂ and O₂','K and O₂'],'K⁺ is too hard to reduce → water gives H₂; I⁻ is oxidized to I₂.',['','K cannot form in water.','Iodide is oxidized before water.','Neither forms.']),
+X(30,'A car bumper is chrome-plated. The bumper is…',['the cathode, connected to the negative terminal','the anode, connected to the positive terminal','the cathode, connected to the positive terminal','the electrolyte'],'The object to be plated is always the cathode, where Cr³⁺ is reduced.',['','The chromium source is the anode.','Cathode = negative in electrolysis.','The electrolyte is the solution of chromium ions.'])
+]});
+
+var EX = window.EXAMS = window.EXAMS || [];
+
+EX.push({id:3, name:'Exam 3', level:'Harder', tag:'Challenging', color:'#d97706',
+desc:'Multi-step questions, less familiar species, and tricky balancing.',
+qs:[
+X(1,'In 2H₂S + SO₂ → 3S + 2H₂O, which statement is correct?',['H₂S loses hydrogen (oxidized); SO₂ loses oxygen (reduced)','H₂S gains oxygen (oxidized); SO₂ gains hydrogen (reduced)','H₂S is reduced; SO₂ is oxidized','Neither is oxidized because S appears on both sides'],'H₂S → S: loses H (S: −2 → 0, oxidized). SO₂ → S: loses O (S: +4 → 0, reduced).',['','H₂S does not gain oxygen.','Reversed.','Same element can be oxidized in one compound and reduced in another.']),
+X(2,'Why is chlorine assigned −1 in the covalent molecule HCl?',['Cl is more electronegative, so the shared electrons are assigned to Cl','HCl contains a real Cl⁻ ion','Cl is in Group 17, so it is always −1','H is always −1'],'Rule: shared electrons are assigned to the more electronegative atom.',['','HCl(g) is covalent; the charge is a bookkeeping value.','Cl is positive in ClO⁻, ClO₃⁻, etc.','H is +1 here (−1 only in metal hydrides).']),
+X(3,'F₂ is the strongest oxidizing agent. This means F₂…',['most readily accepts electrons and is itself reduced','most readily loses electrons','is most easily oxidized','has the most negative reduction potential'],'Strong oxidizing agent = strong electron acceptor = highest E°.',['','That describes a strong reducing agent.','Oxidizing agents are reduced.','F₂ has the most POSITIVE E° (+2.87 V).']),
+X(4,'For 2Fe³⁺ + 2I⁻ → 2Fe²⁺ + I₂, which is correct?',['Oxidizing agent Fe³⁺, reducing agent I⁻, 2 electrons transferred','Oxidizing agent I⁻, reducing agent Fe³⁺, 2 electrons transferred','Oxidizing agent Fe³⁺, reducing agent I⁻, 1 electron transferred','Oxidizing agent I₂, reducing agent Fe²⁺, 2 electrons transferred'],'Fe³⁺ → Fe²⁺ gains 1e⁻ ×2; 2I⁻ → I₂ loses 2e⁻.',['','Roles reversed.','Total transferred is 2 for the equation as written.','These are products.']),
+X(5,'In 3Cu + 8HNO₃ → 3Cu(NO₃)₂ + 2NO + 4H₂O, the oxidizing agent is…',['HNO₃','Cu','NO','Cu(NO₃)₂'],'N: +5 → +2 in NO (only 2 of the 8 HNO₃ are reduced).',['','Cu is oxidized (0 → +2) → reducing agent.','Product.','Product.']),
+X(6,'In which conversion is the underlined element REDUCED? (S in each)',['SO₄²⁻ → SO₂','S²⁻ → S','SO₃²⁻ → SO₄²⁻','S → SO₂'],'S: +6 → +4 (decrease).',['','−2 → 0: oxidation.','+4 → +6: oxidation.','0 → +4: oxidation.']),
+X(7,'In which pair does chlorine have the SAME oxidation number?',['HClO₄ and Cl₂O₇','ClO₂ and ClO₂⁻','NaClO and NaClO₂','Cl₂O and ClO₃⁻'],'HClO₄: +7; Cl₂O₇: 2x − 14 = 0 → +7.',['','ClO₂: +4; ClO₂⁻: +3.','+1 and +3.','+1 and +5.']),
+X(8,'In which compound is hydrogen assigned −1?',['LiAlH₄','NH₃','H₂O','HCl'],'LiAlH₄ is a metal hydride: +1 + 3 + 4x = 0 → x = −1.',['','H is +1 (N more electronegative).','H is +1.','H is +1.']),
+X(9,'What is the oxidation number of C in glucose, C₆H₁₂O₆?',['0','+4','−4','+6'],'6x + 12(+1) + 6(−2) = 0 → x = 0 (average).',['','+4 is C in CO₂.','−4 is C in CH₄.','No.']),
+X(10,'In 2KMnO₄ + 16HCl → 2KCl + 2MnCl₂ + 5Cl₂ + 8H₂O, which element is oxidized?',['Cl, from −1 to 0','Mn, from +7 to +2','K, from +1 to 0','O, from −2 to 0'],'Some chloride is oxidized to Cl₂.',['','Mn decreases → reduced.','K stays +1.','O stays −2.']),
+X(11,'In 2NaN₃ → 2Na + 3N₂ (air-bag reaction), which element is REDUCED?',['Na, from +1 to 0','N, from −1/3 to 0','Na, from 0 to +1','No element is reduced'],'Na⁺ (+1) → Na (0) is reduced; N (−⅓ average) → 0 is oxidized.',['','N increases → oxidized.','Direction wrong — Na starts as +1 in NaN₃.','Na is reduced.']),
+X(12,'Which half-reaction is correctly balanced in ACIDIC solution?',['SO₄²⁻ + 4H⁺ + 2e⁻ → SO₂ + 2H₂O','SO₄²⁻ + 2H⁺ + 2e⁻ → SO₂ + H₂O','SO₄²⁻ + 4H⁺ → SO₂ + 2H₂O + 2e⁻','SO₄²⁻ + 4H⁺ + 4e⁻ → SO₂ + 2H₂O'],'O: 4 = 2 + 2 ✔; H: 4 = 4 ✔; charge: −2 + 4 − 2 = 0 ✔.',['','O not balanced (4 vs 3).','Reduction needs electrons on the left; charge fails.','Charge: −2 + 4 − 4 = −2 ≠ 0.']),
+X(13,'For 2MnO₄⁻ + 5SO₂ + 2H₂O → 2Mn²⁺ + 5SO₄²⁻ + 4H⁺, the oxidation half-reaction is…',['SO₂ + 2H₂O → SO₄²⁻ + 4H⁺ + 2e⁻','MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O','SO₄²⁻ + 4H⁺ + 2e⁻ → SO₂ + 2H₂O','SO₂ + O₂ → SO₄²⁻'],'S: +4 → +6, loses 2e⁻.',['','That is the reduction half.','That is the reverse (reduction).','Not a balanced half-reaction.']),
+X(14,'Balance in acid: _Zn + NO₃⁻ + 10H⁺ → _Zn²⁺ + NH₄⁺ + 3H₂O. The Zn coefficient is…',['4','2','8','1'],'N: +5 → −3 = 8e⁻ gained; each Zn gives 2e⁻ → 4 Zn. Charge: −1 + 10 = 9 = 8 + 1 ✔',['','Only 4e⁻ supplied.','16e⁻ — too many.','Only 2e⁻.']),
+X(15,'Balance in acid: _H₂O₂ + 2MnO₄⁻ + _H⁺ → 5O₂ + 2Mn²⁺ + 8H₂O. The coefficients of H₂O₂ and H⁺ are…',['5 and 6','5 and 16','2 and 6','5 and 8'],'H₂O₂ → O₂ + 2H⁺ + 2e⁻ (×5); MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O (×2). Net H⁺: 16 − 10 = 6.',['','Forgot that H₂O₂ releases 10 H⁺ that cancel.','H₂O₂ must match 5 O₂.','8 is the water coefficient.']),
+X(16,'The acidic equation ClO₃⁻ + 3SO₂ + 3H₂O → Cl⁻ + 3SO₄²⁻ + 6H⁺ is converted to BASIC solution. The result is…',['ClO₃⁻ + 3SO₂ + 6OH⁻ → Cl⁻ + 3SO₄²⁻ + 3H₂O','ClO₃⁻ + 3SO₂ + 3H₂O + 6OH⁻ → Cl⁻ + 3SO₄²⁻ + 6H₂O','ClO₃⁻ + 3SO₂ → Cl⁻ + 3SO₄²⁻ + 6OH⁻','ClO₃⁻ + 3SO₂ + 3OH⁻ → Cl⁻ + 3SO₄²⁻ + 3H⁺'],'Add 6OH⁻ both sides → 6H₂O on right; cancel 3H₂O.',['','Correct idea but waters not cancelled.','O, H and charge not balanced.','H⁺ cannot remain in base.']),
+X(17,'Balanced in base: 2Cr(OH)₃ + ClO₃⁻ + 4OH⁻ → 2CrO₄²⁻ + Cl⁻ + _H₂O',['5','4','3','7'],'H: 6 + 4 = 10 → 5H₂O. O: 6 + 3 + 4 = 13 = 8 + 5 ✔',['','H: 10 ≠ 8.','H: 10 ≠ 6.','H: 10 ≠ 14.']),
+X(18,'Which statement explains why the anode of a voltaic cell is NEGATIVE?',['Oxidation releases electrons there, so electrons accumulate on it','Cations are attracted to it','It is connected to the negative terminal of a battery','Reduction occurs there'],'Electrons are produced at the anode, giving it a negative charge.',['','Cations move toward the cathode.','That describes an electrolytic cathode.','Reduction is at the cathode.']),
+X(19,'In Mg | Mg²⁺ ‖ Ag⁺ | Ag with a KNO₃ salt bridge, the NO₃⁻ ions move…',['toward the Mg half-cell','toward the Ag half-cell','into the wire','they do not move'],'Mg²⁺ forms at the anode (excess + charge) → anions move there.',['','K⁺ ions move toward the Ag (cathode) side.','Ions never enter the wire.','Ion movement keeps the cell working.']),
+X(20,'A voltaic cell uses Al³⁺/Al (−1.66 V) and Ni²⁺/Ni (−0.26 V). The overall reaction is…',['2Al + 3Ni²⁺ → 2Al³⁺ + 3Ni','3Ni + 2Al³⁺ → 3Ni²⁺ + 2Al','Al + Ni²⁺ → Al³⁺ + Ni','2Al + 3Ni → 2Al³⁺ + 3Ni²⁺'],'Al (lower E°) oxidized; Ni²⁺ reduced; 6e⁻ balance.',['','Non-spontaneous direction.','Charge not balanced (+2 vs +3).','Both oxidized — impossible.']),
+X(21,'E°: X²⁺/X = −0.40 V, Y²⁺/Y = +0.15 V, Z²⁺/Z = −1.20 V. Which metal is the strongest reducing agent?',['Z','X','Y','All equal'],'Most negative E° → most easily oxidized.',['','X is weaker than Z.','Y is the weakest reducing agent.','Different E° values.']),
+X(22,'A metal M is connected to the SHE. The voltmeter reads 0.44 V and M is the anode. E°(M²⁺/M) is…',['−0.44 V','+0.44 V','0.00 V','+0.88 V'],'E°cell = E°cathode − E°anode → 0.44 = 0 − E°(M) → E°(M) = −0.44 V.',['','If M were the cathode it would be +0.44 V.','That is the SHE.','No doubling.']),
+X(23,'E°(Au³⁺/Au) = +1.50 V, E°(Cr³⁺/Cr) = −0.74 V. E°cell for the spontaneous cell is…',['+2.24 V','+0.76 V','−2.24 V','+4.48 V'],'1.50 − (−0.74) = +2.24 V.',['','You did 1.50 − 0.74.','Wrong sign.','Never multiply E°.']),
+X(24,'For Pb(s) | Pb²⁺(aq) ‖ Ag⁺(aq) | Ag(s), the overall reaction is…',['Pb + 2Ag⁺ → Pb²⁺ + 2Ag','Pb²⁺ + 2Ag → Pb + 2Ag⁺','Pb + Ag⁺ → Pb²⁺ + Ag','2Pb + Ag⁺ → 2Pb²⁺ + Ag'],'Left (anode) oxidized: Pb → Pb²⁺ + 2e⁻; right reduced: 2Ag⁺ + 2e⁻ → 2Ag.',['','Reversed.','Charge unbalanced.','Charge and electrons unbalanced.']),
+X(25,'Which metal will NOT react with 1 M HCl to release H₂? (E°: Mg −2.37, Zn −0.76, Fe −0.45, Cu +0.34 V)',['Cu','Zn','Mg','Fe'],'For M + 2H⁺: E°cell = 0 − E°(M). Only Cu gives a negative value (−0.34 V).',['','Zn: +0.76 V → reacts.','Mg: +2.37 V → reacts.','Fe: +0.45 V → reacts.']),
+X(26,'In an electrolytic cell, the electrode connected to the POSITIVE terminal is the…',['anode, where oxidation occurs','cathode, where reduction occurs','anode, where reduction occurs','cathode, where oxidation occurs'],'Positive terminal pulls electrons out of the anode → oxidation.',['','The cathode is connected to the negative terminal.','Reduction never occurs at the anode.','Wrong on both counts.']),
+X(27,'When a lead–acid car battery is RECHARGED…',['it acts as an electrolytic cell driving a non-spontaneous reaction','it acts as a voltaic cell producing energy','the anode and cathode keep the same reactions','no redox reaction occurs'],'Recharging forces the discharge reaction backward using electrical energy.',['','That is discharging.','The reactions reverse, so the electrode roles swap.','Recharging is redox.']),
+X(28,'Molten PbBr₂ is electrolyzed. Which pair of half-reactions is correct?',['Cathode: Pb²⁺ + 2e⁻ → Pb; Anode: 2Br⁻ → Br₂ + 2e⁻','Cathode: 2Br⁻ → Br₂ + 2e⁻; Anode: Pb²⁺ + 2e⁻ → Pb','Cathode: 2H₂O + 2e⁻ → H₂ + 2OH⁻; Anode: 2Br⁻ → Br₂ + 2e⁻','Cathode: Pb → Pb²⁺ + 2e⁻; Anode: Br₂ + 2e⁻ → 2Br⁻'],'Molten: metal at cathode, non-metal at anode.',['','Swapped electrodes.','No water in a melt.','Both reversed.']),
+X(29,'Aqueous Na₂SO₄ is electrolyzed with inert electrodes. What forms?',['H₂ at the cathode and O₂ at the anode','Na at the cathode and SO₂ at the anode','H₂ at the cathode and S at the anode','Na at the cathode and O₂ at the anode'],'Neither Na⁺ nor SO₄²⁻ reacts; water is reduced and oxidized. Na₂SO₄ only improves conductivity.',['','Na⁺ is not reduced in water; sulfate is not oxidized.','Sulfate is not reduced at the anode.','Na cannot form in water.']),
+X(30,'A key is copper-plated using a copper anode and CuSO₄(aq). During plating, the Cu²⁺ concentration…',['stays about the same','increases steadily','decreases to zero','turns into Cu⁺'],'Cu²⁺ removed at the cathode is replaced by Cu²⁺ formed at the copper anode.',['','Equal rates of formation and removal.','The anode keeps supplying Cu²⁺.','Cu²⁺ is reduced to Cu metal, not Cu⁺.'])
+]});
+
+EX.push({id:4, name:'Exam 4', level:'Very Hard', tag:'Expert', color:'#dc2626',
+desc:'Deep understanding: disproportionation, unusual oxidation numbers, reverse-engineering E° values.',
+qs:[
+X(1,'In 2Na + 2H₂O → 2NaOH + H₂, which statement is correct?',['Na is oxidized and the hydrogen in water is reduced','Na gains hydrogen and is reduced','Oxygen is oxidized','It is not a redox reaction'],'Na: 0 → +1; H: +1 (H₂O) → 0 (H₂). O stays −2.',['','Na ends as Na⁺ in NaOH → oxidized.','O stays −2.','Oxidation numbers change.']),
+X(2,'Iron in Fe₃O₄ is assigned +8/3. This fractional value means…',['it is an AVERAGE of Fe atoms in different oxidation states (+2 and +3)','one Fe atom has lost 8/3 electrons','the rules cannot be applied','Fe₃O₄ is not a real compound'],'Fe₃O₄ = FeO·Fe₂O₃: one Fe²⁺ and two Fe³⁺ → average (2 + 6)/3 = +8/3.',['','Electrons cannot be split into thirds per atom.','The rules work — they give an average.','Fe₃O₄ is magnetite.']),
+X(3,'The reaction Br₂ + 2I⁻ → 2Br⁻ + I₂ is spontaneous. Which conclusion is correct?',['Br₂ is a stronger oxidizing agent than I₂','I₂ is a stronger oxidizing agent than Br₂','Br⁻ is a stronger reducing agent than I⁻','Br₂ is oxidized'],'The stronger oxidizing agent (Br₂) takes electrons from the reduced form of the weaker one (I⁻).',['','Then I₂ would oxidize Br⁻ instead.','I⁻ is the stronger reducing agent (it is oxidized).','Br₂ is reduced (0 → −1).']),
+X(4,'In 2KMnO₄ + 5H₂O₂ + 3H₂SO₄ → K₂SO₄ + 2MnSO₄ + 5O₂ + 8H₂O, identify the agents.',['Oxidizing agent KMnO₄; reducing agent H₂O₂','Oxidizing agent H₂O₂; reducing agent KMnO₄','Oxidizing agent H₂SO₄; reducing agent H₂O₂','Oxidizing agent KMnO₄; reducing agent H₂SO₄'],'Mn: +7 → +2 (reduced). O in H₂O₂: −1 → 0 in O₂ (oxidized).',['','Here H₂O₂ is oxidized to O₂ — it is the reducing agent.','S stays +6.','S stays +6.']),
+X(5,'In 2H₂O₂ → 2H₂O + O₂, hydrogen peroxide acts as…',['both the oxidizing agent and the reducing agent','only the oxidizing agent','only the reducing agent','neither — it is not redox'],'O: −1 → −2 (in H₂O, reduced) and −1 → 0 (in O₂, oxidized): disproportionation.',['','It is also oxidized.','It is also reduced.','Oxidation numbers of O change.']),
+X(6,'How many electrons are transferred in 2MnO₄⁻ + 10Cl⁻ + 16H⁺ → 2Mn²⁺ + 5Cl₂ + 8H₂O?',['10','5','2','16'],'2 Mn × 5e⁻ = 10e⁻ = 10 Cl⁻ × 1e⁻.',['','For one Mn only.','Count again.','16 is the H⁺ coefficient.']),
+X(7,'In which pair does nitrogen have the SAME oxidation number?',['NO₂ and N₂O₄','NH₃ and N₂H₄','NO and N₂O','HNO₂ and HNO₃'],'Both +4.',['','−3 and −2.','+2 and +1.','+3 and +5.']),
+X(8,'What is the average oxidation number of S in the tetrathionate ion, S₄O₆²⁻?',['+2.5','+2','+3','+5'],'4x + 6(−2) = −2 → 4x = 10 → x = +2.5.',['','4(2) − 12 = −4 ≠ −2.','4(3) − 12 = 0 ≠ −2.','Way too high.']),
+X(9,'In ammonium dichromate, (NH₄)₂Cr₂O₇, the oxidation numbers of N and Cr are…',['N = −3, Cr = +6','N = +3, Cr = +6','N = −3, Cr = +7','N = +5, Cr = +3'],'NH₄⁺: x + 4 = +1 → −3. Cr₂O₇²⁻: 2y − 14 = −2 → +6.',['','N must be negative (bonded to H).','Cr: 2(7) − 14 = 0 ≠ −2.','Both wrong.']),
+X(10,'In 4FeS₂ + 11O₂ → 2Fe₂O₃ + 8SO₂, which elements are oxidized?',['Both Fe and S','Only Fe','Only S','Only O'],'Fe: +2 → +3; S: −1 (in S₂²⁻) → +4. Oxygen is reduced (0 → −2).',['','S is also oxidized.','Fe is also oxidized.','O is reduced.']),
+X(11,'In 3Cl₂ + 6OH⁻ → 5Cl⁻ + ClO₃⁻ + 3H₂O, what is the ratio of Cl atoms REDUCED to Cl atoms OXIDIZED?',['5 : 1','1 : 5','3 : 1','1 : 1'],'5 Cl go 0 → −1 (gain 5e⁻); 1 Cl goes 0 → +5 (loses 5e⁻).',['','Reversed.','Count the products: 5 Cl⁻ and 1 ClO₃⁻.','Electron balance requires 5:1.']),
+X(12,'A student writes MnO₄⁻ + 8H⁺ + 3e⁻ → Mn²⁺ + 4H₂O. What is wrong?',['Charge is not balanced — it needs 5e⁻','Oxygen is not balanced','Hydrogen is not balanced','Nothing — it is correct'],'Left: −1 + 8 − 3 = +4 ≠ +2. With 5e⁻: +2 = +2.',['','4 O on both sides.','8 H on both sides.','Charge check fails.']),
+X(13,'For 2Cr₂O₇²⁻ + 3C₂H₅OH → 4Cr³⁺ + 3CH₃COOH (acid), the oxidation half-reaction is…',['C₂H₅OH + H₂O → CH₃COOH + 4H⁺ + 4e⁻','C₂H₅OH → CH₃COOH + 2H⁺ + 2e⁻','C₂H₅OH + 4H⁺ + 4e⁻ → CH₃COOH + H₂O','C₂H₅OH + O₂ → CH₃COOH + H₂O'],'C₂H₆O + H₂O → C₂H₄O₂ + 4H⁺ + 4e⁻: O 2 = 2, H 8 = 8, charge 0 = 0.',['','O not balanced (1 vs 2).','Electrons on the wrong side for oxidation.','Not a half-reaction.']),
+X(14,'2Cr₂O₇²⁻ + 3C₂H₅OH + _H⁺ → 4Cr³⁺ + 3CH₃COOH + 11H₂O. The H⁺ coefficient is…',['16','28','12','8'],'Charge: −4 + x = +12 → x = 16. (H: 18 + 16 = 12 + 22 ✔)',['','28 = 2 × 14 without cancelling the H⁺ released by ethanol.','Charge would be +8.','Charge would be +4.']),
+X(15,'Balance in acid: 5PbO₂ + 2Mn²⁺ + 4H⁺ → 5Pb²⁺ + 2MnO₄⁻ + _H₂O. The water term is…',['2H₂O on the product side','4H₂O on the product side','2H₂O on the reactant side','No water is needed'],'O: 10 = 8 + 2; H: 4 = 4.',['','H would be 8 ≠ 4.','O is needed on the product side.','O does not balance without water.']),
+X(16,'Balanced in base: 4Zn + NO₃⁻ + _OH⁻ + 6H₂O → 4Zn(OH)₄²⁻ + NH₃',['7','4','8','6'],'Charge: −1 − x = −8 → x = 7. H: 7 + 12 = 16 + 3 ✔',['','Charge −5 ≠ −8.','Charge −9 ≠ −8.','Charge −7 ≠ −8.']),
+X(17,'Which equation is correctly balanced in BASIC solution?',['3CN⁻ + 2MnO₄⁻ + H₂O → 3CNO⁻ + 2MnO₂ + 2OH⁻','3CN⁻ + 2MnO₄⁻ + 2H⁺ → 3CNO⁻ + 2MnO₂ + H₂O','CN⁻ + MnO₄⁻ → CNO⁻ + MnO₂ + O₂','3CN⁻ + 2MnO₄⁻ → 3CNO⁻ + 2MnO₂ + 2O²⁻'],'O: 8 + 1 = 3 + 4 + 2 ✔; H: 2 = 2 ✔; charge −5 = −5 ✔.',['','Acidic form — H⁺ is not allowed in base.','Not balanced; O₂ is not a product.','Free O²⁻ does not exist in water.']),
+X(18,'Which statement about a voltaic cell is FALSE?',['The cathode is negative because it attracts cations','Electrons flow from anode to cathode in the external circuit','E°cell is positive','Chemical energy is converted to electrical energy'],'In a voltaic cell the cathode is POSITIVE (electrons are consumed there).',['','True.','True — spontaneous.','True.']),
+X(19,'Cu | Cu²⁺ ‖ Ag⁺ | Ag operates for some time. Which observation is expected?',['Cu electrode mass decreases, [Cu²⁺] increases, Ag electrode mass increases','Cu electrode mass increases, [Ag⁺] increases','Both electrodes lose mass','[Cu²⁺] decreases and Ag dissolves'],'Cu is oxidized to Cu²⁺; Ag⁺ is reduced onto the Ag cathode.',['','Reverse of what happens.','Silver deposits — gains mass.','Opposite of what happens.']),
+X(20,'A cell combines Fe³⁺/Fe²⁺ (+0.77 V, Pt electrode) with Cu²⁺/Cu (+0.34 V). The cathode reaction is…',['Fe³⁺ + e⁻ → Fe²⁺','Cu²⁺ + 2e⁻ → Cu','Fe²⁺ → Fe³⁺ + e⁻','Pt → Pt²⁺ + 2e⁻'],'Higher E° (Fe³⁺/Fe²⁺) is reduced at the inert Pt cathode; Cu is the anode.',['','Cu²⁺/Cu has the lower E° → anode (Cu oxidized).','That is oxidation.','Pt is inert — it only conducts.']),
+X(21,'Which species can oxidize Fe²⁺ to Fe³⁺ (+0.77 V) but CANNOT oxidize Cl⁻ to Cl₂ (+1.36 V)?',['Br₂ (+1.07 V)','I₂ (+0.54 V)','F₂ (+2.87 V)','Cu²⁺ (+0.34 V)'],'Its E° must lie between +0.77 and +1.36 V.',['','Too weak to oxidize Fe²⁺.','Strong enough to oxidize Cl⁻ as well.','Too weak.']),
+X(22,'If the reference were changed so that E°(Cu²⁺/Cu) = 0.00 V, then…',['every E° would shift by −0.34 V but all E°cell values stay the same','all E°cell values would change by 0.34 V','the SHE would still be 0.00 V','zinc would become a better oxidizing agent'],'E°cell is a difference, so shifting the zero does not change it. SHE would be −0.34 V.',['','Differences are unaffected.','The SHE would become −0.34 V.','Relative strengths do not change.']),
+X(23,'E°(Al³⁺/Al) = −1.66 V, E°(Ag⁺/Ag) = +0.80 V. E°cell for the spontaneous cell is…',['+2.46 V','+0.86 V','+4.06 V','−2.46 V'],'0.80 − (−1.66) = +2.46 V. Coefficients (3Ag⁺) do NOT multiply E°.',['','You did 1.66 − 0.80.','You tripled the silver potential.','Sign reversed.']),
+X(24,'Correct notation for Zn + 2Fe³⁺ → Zn²⁺ + 2Fe²⁺ (Pt electrode for the iron ions)?',['Zn | Zn²⁺ ‖ Fe³⁺, Fe²⁺ | Pt','Pt | Fe³⁺, Fe²⁺ ‖ Zn²⁺ | Zn','Zn | Zn²⁺ ‖ Fe²⁺ | Fe','Fe | Fe³⁺ ‖ Zn²⁺ | Zn'],'Anode Zn left; both iron ions in the same solution (comma) with inert Pt on the right.',['','Reversed — Zn is the anode.','No Fe metal is involved.','No Fe metal; reversed.']),
+X(25,'X | X²⁺ ‖ Cu²⁺ | Cu has E°cell = +0.60 V. Given E°(Cu²⁺/Cu) = +0.34 V, what is E°(X²⁺/X)?',['−0.26 V','+0.26 V','+0.94 V','−0.94 V'],'0.60 = 0.34 − E°(X) → E°(X) = −0.26 V (this is nickel).',['','Sign error.','You added.','Wrong arithmetic.']),
+X(26,'Which statement is true for BOTH voltaic and electrolytic cells?',['Electrons flow through the external circuit from the anode to the cathode','The anode is negative','The reaction has a positive E°cell','A salt bridge is always needed'],'Electrons always leave the anode (oxidation) and arrive at the cathode (reduction).',['','Positive in electrolytic cells.','Electrolytic reactions have negative E°cell.','Electrolytic cells usually use one container.']),
+X(27,'Electrolysis of water, 2H₂O → 2H₂ + O₂, has E°cell = −1.23 V. What is needed to make it happen?',['An applied voltage of more than 1.23 V','Any voltage above 0 V','A catalyst only','A salt bridge'],'The supply must exceed the size of the negative E°cell.',['','Must overcome 1.23 V.','Catalysts do not provide energy.','Not relevant.']),
+X(28,'In the Down’s cell, why must the Na and Cl₂ products be kept apart?',['They would react violently to re-form NaCl','Na would be oxidized by water vapour only','Cl₂ is reduced at the anode','To keep the electrolyte from melting'],'Sodium and chlorine react spontaneously, undoing the electrolysis.',['','The main reason is reaction with Cl₂.','Cl⁻ is oxidized at the anode.','The cell must stay molten.']),
+X(29,'Concentrated aqueous CuCl₂ is electrolyzed with inert electrodes. Products?',['Cu at the cathode, Cl₂ at the anode','H₂ at the cathode, Cl₂ at the anode','Cu at the cathode, O₂ at the anode','H₂ at the cathode, O₂ at the anode'],'Cu²⁺ is reduced more easily than water; concentrated Cl⁻ is oxidized to Cl₂.',['','Cu²⁺ beats water at the cathode.','Concentrated chloride gives Cl₂.','Both electrodes wrong.']),
+X(30,'Which set-up correctly silver-plates a steel spoon?',['Spoon = cathode (−); silver bar = anode (+); electrolyte AgNO₃(aq)','Spoon = anode (+); silver bar = cathode (−); electrolyte AgNO₃(aq)','Spoon = cathode (−); silver bar = anode (+); electrolyte NaCl(aq)','Spoon = cathode (+); silver bar = anode (−); electrolyte AgNO₃(aq)'],'Object at the negative cathode; plating metal as anode; electrolyte with Ag⁺.',['','The spoon would dissolve, not be plated.','No Ag⁺ ions in NaCl.','Signs wrong for an electrolytic cell.'])
+]});
+
+EX.push({id:5, name:'Exam 5', level:'Real Exam', tag:'EoT1 Simulation', color:'#7c3aed', realistic:true,
+desc:'Mirrors the official structure: 30 MCQs in blueprint order, 3–4 marks each, total 100, 120 minutes.',
+qs:[
+X(1,'In 4Fe + 3O₂ → 2Fe₂O₃, which statement is correct?',['Fe loses electrons and is oxidized','Fe gains electrons and is reduced','O₂ loses electrons and is oxidized','O₂ gains electrons and is oxidized'],'Fe: 0 → +3 (loss of e⁻, gain of oxygen) → oxidized. O₂ gains electrons → reduced.',['','Fe forms Fe³⁺ — it loses electrons.','Oxygen gains electrons.','Gaining electrons is reduction.']),
+X(2,'Which statement correctly defines oxidation number?',['A charge assigned to an atom according to a set of rules, used to track electron transfer','The number of protons in an atom','The number of valence electrons','The number of atoms in one formula unit'],'Oxidation number = assigned (bookkeeping) charge.',['','That is the atomic number.','Valence electrons do not change.','That is a subscript count.']),
+X(3,'Which is the best definition of an oxidizing agent?',['A substance that oxidizes another substance by accepting its electrons','A substance that oxidizes another substance by donating electrons','A substance that is oxidized by gaining electrons','A substance that always contains oxygen'],'The oxidizing agent accepts electrons (and is reduced).',['','Donating electrons = reducing agent.','Gaining electrons is reduction.','Many oxidizing agents have no oxygen (Cl₂, F₂, Ag⁺).']),
+X(4,'In Cu(s) + 2Ag⁺(aq) → Cu²⁺(aq) + 2Ag(s), which pair gives the reducing agent followed by the oxidizing agent?',['Cu, Ag⁺','Ag⁺, Cu','Cu²⁺, Ag','Ag, Cu²⁺'],'Cu donates electrons; Ag⁺ accepts them.',['','Reversed.','Products.','Products.']),
+X(5,'What is the oxidizing agent in the thermite reaction, 2Al + Fe₂O₃ → Al₂O₃ + 2Fe?',['Fe₂O₃','Al','Al₂O₃','Fe'],'Fe: +3 → 0 → Fe₂O₃ is reduced → oxidizing agent.',['','Al is oxidized → reducing agent.','Product.','Product.']),
+X(6,'What happens to the oxidation numbers in 2Ca + O₂ → 2CaO?',['Ca: 0 → +2; O: 0 → −2','Ca: 0 → −2; O: 0 → +2','Ca: +2 → 0; O: −2 → 0','Both stay unchanged'],'Ca increases (oxidized); O decreases (reduced).',['','Metals become positive.','Elements start at zero.','The elements combine, so numbers change.']),
+X(7,'Arrange in order of INCREASING oxidation number of nitrogen: NO₂, NH₃, N₂, N₂O',['NH₃, N₂, N₂O, NO₂','N₂, NH₃, N₂O, NO₂','NO₂, N₂O, N₂, NH₃','NH₃, N₂O, N₂, NO₂'],'NH₃ −3, N₂ 0, N₂O +1, NO₂ +4.',['','NH₃ (−3) is below N₂ (0).','This is decreasing order.','N₂ (0) is below N₂O (+1).']),
+X(8,'In which compound is the oxidation number of hydrogen −1?',['CaH₂','H₂O','NH₃','H₂SO₄'],'CaH₂ is a metal hydride: +2 + 2x = 0 → x = −1.',['','+1.','+1.','+1.']),
+X(9,'In which compound does sulfur have the HIGHEST oxidation number?',['H₂SO₄','SO₂','Na₂S₂O₃','H₂S'],'H₂SO₄ +6; SO₂ +4; Na₂S₂O₃ +2; H₂S −2.',['','+4.','+2.','−2.']),
+X(10,'An iron nail placed in CuSO₄ solution becomes coated with red-brown copper and the solution turns pale green. Which element is oxidized?',['Fe','Cu','S','O'],'Fe(s) → Fe²⁺(aq) (pale green): 0 → +2.',['','Cu²⁺ is reduced to Cu.','S stays +6 in sulfate.','O stays −2.']),
+X(11,'In 2Al + 6HCl → 2AlCl₃ + 3H₂, which element is reduced and how does its oxidation number change?',['H: +1 → 0','Al: 0 → +3','Cl: −1 → 0','H: 0 → +1'],'H in HCl (+1) becomes H₂ (0).',['','That is oxidation.','Cl stays −1.','Direction reversed.']),
+X(12,'Find x in ClO₃⁻ + 6H⁺ + x e⁻ → Cl⁻ + 3H₂O.',['6','5','3','1'],'Left before e⁻: −1 + 6 = +5; right: −1 → add 6e⁻. (Cl: +5 → −1)',['','Charge: +5 − 5 = 0 ≠ −1.','3 is the water count.','Charge does not balance.']),
+X(13,'Which pair of half-reactions is correct for 2Fe³⁺ + Sn²⁺ → 2Fe²⁺ + Sn⁴⁺?',['Oxidation: Sn²⁺ → Sn⁴⁺ + 2e⁻; Reduction: Fe³⁺ + e⁻ → Fe²⁺','Oxidation: Fe³⁺ + e⁻ → Fe²⁺; Reduction: Sn²⁺ → Sn⁴⁺ + 2e⁻','Oxidation: Sn⁴⁺ + 2e⁻ → Sn²⁺; Reduction: Fe²⁺ → Fe³⁺ + e⁻','Oxidation: Fe²⁺ → Fe³⁺ + e⁻; Reduction: Sn⁴⁺ + 2e⁻ → Sn²⁺'],'Sn: +2 → +4 (oxidation); Fe: +3 → +2 (reduction).',['','Labels swapped.','Both reversed.','Describes the reverse reaction.']),
+X(14,'Balance in acid: 2MnO₄⁻ + 5SO₂ + 2H₂O → 2Mn²⁺ + 5SO₄²⁻ + ___',['4H⁺','8H⁺','2H⁺','4OH⁻'],'H: 4 = 4; charge: −2 = +4 − 10 + 4 ✔.',['','Charge would be +2.','H not balanced.','OH⁻ is not used in acid.']),
+X(15,'Balance in acid: Cr₂O₇²⁻ + _H₂S + 8H⁺ → 2Cr³⁺ + _S + 7H₂O. The coefficient of H₂S is…',['3','6','2','1'],'Cr gains 6e⁻; each H₂S (S −2 → 0) loses 2e⁻ → 3 H₂S. H: 6 + 8 = 14 ✔',['','Too many electrons.','Only 4e⁻.','Only 2e⁻.']),
+X(16,'When converting an acid-balanced equation to basic conditions, after adding OH⁻ to both sides and combining H⁺ + OH⁻ into water, the final step is to…',['cancel H₂O molecules that appear on both sides','add more H⁺ to balance charge','remove all OH⁻','multiply by 2'],'Cancel water that appears on both sides; check atoms and charge.',['','No H⁺ can remain in base.','OH⁻ stays in the final equation.','Not required.']),
+X(17,'Balance in base: 3Cl₂ + 6OH⁻ → _Cl⁻ + ClO₃⁻ + 3H₂O',['5','3','6','1'],'Cl: 6 = 5 + 1; charge −6 = −5 − 1 ✔.',['','Cl and charge not balanced.','Cl would be 7.','Electrons not balanced.']),
+X(18,'Which statement correctly describes an electrochemical cell?',['An apparatus that uses a redox reaction to produce electrical energy, or uses electrical energy to cause a chemical reaction','A device that only stores static electricity','A container where acids neutralize bases','A cell that works only with molten salts'],'Two types: voltaic (produces) and electrolytic (consumes) electrical energy.',['','Capacitors store charge — not redox.','Neutralization is not redox.','Most cells use aqueous solutions.']),
+X(19,'In a Mg | Mg²⁺ ‖ Cu²⁺ | Cu voltaic cell, which statement is correct?',['Electrons flow from Mg to Cu through the wire and cations in the salt bridge move toward the Cu half-cell','Electrons flow from Cu to Mg and anions move toward Cu','Electrons pass through the salt bridge from Mg to Cu','Conventional current flows from Mg to Cu in the wire'],'Mg is the anode. Cations move to the cathode (Cu) to replace Cu²⁺ being reduced.',['','Both directions reversed.','Only ions pass through the salt bridge.','Conventional current flows Cu → Mg in the wire.']),
+X(20,'A voltaic cell uses Al³⁺/Al and Ag⁺/Ag. Which half-reactions occur?',['Anode: Al → Al³⁺ + 3e⁻; Cathode: Ag⁺ + e⁻ → Ag','Anode: Ag → Ag⁺ + e⁻; Cathode: Al³⁺ + 3e⁻ → Al','Anode: Ag⁺ + e⁻ → Ag; Cathode: Al → Al³⁺ + 3e⁻','Anode: Al³⁺ + 3e⁻ → Al; Cathode: Ag → Ag⁺ + e⁻'],'Al (more negative E°) is oxidized at the anode; Ag⁺ is reduced at the cathode.',['','Non-spontaneous direction.','Reduction never occurs at the anode.','Reversed reactions.']),
+X(21,'The standard reduction potential (E°) of a half-cell is…',['its tendency to be reduced, measured against the SHE under standard conditions','the voltage of any cell at 0 °C','always positive','the energy needed to melt the electrode'],'Measured relative to SHE (0.00 V) at 25 °C, 1 atm, 1 M.',['','Standard temperature is 25 °C.','Many E° values are negative.','Unrelated.']),
+X(22,'The SHE is connected to Ag⁺/Ag (+0.80 V). Which half-reaction occurs at the hydrogen electrode?',['H₂ → 2H⁺ + 2e⁻','2H⁺ + 2e⁻ → H₂','Ag⁺ + e⁻ → Ag','Ag → Ag⁺ + e⁻'],'Ag⁺ has the higher E° → cathode; SHE is the anode (H₂ oxidized).',['','The SHE is the cathode only against negative E° half-cells.','That happens at the silver electrode.','Silver is not oxidized here.']),
+X(23,'E°(Sn²⁺/Sn) = −0.14 V, E°(Ag⁺/Ag) = +0.80 V. Find E°cell and decide spontaneity.',['+0.94 V, spontaneous','+0.66 V, spontaneous','−0.94 V, non-spontaneous','+1.74 V, spontaneous'],'0.80 − (−0.14) = +0.94 V > 0 → spontaneous.',['','You did 0.80 − 0.14.','Reversed.','You doubled the silver potential.']),
+X(24,'Which gives the correct cell notation AND overall equation for the Ni–Au cell? (Ni²⁺/Ni −0.26 V; Au³⁺/Au +1.50 V)',['Ni | Ni²⁺ ‖ Au³⁺ | Au; 3Ni + 2Au³⁺ → 3Ni²⁺ + 2Au','Au | Au³⁺ ‖ Ni²⁺ | Ni; 2Au + 3Ni²⁺ → 2Au³⁺ + 3Ni','Ni | Ni²⁺ ‖ Au³⁺ | Au; Ni + Au³⁺ → Ni²⁺ + Au','Ni | Ni²⁺ ‖ Au³⁺ | Au; 2Ni + 3Au³⁺ → 2Ni²⁺ + 3Au'],'6e⁻: 3Ni lose 6e⁻; 2Au³⁺ gain 6e⁻.',['','Non-spontaneous direction.','Charge not balanced.','Electrons not balanced (4 vs 9).']),
+X(25,'Is 2Ag + Pb²⁺ → 2Ag⁺ + Pb spontaneous? (Pb²⁺/Pb −0.13 V; Ag⁺/Ag +0.80 V)',['No, E°cell = −0.93 V','Yes, E°cell = +0.93 V','Yes, E°cell = +0.67 V','No, E°cell = −0.67 V'],'As written Pb²⁺ is reduced (cathode): −0.13 − 0.80 = −0.93 V.',['','That is the reverse reaction.','Wrong arithmetic.','Wrong arithmetic.']),
+X(26,'Which comparison is correct?',['Voltaic: anode negative, spontaneous · Electrolytic: anode positive, non-spontaneous','Voltaic: anode positive, spontaneous · Electrolytic: anode negative, non-spontaneous','Voltaic: reduction at anode · Electrolytic: reduction at cathode','Both: cathode positive and spontaneous'],'Oxidation is always at the anode; only the signs and spontaneity differ.',['','Signs reversed.','Reduction is always at the cathode.','Electrolytic cathode is negative; non-spontaneous.']),
+X(27,'A Ni–Cu voltaic cell (E°cell = 0.60 V) is connected to an external supply to reverse it. Which statement is correct?',['A voltage greater than 0.60 V is applied, and Ni becomes the cathode','A voltage of 0.30 V is enough, and Ni stays the anode','Cu becomes the cathode and gains mass','No change in electrode roles occurs'],'Reversal: Ni²⁺ + 2e⁻ → Ni (cathode), Cu → Cu²⁺ + 2e⁻ (anode).',['','Too small; roles must swap.','Cu becomes the ANODE and loses mass.','Roles swap when the reaction reverses.']),
+X(28,'Molten CaCl₂ is electrolyzed. Which is correct?',['Calcium forms at the cathode: Ca²⁺ + 2e⁻ → Ca','Hydrogen forms at the cathode','Chlorine forms at the cathode','Oxygen forms at the anode'],'Molten: metal at cathode, Cl₂ at anode.',['','No water present.','Cl₂ forms at the anode.','No oxygen source.']),
+X(29,'Aqueous KBr is electrolyzed with inert electrodes. Which products form?',['H₂ at the cathode, Br₂ at the anode, KOH remains in solution','K at the cathode, Br₂ at the anode','H₂ at the cathode, O₂ at the anode, KBr unchanged','K at the cathode, O₂ at the anode'],'Water is reduced (H₂ + OH⁻); Br⁻ oxidized (Br₂); K⁺ stays with OH⁻.',['','K⁺ is not reduced in water.','Bromide is oxidized before water.','Neither forms.']),
+X(30,'A ring is to be gold-plated. Which arrangement and cathode half-reaction are correct?',['Ring = cathode, gold = anode, electrolyte with Au³⁺; Au³⁺ + 3e⁻ → Au','Ring = anode, gold = cathode, electrolyte with Au³⁺; Au → Au³⁺ + 3e⁻','Ring = cathode, gold = anode, electrolyte NaCl; Na⁺ + e⁻ → Na','Ring = cathode, gold = anode, electrolyte with Au³⁺; Au → Au³⁺ + 3e⁻'],'Object at the cathode where gold ions are reduced onto it.',['','The ring would be the anode — it would dissolve.','The electrolyte must contain Au³⁺.','That is the anode reaction, not the cathode.'])
+]});
+
+// ===== Diagrams (inline SVG / HTML) =====
+window.FIG = (function(){
+function e(n){ // animated electrons along a path id
+  var s='';for(var i=0;i<n;i++){s+='<g><circle r="7" fill="#facc15" stroke="#a16207" stroke-width="1.5"/><text font-size="9" text-anchor="middle" dy="3" fill="#713f12" font-weight="700">e⁻</text><animateMotion dur="3s" repeatCount="indefinite" begin="-'+(i*0.75)+'s"><mpath href="#__P__"/></animateMotion></g>';}return s;}
+function beaker(x,y,w,h,fill,label){
+  return '<path d="M'+x+' '+y+' v'+h+' q0 12 12 12 h'+(w-24)+' q12 0 12 -12 v-'+h+'" fill="none" stroke="var(--ink2)" stroke-width="3"/>'+
+  '<rect x="'+(x+2)+'" y="'+(y+40)+'" width="'+(w-4)+'" height="'+(h-30)+'" rx="10" fill="'+fill+'" opacity=".55"/>'+
+  '<text x="'+(x+w/2)+'" y="'+(y+h+34)+'" text-anchor="middle" class="svl">'+label+'</text>';}
+function bubbles(x,y,c){var s='';for(var i=0;i<4;i++){s+='<circle cx="'+(x+(i%2)*8)+'" cy="'+y+'" r="'+(3+i%2)+'" fill="none" stroke="'+c+'" stroke-width="1.5"><animate attributeName="cy" from="'+y+'" to="'+(y-70)+'" dur="2s" begin="'+(i*0.5)+'s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="2s" begin="'+(i*0.5)+'s" repeatCount="indefinite"/></circle>';}return s;}
+
+// generic two-beaker cell. o: {id, L:{metal,sol,fill,col,role,sign,eq}, R:{...}, mid:'bulb'|'supply', elecRight:bool, title}
+function twoCell(o){
+  var pid='p'+o.id;
+  var path=o.elecRight?'M150 70 H490':'M490 70 H150';
+  var s='<svg viewBox="0 0 640 410" class="fig" role="img" aria-label="'+o.title+'">'+
+  '<path id="'+pid+'" d="'+path+'" fill="none"/>'+
+  '<path d="M150 150 V70 H490 V150" fill="none" stroke="var(--ink2)" stroke-width="4" stroke-linejoin="round"/>';
+  if(o.mid==='supply'){s+='<rect x="285" y="45" width="70" height="50" rx="8" fill="var(--card)" stroke="var(--ink2)" stroke-width="3"/><text x="300" y="76" class="svb" fill="'+(o.elecRight?'#dc2626':'#2563eb')+'">'+(o.elecRight?'+':'−')+'</text><text x="333" y="76" class="svb" fill="'+(o.elecRight?'#2563eb':'#dc2626')+'">'+(o.elecRight?'−':'+')+'</text><text x="320" y="36" text-anchor="middle" class="svl">Power supply</text>';}
+  else{s+='<circle cx="320" cy="70" r="26" fill="var(--card)" stroke="var(--ink2)" stroke-width="3"/><text x="320" y="77" text-anchor="middle" class="svb">V</text><text x="320" y="34" text-anchor="middle" class="svl">Voltmeter / bulb</text>';}
+  s+=e(4).split('__P__').join(pid);
+  s+='<text x="320" y="118" text-anchor="middle" class="svs">electrons '+(o.elecRight?'→':'←')+' (through the wire)</text>';
+  // salt bridge
+  s+='<path d="M235 230 V160 H405 V230" fill="none" stroke="#a78bfa" stroke-width="22" stroke-linecap="round" opacity=".6"/>'+
+  '<text x="320" y="152" text-anchor="middle" class="svs">salt bridge (KNO₃)</text>'+
+  '<text x="262" y="182" class="svs" fill="#b91c1c">← NO₃⁻</text><text x="345" y="182" class="svs" fill="#1d4ed8">K⁺ →</text>';
+  if(!o.elecRight){s=s.replace('<text x="262" y="182" class="svs" fill="#b91c1c">← NO₃⁻</text><text x="345" y="182" class="svs" fill="#1d4ed8">K⁺ →</text>','<text x="262" y="182" class="svs" fill="#1d4ed8">← K⁺</text><text x="345" y="182" class="svs" fill="#b91c1c">NO₃⁻ →</text>');}
+  s+=beaker(80,150,170,170,o.L.fill,o.L.sol)+beaker(390,150,170,170,o.R.fill,o.R.sol);
+  s+='<rect x="138" y="140" width="24" height="150" rx="3" fill="'+o.L.col+'" stroke="var(--ink2)" stroke-width="2"/><text x="150" y="220" text-anchor="middle" class="svb" fill="#fff" transform="rotate(-90 150 220)">'+o.L.metal+'</text>';
+  s+='<rect x="478" y="140" width="24" height="150" rx="3" fill="'+o.R.col+'" stroke="var(--ink2)" stroke-width="2"/><text x="490" y="220" text-anchor="middle" class="svb" fill="#fff" transform="rotate(-90 490 220)">'+o.R.metal+'</text>';
+  s+='<text x="165" y="382" text-anchor="middle" class="svh" fill="'+(o.L.role==='ANODE'?'#dc2626':'#2563eb')+'">'+o.L.role+' ('+o.L.sign+')</text><text x="165" y="402" text-anchor="middle" class="svs">'+o.L.eq+'</text>';
+  s+='<text x="475" y="382" text-anchor="middle" class="svh" fill="'+(o.R.role==='ANODE'?'#dc2626':'#2563eb')+'">'+o.R.role+' ('+o.R.sign+')</text><text x="475" y="402" text-anchor="middle" class="svs">'+o.R.eq+'</text>';
+  return s+'</svg>';}
+
+function oneCell(o){ // electrolysis in one container. o:{id,title,sol,fill,cat:{label,eq,gas,col},an:{...}}
+  var pid='q'+o.id;
+  var s='<svg viewBox="0 0 640 430" class="fig" role="img" aria-label="'+o.title+'">'+
+  '<path id="'+pid+'a" d="M440 140 V70 H350" fill="none"/><path id="'+pid+'b" d="M290 70 H200 V140" fill="none"/>'+
+  '<path d="M200 150 V70 H290 M350 70 H440 V150" fill="none" stroke="var(--ink2)" stroke-width="4"/>'+
+  '<rect x="285" y="45" width="70" height="50" rx="8" fill="var(--card)" stroke="var(--ink2)" stroke-width="3"/><text x="300" y="77" class="svb" fill="#2563eb">−</text><text x="333" y="77" class="svb" fill="#dc2626">+</text><text x="320" y="36" text-anchor="middle" class="svl">Power supply (battery)</text>';
+  var el=e(2);s+=el.split('__P__').join(pid+'a')+el.split('__P__').join(pid+'b');
+  s+='<path d="M110 150 v170 q0 12 12 12 h396 q12 0 12 -12 v-170" fill="none" stroke="var(--ink2)" stroke-width="3"/>'+
+  '<rect x="112" y="180" width="416" height="150" rx="10" fill="'+o.fill+'" opacity=".5"/><text x="320" y="360" text-anchor="middle" class="svl">'+o.sol+'</text>';
+  s+='<rect x="188" y="140" width="24" height="160" rx="3" fill="'+o.cat.col+'" stroke="var(--ink2)" stroke-width="2"/>';
+  s+='<rect x="428" y="140" width="24" height="160" rx="3" fill="'+o.an.col+'" stroke="var(--ink2)" stroke-width="2"/>';
+  if(o.cat.name)s+='<text x="200" y="220" text-anchor="middle" class="svb" fill="#fff" transform="rotate(-90 200 220)">'+o.cat.name+'</text>';
+  if(o.an.name)s+='<text x="440" y="220" text-anchor="middle" class="svb" fill="#fff" transform="rotate(-90 440 220)">'+o.an.name+'</text>';
+  if(o.cat.gas)s+=bubbles(222,290,o.cat.gas);
+  if(o.an.gas)s+=bubbles(408,290,o.an.gas);
+  if(o.ionsArrow)s+='<text x="320" y="323" text-anchor="middle" class="svs">'+o.ionsArrow+'</text>';
+  s+='<text x="20" y="388" class="svh" fill="#2563eb">CATHODE (−)</text><text x="20" y="406" class="svs">'+o.cat.label+'</text><text x="20" y="424" class="svs">'+o.cat.eq+'</text>';
+  s+='<text x="620" y="388" text-anchor="end" class="svh" fill="#dc2626">ANODE (+)</text><text x="620" y="406" text-anchor="end" class="svs">'+o.an.label+'</text><text x="620" y="424" text-anchor="end" class="svs">'+o.an.eq+'</text>';
+  return s+'</svg>';}
+
+var F={};
+F.voltaic=twoCell({id:'v',title:'Zinc–copper voltaic cell',elecRight:true,mid:'bulb',
+ L:{metal:'Zn',sol:'ZnSO₄(aq)',fill:'#e2e8f0',col:'#64748b',role:'ANODE',sign:'−',eq:'Zn → Zn²⁺ + 2e⁻ (oxidation)'},
+ R:{metal:'Cu',sol:'CuSO₄(aq)',fill:'#60a5fa',col:'#b45309',role:'CATHODE',sign:'+',eq:'Cu²⁺ + 2e⁻ → Cu (reduction)'}})
+ +'<p class="cap">Figure — Zn–Cu voltaic cell. Electrons flow Zn → Cu in the wire; conventional current flows the opposite way. Ions (not electrons) move in the salt bridge. E°cell = +1.10 V.</p>';
+F.reverse=twoCell({id:'r',title:'Reversing the Zn–Cu cell',elecRight:false,mid:'supply',
+ L:{metal:'Zn',sol:'ZnSO₄(aq)',fill:'#e2e8f0',col:'#64748b',role:'CATHODE',sign:'−',eq:'Zn²⁺ + 2e⁻ → Zn (gains mass)'},
+ R:{metal:'Cu',sol:'CuSO₄(aq)',fill:'#60a5fa',col:'#b45309',role:'ANODE',sign:'+',eq:'Cu → Cu²⁺ + 2e⁻ (loses mass)'}})
+ +'<p class="cap">Figure — An external supply of more than 1.10 V pushes electrons the other way: the cell becomes electrolytic and the anode/cathode labels swap.</p>';
+F.downs=oneCell({id:'d',title:'Electrolysis of molten NaCl',sol:'Molten NaCl(l) — Na⁺ and Cl⁻ only, no water',fill:'#fdba74',
+ cat:{label:'Na⁺ attracted → liquid Na',eq:'Na⁺ + e⁻ → Na(l)',col:'#475569'},
+ an:{label:'Cl⁻ attracted → Cl₂ gas',eq:'2Cl⁻ → Cl₂(g) + 2e⁻',col:'#334155',gas:'#65a30d'},ionsArrow:'Na⁺ ←      → Cl⁻'})
+ +'<p class="cap">Figure — Down’s cell idea: molten NaCl → sodium metal at the cathode, chlorine gas at the anode. Overall 2NaCl(l) → 2Na(l) + Cl₂(g).</p>';
+F.brine=oneCell({id:'b',title:'Electrolysis of brine',sol:'Concentrated NaCl(aq) — brine',fill:'#bae6fd',
+ cat:{label:'water reduced → H₂ gas + OH⁻',eq:'2H₂O + 2e⁻ → H₂ + 2OH⁻',col:'#475569',gas:'#0ea5e9'},
+ an:{label:'Cl⁻ oxidized → Cl₂ gas',eq:'2Cl⁻ → Cl₂ + 2e⁻',col:'#334155',gas:'#65a30d'},ionsArrow:'Na⁺ stays in solution with OH⁻ → NaOH(aq)'})
+ +'<p class="cap">Figure — Electrolysis of brine gives three products: H₂ (cathode), Cl₂ (anode) and NaOH (left in solution).</p>';
+F.plating=oneCell({id:'pl',title:'Silver plating a spoon',sol:'AgNO₃(aq) — contains Ag⁺ ions',fill:'#e9d5ff',
+ cat:{label:'SPOON (object) — silver deposits',eq:'Ag⁺ + e⁻ → Ag(s)',col:'#64748b',name:'Spoon'},
+ an:{label:'SILVER BAR — dissolves',eq:'Ag(s) → Ag⁺ + e⁻',col:'#94a3b8',name:'Ag'},ionsArrow:'Ag⁺ ← ← ← (move to the spoon)'})
+ +'<p class="cap">Figure — Electroplating: the object is the cathode, the plating metal is the anode, and the electrolyte contains ions of the plating metal.</p>';
+F.compare='<div class="two">'+'<div>'+F.voltaic.split('<p class="cap">')[0]+'<p class="cap"><b>Voltaic:</b> spontaneous, makes electricity, anode −.</p></div><div>'+F.downs.split('<p class="cap">')[0]+'<p class="cap"><b>Electrolytic:</b> forced by a power supply, anode +.</p></div></div>';
+
+F.she='<svg viewBox="0 0 640 360" class="fig" role="img" aria-label="Standard hydrogen electrode">'+
+ '<path d="M200 120 v190 q0 12 12 12 h216 q12 0 12 -12 v-190" fill="none" stroke="var(--ink2)" stroke-width="3"/>'+
+ '<rect x="202" y="160" width="236" height="160" rx="10" fill="#fecaca" opacity=".5"/>'+
+ '<path d="M290 40 V250 q0 20 30 20 q30 0 30 -20 V40" fill="none" stroke="var(--ink2)" stroke-width="3"/>'+
+ '<path d="M350 70 H430" stroke="var(--ink2)" stroke-width="3"/><text x="440" y="66" class="svl">H₂(g) in, 1 atm</text>'+
+ '<path d="M440 80 L360 80" stroke="#0ea5e9" stroke-width="2" marker-end="url(#ar)"/>'+
+ '<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8z" fill="#0ea5e9"/></marker></defs>'+
+ '<line x1="320" y1="10" x2="320" y2="240" stroke="#475569" stroke-width="3"/>'+
+ '<rect x="305" y="230" width="30" height="30" fill="#334155"/><text x="345" y="255" class="svs">platinum electrode (inert)</text>'+
+ bubbles(300,265,'#0ea5e9')+bubbles(338,265,'#0ea5e9')+
+ '<text x="320" y="345" text-anchor="middle" class="svl">1 M H⁺(aq), 25 °C</text>'+
+ '<text x="20" y="40" class="svh">E° = 0.00 V</text><text x="20" y="62" class="svs">(by definition — the reference)</text>'+
+ '<text x="20" y="130" class="svs" fill="#2563eb">as cathode: 2H⁺ + 2e⁻ → H₂</text><text x="20" y="150" class="svs" fill="#dc2626">as anode: H₂ → 2H⁺ + 2e⁻</text></svg>'+
+ '<p class="cap">Figure — Standard hydrogen electrode (SHE): Pt in 1 M H⁺ with H₂ at 1 atm, 25 °C.</p>';
+
+F.numline=(function(){var s='<svg viewBox="0 0 640 170" class="fig" role="img" aria-label="Oxidation number line"><line x1="40" y1="90" x2="600" y2="90" stroke="var(--ink2)" stroke-width="3"/>';
+ for(var i=-4;i<=8;i++){var x=60+(i+4)*43;s+='<line x1="'+x+'" y1="82" x2="'+x+'" y2="98" stroke="var(--ink2)" stroke-width="2"/><text x="'+x+'" y="120" text-anchor="middle" class="svb">'+(i>0?'+'+i:i)+'</text>';}
+ s+='<path d="M120 55 H560" stroke="#dc2626" stroke-width="5" marker-end="url(#ra)"/><text x="340" y="45" text-anchor="middle" class="svh" fill="#dc2626">OXIDATION → number increases (lose e⁻)</text>';
+ s+='<path d="M560 145 H120" stroke="#2563eb" stroke-width="5" marker-end="url(#ba)"/><text x="340" y="166" text-anchor="middle" class="svh" fill="#2563eb">← REDUCTION: number decreases (gain e⁻)</text>';
+ s+='<defs><marker id="ra" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#dc2626"/></marker><marker id="ba" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#2563eb"/></marker></defs></svg>';return s;})();
+
+F.oilrig='<div class="oilrig"><div class="or ox"><div class="big">OIL</div><b>Oxidation Is Loss</b><ul><li>loses e⁻</li><li>gains O</li><li>loses H</li><li>oxidation number ↑</li><li>e⁻ on the RIGHT: Na → Na⁺ + e⁻</li></ul></div><div class="arrowx">e⁻ ⟶</div><div class="or rd"><div class="big">RIG</div><b>Reduction Is Gain</b><ul><li>gains e⁻</li><li>loses O</li><li>gains H</li><li>oxidation number ↓</li><li>e⁻ on the LEFT: Cl + e⁻ → Cl⁻</li></ul></div></div>';
+
+F.agents='<div class="oilrig"><div class="or ox"><div class="big sm">Reducing agent</div><ul><li>gives away electrons</li><li>is <b>oxidized</b></li><li>oxidation number ↑</li><li>e.g. Zn, Mg, Na, H₂, CO</li></ul></div><div class="arrowx">e⁻ ⟶<br><small>Zn gives 2e⁻ to Cu²⁺</small></div><div class="or rd"><div class="big sm">Oxidizing agent</div><ul><li>takes electrons</li><li>is <b>reduced</b></li><li>oxidation number ↓</li><li>e.g. Cu²⁺, Ag⁺, O₂, Cl₂, MnO₄⁻</li></ul></div></div>';
+
+F.acidsteps='<div class="flow"><div><span>1</span>Net ionic equation</div><div><span>2</span>Split into ox. &amp; red. halves</div><div><span>3a</span>Balance atoms ≠ O, H</div><div><span>3b</span>O → add H₂O</div><div><span>3c</span>H → add H⁺</div><div><span>3d</span>Charge → add e⁻</div><div><span>4</span>Equalize e⁻</div><div><span>5</span>Add, cancel, check</div></div>';
+F.basesteps=F.acidsteps.replace('</div></div>','</div><div class="hl"><span>6</span>Add OH⁻ = H⁺ to both sides</div><div class="hl"><span>7</span>H⁺ + OH⁻ → H₂O</div><div class="hl"><span>8</span>Cancel H₂O, check</div></div>');
+
+F.eladder=(function(){var rows=[['F₂ + 2e⁻ → 2F⁻','+2.87'],['Cl₂ + 2e⁻ → 2Cl⁻','+1.36'],['Ag⁺ + e⁻ → Ag','+0.80'],['Cu²⁺ + 2e⁻ → Cu','+0.34'],['2H⁺ + 2e⁻ → H₂','0.00'],['Fe²⁺ + 2e⁻ → Fe','−0.45'],['Zn²⁺ + 2e⁻ → Zn','−0.76'],['Mg²⁺ + 2e⁻ → Mg','−2.37'],['Li⁺ + e⁻ → Li','−3.04']];
+ var s='<div class="ladder"><div class="lad-side top">Strongest OXIDIZING agents (easily reduced) ↑</div>';rows.forEach(function(r,i){s+='<div class="lad-row'+(r[1]==='0.00'?' she':'')+'" style="--h:'+(i*12)+'"><span>'+r[0]+'</span><b>'+r[1]+' V</b></div>';});
+ return s+'<div class="lad-side bot">↓ Strongest REDUCING agents are the metals on the right side (easily oxidized)</div></div>';})();
+
+F.notation='<div class="notn"><div class="nb an">Zn(s)<small>anode metal</small></div><div class="nl">|<small>phase boundary</small></div><div class="nb an">Zn²⁺(aq)<small>anode solution</small></div><div class="nl dbl">‖<small>salt bridge</small></div><div class="nb ca">Cu²⁺(aq)<small>cathode solution</small></div><div class="nl">|<small>phase boundary</small></div><div class="nb ca">Cu(s)<small>cathode metal</small></div></div><p class="cap">Read left → right = the direction electrons travel. “ANODE on the LEFT, cathode on the RIGHT”.</p>';
+return F;})();
+
+(function(){
+'use strict';
+var LES = window.LESSONS.sort(function(a,b){return a.id-b.id;});
+var EXS = window.EXAMS.sort(function(a,b){return a.id-b.id;});
+var FIG = window.FIG;
+var UNITS = [
+ {id:'A',name:'Redox Basics',icon:'⚡',desc:'Oxidation, reduction, agents',color:'#f97316'},
+ {id:'B',name:'Oxidation Numbers',icon:'🔢',desc:'Rules, ions, complex formulas',color:'#eab308'},
+ {id:'C',name:'Balancing Redox',icon:'⚖️',desc:'Half-reactions in acid & base',color:'#22c55e'},
+ {id:'D',name:'Voltaic Cells & E°',icon:'🔋',desc:'Cells, SHE, E°cell, notation',color:'#3b82f6'},
+ {id:'E',name:'Electrolysis',icon:'🔌',desc:'Electrolytic cells & plating',color:'#a855f7'}];
+var FOUR = {9:1,14:1,15:1,16:1,17:1,19:1,23:1,24:1,25:1,29:1};
+function marks(g){return FOUR[g]?4:3;}
+
+// ---------- storage ----------
+var KEY='redoxready_v1', S={done:{},checks:{},best:{},mistakes:{},reports:[],last:null,theme:null};
+try{var raw=localStorage.getItem(KEY);if(raw){var p=JSON.parse(raw);for(var k in p)S[k]=p[k];}}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+
+// ---------- helpers ----------
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function lesson(id){return LES.filter(function(l){return l.id===id;})[0];}
+function getQ(key){ // c{goal}_{i} or x{exam}_{i}
+  var m=/^([cx])(\d+)_(\d+)$/.exec(key);if(!m)return null;
+  if(m[1]==='c'){var l=lesson(+m[2]);var q=l&&l.checks[+m[3]];return q?{q:q.q,o:q.o,a:q.a,e:q.e,w:q.w||[],g:l.id,src:'Lesson Q'+l.id}:null;}
+  var ex=EXS.filter(function(x){return x.id===+m[2];})[0];var qq=ex&&ex.qs[+m[3]];
+  return qq?{q:qq.q,o:qq.o,a:qq.a,e:qq.e,w:qq.w||[],g:qq.g,src:ex.name+' · Q'+(+m[3]+1)}:null;}
+function toast(msg){var t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(function(){t.classList.remove('show');},2200);}
+var LET=['A','B','C','D','E'];
+function goalPct(){var n=0;for(var k in S.done)if(S.done[k])n++;return n;}
+function unitGoals(u){return LES.filter(function(l){return l.unit===u;});}
+
+// ---------- theme ----------
+function applyTheme(){var t=S.theme||(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);$('#themeBtn').textContent=t==='dark'?'☀️':'🌙';}
+
+// ---------- router ----------
+var current=null;
+function route(){
+  var h=(location.hash||'#home').slice(1);var m;
+  stopTimer();
+  var hh=/^(goal|unit)-/.test(h)?'learn':h;$$('.nav a').forEach(function(a){a.classList.toggle('on',hh.indexOf(a.getAttribute('data-r'))===0);});
+  if(h==='home'||h==='')return home();
+  if(h==='learn')return learn();
+  if((m=/^goal-(\d+)$/.exec(h)))return goal(+m[1]);
+  if(h==='exams')return exams();
+  if((m=/^exam-(\d)$/.exec(h)))return examStart(+m[1]);
+  if((m=/^unit-([A-E])$/.exec(h)))return unitPractice(m[1]);
+  if(h==='tools')return tools();
+  if(h==='mistakes')return mistakes();
+  return home();}
+function view(html){var v=$('#view');v.innerHTML=html;window.scrollTo(0,0);}
+
+// ---------- HOME ----------
+function home(){
+  var d=goalPct(),pct=Math.round(d/30*100);
+  var bestAvg=0,bn=0;EXS.forEach(function(x){if(S.best[x.id]!=null){bestAvg+=S.best[x.id];bn++;}});
+  var mcount=Object.keys(S.mistakes).length;
+  var cont=S.last?'<a class="btn" href="#goal-'+S.last+'">▶ Continue: Q'+S.last+' · '+esc(lesson(S.last).title)+'</a>':'<a class="btn" href="#goal-1">▶ Start learning: Q1</a>';
+  var h='<section class="hero"><div class="hero-l"><div class="pill">Grade 12 Advanced · Chemistry · End of Term 1</div>'+
+  '<h1>Master <span class="grad">Redox &amp; Electrochemistry</span><br>for full marks.</h1>'+
+  '<p class="lead">Every one of the 30 learning outcomes in your exam coverage document — explained, visualized and tested. Learn a goal, answer questions on it, then sit 5 full exams from easy to real-exam level.</p>'+
+  '<div class="row">'+cont+'<a class="btn ghost" href="#exams">📝 Go to the exams</a></div></div>'+
+  '<div class="hero-r"><div class="ring" style="--p:'+pct+'"><div><b>'+pct+'%</b><small>'+d+' / 30 goals</small></div></div>'+
+  '<div class="mini"><div><b>'+(bn?Math.round(bestAvg/bn):'—')+'</b><small>avg best exam</small></div><div><b>'+mcount+'</b><small>mistakes to fix</small></div></div></div></section>';
+  h+='<section class="card blueprint"><h2>📋 Your exam at a glance</h2><div class="bp">'+
+  '<div><b>30</b><small>questions (all MCQ)</small></div><div><b>100</b><small>marks · 3 or 4 each</small></div><div><b>120</b><small>minutes</small></div><div><b>💻</b><small>electronic</small></div><div><b>🧮</b><small>scientific calculator allowed</small></div></div>'+
+  '<p class="muted">Source: Inspire Chemistry (UAE) Grade 11–12 Advanced, Volume 2. Questions may appear in a different order in the real exam.</p></section>';
+  h+='<h2 class="sec">📚 The 5 units</h2><div class="units">';
+  UNITS.forEach(function(u){var gs=unitGoals(u.id),dn=gs.filter(function(g){return S.done[g.id];}).length;
+    h+='<a class="unit" href="#learn" style="--c:'+u.color+'"><div class="ui">'+u.icon+'</div><div><b>'+u.name+'</b><small>Q'+gs[0].id+'–Q'+gs[gs.length-1].id+' · '+u.desc+'</small><div class="bar"><i style="width:'+(dn/gs.length*100)+'%"></i></div></div></a>';});
+  h+='</div><h2 class="sec">🧭 How to use this site</h2><div class="how">'+
+  '<div><span>1</span><b>Learn</b> each goal: read the explanation, look at the diagram, watch the video.</div>'+
+  '<div><span>2</span><b>Check</b> yourself: 3 questions straight after every goal. Wrong choices tell you exactly why.</div>'+
+  '<div><span>3</span><b>Exam</b> practice: 5 full 30-question exams, Easy → Real Exam simulation.</div>'+
+  '<div><span>4</span><b>Fix mistakes</b>: every wrong answer is saved so you can retry it until it sticks.</div></div>';
+  view(h);}
+
+// ---------- LEARN ----------
+function learn(){
+  var h='<div class="phead"><h1>📚 Learn — all 30 exam goals</h1><p class="muted">Each card is one question from the official exam coverage (Q1–Q30). Finish the 3 check questions to mark it ✓.</p></div>';
+  UNITS.forEach(function(u){var gs=unitGoals(u.id);
+    h+='<section class="ublock" style="--c:'+u.color+'"><div class="uhead"><h2>'+u.icon+' Unit '+u.id+' · '+u.name+'</h2><a class="btn sm" href="#unit-'+u.id+'">🎯 Unit practice ('+gs.length*3+' Q)</a></div><div class="goals">';
+    gs.forEach(function(g){var c=S.checks[g.id]||{};var sc=Object.keys(c).filter(function(k){return c[k];}).length;
+      h+='<a class="goalc'+(S.done[g.id]?' done':'')+'" href="#goal-'+g.id+'"><div class="qn">Q'+g.id+'</div><div><b>'+esc(g.title)+'</b><small>Textbook p. '+g.pages+(g.video?' · 🎬 video':'')+(g.fig?' · 🖼️ diagram':'')+'</small></div><div class="st">'+(S.done[g.id]?'✓':sc+'/3')+'</div></a>';});
+    h+='</div></section>';});
+  view(h);}
+
+function goal(id){
+  var g=lesson(id);if(!g)return learn();S.last=id;save();
+  var u=UNITS.filter(function(x){return x.id===g.unit;})[0];
+  var h='<div class="crumbs"><a href="#learn">Learn</a> › Unit '+u.id+' · '+u.name+' › Q'+g.id+'</div>'+
+  '<article class="lesson" style="--c:'+u.color+'"><header class="lhead"><div class="qbig">Q'+g.id+'</div><div><h1>'+esc(g.title)+'</h1>'+
+  '<div class="outcome"><span>🎯 Learning outcome (exam document)</span>'+esc(g.outcome)+'</div>'+
+  '<div class="meta"><span>📖 Inspire p. '+g.pages+'</span><span>📎 '+esc(g.ref)+'</span><span>📝 '+marks(g.id)+' marks in the exam</span></div></div></header>';
+  if(g.fig&&FIG[g.fig])h+='<div class="figwrap">'+FIG[g.fig]+'</div>';
+  h+='<div class="content">'+g.html+'</div>';
+  if(g.video)h+='<a class="video" href="https://www.youtube.com/watch?v='+g.video.id+'" target="_blank" rel="noopener"><div class="play">▶</div><div><b>Watch: '+esc(g.video.t)+'</b><small>Opens YouTube in a new tab · youtube.com/watch?v='+g.video.id+'</small></div></a>';
+  h+='<section class="checks"><h2>✍️ Check your understanding — Q'+g.id+'</h2><p class="muted">Pick an answer. If it is wrong you will see <b>why that choice is wrong</b>, then the full explanation.</p>';
+  g.checks.forEach(function(q,i){h+=qCard('c'+g.id+'_'+i,i+1,'inline');});
+  h+='</section><nav class="pn">'+(id>1?'<a class="btn ghost" href="#goal-'+(id-1)+'">← Q'+(id-1)+'</a>':'<span></span>')+(id<30?'<a class="btn" href="#goal-'+(id+1)+'">Q'+(id+1)+' →</a>':'<a class="btn" href="#exams">Go to exams →</a>')+'</nav></article>';
+  view(h);
+  $$('.qcard').forEach(bindInline);}
+
+// ---------- question card ----------
+var PERM={};
+function qCard(key,num,mode,picked){
+  var q=getQ(key);if(!PERM[key])PERM[key]=shuffle(q.o.map(function(_,i){return i;}));
+  var perm=PERM[key];
+  var h='<div class="qcard" data-key="'+key+'" data-mode="'+mode+'"><div class="qtop"><span class="qnum">'+num+'</span><span class="qtag">Goal Q'+q.g+' · '+marks(q.g)+' marks</span><button class="flagbtn" data-act="report" title="Report a problem with this question">🚩 Report</button></div>'+
+  '<div class="qtext">'+esc(q.q)+'</div><div class="opts">';
+  perm.forEach(function(oi,pos){h+='<button class="opt'+(picked===oi?' sel':'')+'" data-oi="'+oi+'"><span class="L">'+LET[pos]+'</span><span>'+esc(q.o[oi])+'</span></button>';});
+  return h+'</div><div class="fb"></div></div>';}
+function reveal(card,oi){
+  var key=card.getAttribute('data-key'),q=getQ(key);var ok=oi===q.a;
+  $$('.opt',card).forEach(function(b){var i=+b.getAttribute('data-oi');b.disabled=true;if(i===q.a)b.classList.add('right');if(i===oi&&!ok)b.classList.add('wrong');});
+  var fb='';
+  if(!ok){fb+='<div class="warn">⚠️ <b>Not quite — you chose “'+esc(q.o[oi])+'”.</b> '+esc(q.w[oi]||'This option does not fit the rule for this question.')+'</div>';}
+  fb+='<div class="expl '+(ok?'good':'')+'">'+(ok?'✅ <b>Correct!</b> ':'✅ <b>Correct answer: '+esc(q.o[q.a])+'.</b> ')+esc(q.e)+'</div>';
+  if(!ok)fb+='<a class="tiny" href="#goal-'+q.g+'">📖 Review lesson Q'+q.g+'</a>';
+  $('.fb',card).innerHTML=fb;
+  if(ok)delete S.mistakes[key];else S.mistakes[key]={t:Date.now()};
+  save();return ok;}
+function bindInline(card){
+  var key=card.getAttribute('data-key');
+  card.addEventListener('click',function(ev){var b=ev.target.closest('button');if(!b)return;
+    if(b.getAttribute('data-act')==='report')return openReport(key);
+    if(b.classList.contains('opt')&&!b.disabled){var ok=reveal(card,+b.getAttribute('data-oi'));
+      var m=/^c(\d+)_(\d+)$/.exec(key);if(m){var g=+m[1];S.checks[g]=S.checks[g]||{};S.checks[g][m[2]]=ok;
+        var c=S.checks[g];if(c[0]&&c[1]&&c[2]&&!S.done[g]){S.done[g]=true;toast('🎉 Goal Q'+g+' complete!');}
+        else if(Object.keys(c).length===3&&!S.done[g]){toast('Answer all 3 correctly to complete Q'+g+' — you can retry from “Mistakes”.');}
+        save();}}});}
+
+// ---------- report ----------
+function openReport(key){
+  var q=getQ(key);var m=$('#modal');
+  m.innerHTML='<div class="mbox"><h3>🚩 Report a problem</h3><p class="muted">'+esc(q.src)+': “'+esc(q.q.slice(0,90))+(q.q.length>90?'…':'')+'”</p>'+
+  '<div class="reasons">'+['The marked answer is wrong','More than one answer is correct','Typo / formatting error','Explanation is unclear','Other'].map(function(r,i){return '<label><input type="radio" name="rr" value="'+r+'"'+(i===0?' checked':'')+'> '+r+'</label>';}).join('')+'</div>'+
+  '<textarea id="rtext" placeholder="Tell us what is wrong (optional)…"></textarea><div class="row"><button class="btn" id="rsend">Save report</button><button class="btn ghost" id="rcancel">Cancel</button></div>'+
+  '<p class="muted small">Reports are saved on this device. Open “Mistakes &amp; Reports” to copy them and send to your teacher.</p></div>';
+  m.classList.add('show');
+  $('#rcancel').onclick=function(){m.classList.remove('show');};
+  $('#rsend').onclick=function(){var r=$('input[name=rr]:checked').value;S.reports.push({key:key,src:q.src,q:q.q,reason:r,note:$('#rtext').value,t:Date.now()});save();m.classList.remove('show');toast('Report saved — thank you!');};}
+
+// ---------- EXAMS list ----------
+function exams(){
+  var h='<div class="phead"><h1>📝 Five practice exams</h1><p class="muted">Each exam has 30 questions — one for every learning outcome Q1–Q30, in the official order — scored out of 100 (3 or 4 marks each), just like the real EoT1.</p></div><div class="exgrid">';
+  EXS.forEach(function(x,i){var b=S.best[x.id];
+    h+='<div class="excard" style="--c:'+x.color+'"><div class="exlvl"><span>'+x.name+'</span><span class="dots">'+[1,2,3,4,5].map(function(n){return '<i class="'+(n<=i+1?'on':'')+'"></i>';}).join('')+'</span></div>'+
+    '<h3>'+x.level+' <small>· '+x.tag+'</small></h3><p>'+esc(x.desc)+'</p><div class="exmeta"><span>30 Q</span><span>100 marks</span><span>'+(x.realistic?'⏱ 120 min':'⏱ optional')+'</span></div>'+
+    '<div class="exbot"><span class="best">'+(b!=null?'Best: <b>'+b+'/100</b>':'Not attempted')+'</span><a class="btn" href="#exam-'+x.id+'">Start →</a></div></div>';});
+  view(h+'</div>');}
+
+// ---------- RUNNER ----------
+var RUN=null,TIMER=null;
+function stopTimer(){if(TIMER){clearInterval(TIMER);TIMER=null;}}
+function examStart(id){
+  var x=EXS.filter(function(e){return e.id===id;})[0];
+  var h='<div class="crumbs"><a href="#exams">Exams</a> › '+x.name+'</div><div class="card start" style="--c:'+x.color+'"><div class="pill" style="background:var(--c)">'+x.level+' · '+x.tag+'</div><h1>'+x.name+'</h1><p>'+esc(x.desc)+'</p>'+
+  '<h3>Choose your mode</h3><div class="modes">'+
+  '<label class="mode"><input type="radio" name="md" value="practice" '+(x.realistic?'':'checked')+'><div><b>🧑‍🏫 Practice mode</b><small>Instant feedback after every question: you see if you are right, why a wrong choice is wrong, and the explanation.</small></div></label>'+
+  '<label class="mode"><input type="radio" name="md" value="exam" '+(x.realistic?'checked':'')+'><div><b>🎓 Exam mode</b><small>Like the real test: no feedback until you submit. Change answers, flag questions, then see full review.</small></div></label></div>'+
+  '<div class="opts2"><label><input type="checkbox" id="optTimer" '+(x.realistic?'checked':'')+'> ⏱ 120-minute timer</label><label><input type="checkbox" id="optShuf"> 🔀 Shuffle question order (real exam may differ)</label></div>'+
+  '<button class="btn big" id="go">Start '+x.name+' →</button></div>';
+  view(h);
+  $('#go').onclick=function(){startRun({title:x.name+' · '+x.level,examId:x.id,keys:x.qs.map(function(_,i){return 'x'+x.id+'_'+i;}),mode:$('input[name=md]:checked').value,timer:$('#optTimer').checked?120*60:0,shuffle:$('#optShuf').checked});};}
+function unitPractice(u){
+  var keys=[];unitGoals(u).forEach(function(g){g.checks.forEach(function(_,i){keys.push('c'+g.id+'_'+i);});});
+  var U=UNITS.filter(function(x){return x.id===u;})[0];
+  startRun({title:'Unit '+u+' practice · '+U.name,keys:keys,mode:'practice',timer:0,shuffle:true});}
+function startRun(o){
+  RUN={opts:o,title:o.title,examId:o.examId,keys:o.shuffle?shuffle(o.keys):o.keys.slice(),mode:o.mode,ans:{},flag:{},checked:{},i:0,left:o.timer,timed:!!o.timer,start:Date.now(),back:o.back||'#exams'};
+  PERM={};renderRun();
+  if(RUN.timed){TIMER=setInterval(function(){RUN.left--;var t=$('#tmr');if(t)t.textContent=fmt(RUN.left);if(RUN.left<=300&&t)t.classList.add('low');if(RUN.left<=0){stopTimer();toast('⏰ Time is up — submitting.');finishRun();}},1000);}}
+function fmt(s){s=Math.max(0,s);var m=Math.floor(s/60),x=s%60;return (m<10?'0':'')+m+':'+(x<10?'0':'')+x;}
+function renderRun(){
+  var R=RUN,k=R.keys[R.i],n=R.keys.length;
+  var answered=Object.keys(R.ans).length;
+  var h='<div class="runbar"><div><b>'+esc(R.title)+'</b><small>'+(R.mode==='exam'?'Exam mode':'Practice mode')+' · '+answered+'/'+n+' answered</small></div>'+(R.timed?'<div class="tmr" id="tmr">'+fmt(R.left)+'</div>':'')+'<button class="btn sm danger" id="quit">'+(R.mode==='exam'?'Submit':'Finish')+'</button></div>'+
+  '<div class="navq">'+R.keys.map(function(kk,j){var c='';if(R.checked[kk]!=null)c=R.checked[kk]?'ok':'no';else if(R.ans[kk]!=null)c='ans';return '<button class="nq '+c+(j===R.i?' cur':'')+(R.flag[kk]?' fl':'')+'" data-j="'+j+'">'+(j+1)+'</button>';}).join('')+'</div>';
+  h+=qCard(k,R.i+1,R.mode,R.ans[k]);
+  h+='<div class="runnav"><button class="btn ghost" id="prev" '+(R.i===0?'disabled':'')+'>← Previous</button>'+(R.mode==='exam'?'<button class="btn ghost" id="flag">'+(R.flag[k]?'🏳️ Unflag':'🚩 Flag for review')+'</button>':'')+'<button class="btn" id="next">'+(R.i===n-1?(R.mode==='exam'?'Review & submit':'Finish'):'Next →')+'</button></div>';
+  view(h);
+  var card=$('.qcard');
+  if(R.mode==='practice'&&R.checked[k]!=null)reveal(card,R.ans[k]);
+  card.addEventListener('click',function(ev){var b=ev.target.closest('button');if(!b)return;
+    if(b.getAttribute('data-act')==='report')return openReport(k);
+    if(!b.classList.contains('opt')||b.disabled)return;var oi=+b.getAttribute('data-oi');
+    R.ans[k]=oi;
+    if(R.mode==='practice'){R.checked[k]=reveal(card,oi);updNav();}
+    else{$$('.opt',card).forEach(function(x){x.classList.toggle('sel',x===b);});updNav();}});
+  $$('.nq').forEach(function(b){b.onclick=function(){R.i=+b.getAttribute('data-j');renderRun();};});
+  $('#prev').onclick=function(){if(R.i>0){R.i--;renderRun();}};
+  $('#next').onclick=function(){if(R.i<n-1){R.i++;renderRun();}else confirmFinish();};
+  if($('#flag'))$('#flag').onclick=function(){R.flag[k]=!R.flag[k];renderRun();};
+  $('#quit').onclick=confirmFinish;}
+function updNav(){var R=RUN;$$('.nq').forEach(function(b,j){var kk=R.keys[j];b.className='nq'+(R.checked[kk]!=null?(R.checked[kk]?' ok':' no'):(R.ans[kk]!=null?' ans':''))+(j===R.i?' cur':'')+(R.flag[kk]?' fl':'');});
+  var s=$('.runbar small');if(s)s.textContent=(R.mode==='exam'?'Exam mode':'Practice mode')+' · '+Object.keys(R.ans).length+'/'+R.keys.length+' answered';}
+function confirmFinish(){
+  var R=RUN,un=R.keys.length-Object.keys(R.ans).length,fl=Object.keys(R.flag).filter(function(k){return R.flag[k];}).length;
+  var m=$('#modal');m.innerHTML='<div class="mbox"><h3>Finish now?</h3><p>'+(un?'<b>'+un+'</b> question(s) unanswered (they score 0). ':'All questions answered. ')+(fl?'<b>'+fl+'</b> flagged for review.':'')+'</p><div class="row"><button class="btn" id="fyes">Yes, show my results</button><button class="btn ghost" id="fno">Keep working</button></div></div>';
+  m.classList.add('show');$('#fno').onclick=function(){m.classList.remove('show');};$('#fyes').onclick=function(){m.classList.remove('show');finishRun();};}
+function finishRun(){
+  stopTimer();var R=RUN;var score=0,total=0,right=0,per=[];
+  R.keys.forEach(function(k){var q=getQ(k);var mk=marks(q.g);total+=mk;var ok=R.ans[k]===q.a;if(ok){score+=mk;right++;delete S.mistakes[k];}else if(R.ans[k]!=null||R.examId){S.mistakes[k]={t:Date.now()};}per.push({k:k,q:q,ok:ok});});
+  var pct=Math.round(score/total*100);
+  if(R.examId){var sc=Math.round(score/total*100);if(S.best[R.examId]==null||sc>S.best[R.examId])S.best[R.examId]=sc;}
+  save();
+  var mins=Math.round((Date.now()-R.start)/60000);
+  var grade=pct>=95?['🏆','Outstanding — full-mark level!']:pct>=85?['🌟','Excellent — nearly there.']:pct>=70?['👍','Good — fix the red goals below.']:pct>=50?['📈','Keep going — review the lessons linked below.']:['💪','Build the basics — start with the lessons below.'];
+  var weak=per.filter(function(p){return !p.ok;});
+  var h='<div class="card result"><div class="rs"><div class="ring big" style="--p:'+pct+'"><div><b>'+(R.examId?score:right)+'</b><small>'+(R.examId?'/ '+total+' marks':'/ '+R.keys.length+' correct')+'</small></div></div><div><div class="em">'+grade[0]+'</div><h1>'+grade[1]+'</h1><p class="muted">'+esc(R.title)+' · '+right+'/'+R.keys.length+' correct · '+pct+'% · '+mins+' min</p>'+
+  '<div class="row"><button class="btn" id="again">↻ Try again</button><a class="btn ghost" href="#mistakes">🔁 Practise my mistakes</a><a class="btn ghost" href="#exams">All exams</a></div></div></div></div>';
+  h+='<h2 class="sec">🗺️ Goal map</h2><div class="gmap">'+per.map(function(p,j){return '<a href="#goal-'+p.q.g+'" class="gm '+(p.ok?'ok':'no')+'" title="Goal Q'+p.q.g+'">'+(R.examId?'Q'+p.q.g:j+1)+'</a>';}).join('')+'</div>';
+  if(weak.length){var gs={};weak.forEach(function(p){gs[p.q.g]=1;});h+='<div class="card"><h3>📖 Review these lessons</h3><div class="chips">'+Object.keys(gs).map(function(g){return '<a class="chip" href="#goal-'+g+'">Q'+g+' · '+esc(lesson(+g).title)+'</a>';}).join('')+'</div></div>';}
+  h+='<h2 class="sec">🔍 Full review</h2>';
+  per.forEach(function(p,j){var q=p.q,a=R.ans[p.k];
+    h+='<div class="rev '+(p.ok?'ok':'no')+'"><div class="rq"><span class="qnum">'+(j+1)+'</span><b>'+esc(q.q)+'</b><span class="qtag">Q'+q.g+' · '+(p.ok?'+'+marks(q.g):'0')+'/'+marks(q.g)+'</span></div>'+
+    (a==null?'<div class="warn">⏭️ Not answered.</div>':(!p.ok?'<div class="warn">⚠️ <b>Your answer: '+esc(q.o[a])+'</b> — '+esc(q.w[a]||'')+'</div>':''))+
+    '<div class="expl good">✅ <b>'+esc(q.o[q.a])+'</b> — '+esc(q.e)+'</div><div class="rowr"><a class="tiny" href="#goal-'+q.g+'">📖 Lesson Q'+q.g+'</a><button class="tiny" data-rep="'+p.k+'">🚩 Report</button></div></div>';});
+  view(h);var RO=R.opts;$('#again').onclick=function(){if(RO.examId)examStart(RO.examId);else startRun(RO);};$$('[data-rep]').forEach(function(b){b.onclick=function(){openReport(b.getAttribute('data-rep'));};});
+  RUN=null;}
+
+// ---------- MISTAKES ----------
+function mistakes(){
+  var keys=Object.keys(S.mistakes).filter(function(k){return getQ(k);});
+  keys.sort(function(a,b){return getQ(a).g-getQ(b).g;});
+  var h='<div class="phead"><h1>🔁 Mistakes &amp; Reports</h1><p class="muted">Every question you got wrong is kept here until you answer it correctly. Saved on this device only.</p></div>';
+  h+='<div class="card"><div class="uhead"><h2>❌ My mistakes ('+keys.length+')</h2>'+(keys.length?'<button class="btn" id="retry">Retry all mistakes →</button>':'')+'</div>';
+  if(!keys.length)h+='<p class="muted">No mistakes saved yet — great work (or go answer some questions!).</p>';
+  else{var by={};keys.forEach(function(k){var g=getQ(k).g;(by[g]=by[g]||[]).push(k);});
+    h+='<div class="chips">'+Object.keys(by).map(function(g){return '<a class="chip no" href="#goal-'+g+'">Q'+g+' · '+by[g].length+' wrong</a>';}).join('')+'</div>';}
+  h+='</div><div class="card"><div class="uhead"><h2>🚩 My reports ('+S.reports.length+')</h2>'+(S.reports.length?'<div class="row"><button class="btn sm" id="copyr">📋 Copy all</button><button class="btn sm ghost" id="clr">Clear</button></div>':'')+'</div>';
+  if(!S.reports.length)h+='<p class="muted">Use the 🚩 Report button on any question if you think something is wrong.</p>';
+  else{h+='<textarea id="rall" class="rall" readonly>'+esc(S.reports.map(function(r,i){return (i+1)+'. ['+r.src+'] '+r.reason+(r.note?' — '+r.note:'')+'\n   '+r.q;}).join('\n'))+'</textarea>';}
+  h+='</div>';view(h);
+  if($('#retry'))$('#retry').onclick=function(){startRun({title:'Retry my mistakes',keys:keys,mode:'practice',timer:0,shuffle:true});};
+  if($('#copyr'))$('#copyr').onclick=function(){var t=$('#rall');try{navigator.clipboard.writeText(t.value).then(function(){toast('Copied!');},function(){t.select();toast('Select & copy the text');});}catch(e){t.select();toast('Select & copy the text');}};
+  if($('#clr'))$('#clr').onclick=function(){S.reports=[];save();mistakes();};}
+
+// ---------- TOOLS ----------
+var ETAB=(function(){
+ function M(lbl,ion,met,E){return [lbl,ion,met,E,met+'(s) | '+ion+'(aq)',ion+'(aq) | '+met+'(s)'];}
+ function X2(lbl,x2,xm,E){return [lbl,x2,xm,E,'Pt | '+xm+'(aq) | '+x2,x2+' | '+xm+'(aq) | Pt'];}
+ return [X2('F₂ + 2e⁻ → 2F⁻','F₂(g)','F⁻',2.87),M('Au³⁺ + 3e⁻ → Au','Au³⁺','Au',1.50),X2('Cl₂ + 2e⁻ → 2Cl⁻','Cl₂(g)','Cl⁻',1.36),M('Pt²⁺ + 2e⁻ → Pt','Pt²⁺','Pt',1.18),X2('Br₂ + 2e⁻ → 2Br⁻','Br₂(l)','Br⁻',1.07),M('Hg²⁺ + 2e⁻ → Hg','Hg²⁺','Hg',0.85),M('Ag⁺ + e⁻ → Ag','Ag⁺','Ag',0.80),
+ ['Fe³⁺ + e⁻ → Fe²⁺','Fe³⁺','Fe²⁺',0.77,'Pt | Fe²⁺(aq), Fe³⁺(aq)','Fe³⁺(aq), Fe²⁺(aq) | Pt'],X2('I₂ + 2e⁻ → 2I⁻','I₂(s)','I⁻',0.54),M('Cu²⁺ + 2e⁻ → Cu','Cu²⁺','Cu',0.34),
+ ['2H⁺ + 2e⁻ → H₂ (SHE)','H⁺','H₂',0.00,'Pt | H₂(g) | H⁺(aq)','H⁺(aq) | H₂(g) | Pt'],M('Pb²⁺ + 2e⁻ → Pb','Pb²⁺','Pb',-0.13),M('Sn²⁺ + 2e⁻ → Sn','Sn²⁺','Sn',-0.14),M('Ni²⁺ + 2e⁻ → Ni','Ni²⁺','Ni',-0.26),M('Co²⁺ + 2e⁻ → Co','Co²⁺','Co',-0.28),M('Cd²⁺ + 2e⁻ → Cd','Cd²⁺','Cd',-0.40),M('Fe²⁺ + 2e⁻ → Fe','Fe²⁺','Fe',-0.45),M('Cr³⁺ + 3e⁻ → Cr','Cr³⁺','Cr',-0.74),M('Zn²⁺ + 2e⁻ → Zn','Zn²⁺','Zn',-0.76),M('Mn²⁺ + 2e⁻ → Mn','Mn²⁺','Mn',-1.19),M('Al³⁺ + 3e⁻ → Al','Al³⁺','Al',-1.66),M('Mg²⁺ + 2e⁻ → Mg','Mg²⁺','Mg',-2.37),M('Na⁺ + e⁻ → Na','Na⁺','Na',-2.71),M('Ca²⁺ + 2e⁻ → Ca','Ca²⁺','Ca',-2.87),M('K⁺ + e⁻ → K','K⁺','K',-2.93),M('Li⁺ + e⁻ → Li','Li⁺','Li',-3.04)];})();
+function f2(v){return (v>0?'+':v<0?'−':'')+Math.abs(v).toFixed(2);}
+function tools(){
+  var opts=ETAB.map(function(r,i){return '<option value="'+i+'">'+r[0]+'  ('+f2(r[3])+' V)</option>';}).join('');
+  var h='<div class="phead"><h1>🧰 Tools &amp; cheat sheets</h1><p class="muted">Quick references for the night before the exam.</p></div>'+
+  '<div class="card"><h2>🔋 E°cell calculator</h2><p class="muted">Pick any two half-cells. The calculator finds the cathode, anode, E°cell, cell notation and spontaneity — then explains each step.</p>'+
+  '<div class="calc2"><label>Half-cell 1<select id="h1">'+opts+'</select></label><label>Half-cell 2<select id="h2">'+opts+'</select></label></div><div id="cout"></div></div>';
+  h+='<div class="card"><h2>📈 Standard reduction potentials (25 °C, 1 M, 1 atm)</h2><table class="tbl etab"><tr><th>Half-reaction</th><th>E° (V)</th></tr>'+ETAB.map(function(r){return '<tr'+(r[3]===0?' class="she"':'')+'><td>'+r[0]+'</td><td>'+f2(r[3])+'</td></tr>';}).join('')+'</table><p class="muted small">Top = strongest oxidizing agents (left side). Bottom = strongest reducing agents (right side). Your exam will give you the values you need.</p></div>';
+  h+='<div class="two"><div class="card"><h2>🔢 Oxidation number rules</h2><ol class="rules"><li>Element = 0</li><li>Monatomic ion = its charge</li><li>F = −1 always</li><li>O = −2 (peroxide −1, OF₂ +2)</li><li>H = +1 (metal hydride −1)</li><li>Group 1 = +1, Group 2 = +2, Al = +3</li><li>Sum = 0 (compound) or charge (ion)</li></ol></div>'+
+  '<div class="card"><h2>⚖️ Half-reaction method</h2><ol class="rules"><li>Net ionic equation</li><li>Split into two halves</li><li>Balance atoms ≠ O, H</li><li>O → H₂O</li><li>H → H⁺</li><li>Charge → e⁻</li><li>Equalize e⁻, add, cancel</li><li><b>Base:</b> add OH⁻ = H⁺ to both sides, make H₂O, cancel</li></ol></div></div>';
+  h+='<div class="two"><div class="card"><h2>🧠 Memory hooks</h2><ul class="bul"><li><b>OIL RIG</b> — Oxidation Is Loss, Reduction Is Gain</li><li><b>AN OX · RED CAT</b> — oxidation at anode, reduction at cathode</li><li><b>Electrons A → C</b> through the wire (alphabetical)</li><li>Oxidizing agent is <b>reduced</b>; reducing agent is <b>oxidized</b></li><li><b>E°cell = E°cathode − E°anode</b>; never multiply E°</li><li><b>Coat the Cathode</b> in electroplating</li></ul></div>'+
+  '<div class="card"><h2>⚡ vs 🔌 at a glance</h2><table class="tbl"><tr><th></th><th>Voltaic</th><th>Electrolytic</th></tr><tr><td>Spontaneous?</td><td>Yes</td><td>No</td></tr><tr><td>Anode</td><td>− oxidation</td><td>+ oxidation</td></tr><tr><td>Cathode</td><td>+ reduction</td><td>− reduction</td></tr><tr><td>Energy</td><td>chem → elec</td><td>elec → chem</td></tr><tr><td>E°cell</td><td>&gt; 0</td><td>&lt; 0</td></tr></table></div></div>';
+  view(h);$('#h1').value=9;$('#h2').value=18;$('#h1').onchange=$('#h2').onchange=calc;calc();}
+function calc(){
+  var a=ETAB[+$('#h1').value],b=ETAB[+$('#h2').value],o=$('#cout');
+  if(a===b){o.innerHTML='<div class="warn">Choose two different half-cells.</div>';return;}
+  var cat=a[3]>=b[3]?a:b,an=cat===a?b:a;var E=cat[3]-an[3];
+  var anL=an[4],caR=cat[5];
+  o.innerHTML='<div class="cres"><div><span>Cathode (reduction, higher E°)</span><b>'+cat[0]+'</b></div><div><span>Anode (oxidation, lower E°)</span><b>'+an[0].replace(/(.+) \+ (\d?)e⁻ → (.+)/,'$3 → $1 + $2e⁻').replace(' (SHE)','')+'</b></div>'+
+  '<div class="big"><span>E°cell = E°cathode − E°anode</span><b>'+f2(cat[3])+' − ('+f2(an[3])+') = '+f2(E)+' V</b></div>'+
+  '<div><span>Cell notation</span><b>'+anL+' ‖ '+caR+'</b></div><div><span>Verdict</span><b>'+(E>0?'✅ Spontaneous as a voltaic cell. The reverse direction would be '+f2(-E)+' V → non-spontaneous (needs electrolysis).':'Both half-cells have the same potential — no voltage.')+'</b></div><div><span>Remember</span><b>E° values are never multiplied by the coefficients used to balance electrons.</b></div></div>';}
+
+// ---------- init ----------
+document.addEventListener('DOMContentLoaded',function(){
+  applyTheme();
+  $('#themeBtn').onclick=function(){S.theme=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';save();applyTheme();};
+  $('#modal').addEventListener('click',function(e){if(e.target.id==='modal')e.target.classList.remove('show');});
+  window.addEventListener('hashchange',function(){if(RUN&&!/^#exam-|^#unit-/.test(location.hash)){/* leaving a run */RUN=null;}route();});
+  route();});
+})();
+
+</script>
+</body>
+</html>
